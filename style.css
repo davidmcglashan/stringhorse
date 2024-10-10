@@ -1,0 +1,40 @@
+/* Establish the font and remove the page margins */
+body {
+	font-family: "Karla", sans-serif;
+	font-optical-sizing: auto;
+	font-weight: 400;
+	font-style: normal;
+	margin: 0;
+	background-color: #fafafa;
+}
+
+header {
+	border-bottom: 1px solid #e8e8e8;
+	padding: 1em;
+	background-color: #fff;
+}
+
+footer {
+	padding: 1em;
+}
+
+section#ui {
+}
+
+div {
+	border: 1px solid #e0e0e0;
+	background-color: #fff;
+	padding: 0.5em;
+	color: #888;
+}
+
+textarea {
+	border: 0;
+	font-family: inherit;
+	font-size: inherit;
+	padding: 0.5em;
+	font-family: "Sono", sans-serif;
+	font-optical-sizing: auto;
+	font-weight: 400;
+	font-style: normal;
+}

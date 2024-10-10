@@ -1,0 +1,45 @@
+header {
+	position:sticky;
+	top:0;
+	left:0;
+	right:0;
+}
+
+footer {
+	position:absolute;
+	bottom:0;
+	left:0;
+	right:0;
+}
+
+section#ui {
+	position: absolute;
+	left: 1em;
+	right: 1em;
+	top: 4.75em;
+	bottom: 4.25em;
+
+	display:flex;
+	justify-content: space-between;
+	flex-direction: row;
+	align-items: stretch;
+	gap: 1em;
+}
+
+section#ui > div {
+	flex: 1;
+	position:relative;
+}
+
+section#ui > div#output {
+	flex: 2;
+}
+
+textarea {
+	position: absolute;
+	top: 2.5em;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	resize: none;
+}
