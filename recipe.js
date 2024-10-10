@@ -20,3 +20,13 @@ function recipe() {
 		tout.value = tout.value + line + '\n'
 	}
 }
+
+/**
+ * Detect Enter presses on the recipe textarea and run the recipe when we do
+ */
+var recipetext = document.getElementById('rec')
+recipetext.addEventListener("keyup", function(event) {
+    if (event.key === "Enter") {
+        recipe()
+    }
+});

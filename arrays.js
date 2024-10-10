@@ -25,3 +25,18 @@ function tokenise(arr) {
 	}
 	return result
 }
+
+/**
+ * Takes whatever array in passed in and flattens it to a single string
+ */
+function flatten(arr) {
+	result = ''
+	for ( let ar of arr ) {
+		for ( let a of ar.split( ' ' ) ) {
+			result = result + a
+		}
+	}
+	array = []
+	array.push(result)
+	return array
+}
