@@ -26,14 +26,18 @@ section#ui {
 	gap: 1em;
 }
 
-section#ui > div {
-	flex: 1;
-	position:relative;
+section#ui > div { 
+	flex: 1; 
+	position:relative; 
 }
 
-section#ui > div#output {
-	flex: 2;
+section#ui.normal > div#output { 
+	flex: 2; 
 }
+
+section#ui.original > div#original { flex: 20; }
+section#ui.recipe > div#recipe { flex: 20; }
+section#ui.output > div#output { flex: 20; }
 
 textarea {
 	position: absolute;
@@ -42,4 +46,10 @@ textarea {
 	left: 0;
 	right: 0;
 	resize: none;
+}
+
+a.button {
+	position: absolute;
+	right: 0.5em;
+	top: 0.5em;
 }
