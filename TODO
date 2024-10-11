@@ -1,0 +1,10 @@
+- Error handling should
+  - stop the script
+  - put a message in the output window
+- Help file with the commands in
+- 'info' command with wc, lines, etc.
+- change parser to pass parameters into the functions
+- grep
+- sed
+- CSV
+- JSON
