@@ -31,6 +31,15 @@ function recipe() {
 }
 
 /**
+ * Copy the output text into the original.
+ */
+function copyToOriginal() {
+	var tout = document.getElementById('out')
+	var toriginal = document.getElementById('src')
+	toriginal.value = tout.value
+}
+
+/**
  * Detect Enter presses on the recipe textarea and run the recipe when we do
  */
 var recipetext = document.getElementById('rec')

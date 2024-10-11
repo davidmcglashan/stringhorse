@@ -11,21 +11,28 @@
 		<meta charset="utf-8">
 	</head>
 	<body>
-		<header>String🐴<a href="javascript:recipe();" class="button">Run</a></header>
+		<header>String🐴</header>
 		<section id="ui" class="normal">
 			<div id="original">
 				Original Text
-				<a href="javascript:focus('original');" class="button">&#x2194;</a>
+				<div class="toolbar">
+					<a href="javascript:focus('original');" class="button">&#x2194;</a>
+				</div>
 				<textarea id="src"></textarea>
 			</div>
 			<div id="recipe">
 				Recipe
-				<a href="javascript:focus('recipe');" class="button">&#x2194;</a>
+				<div class="toolbar">
+					<a href="javascript:focus('recipe');" class="button">&#x2194;</a>
+				</div>
 				<textarea id="rec"></textarea>
 			</div>
 			<div id="output">
 				Output
-				<a href="javascript:focus('output');" class="button">&#x2194;</a>
+				<div class="toolbar">
+					<a href="javascript:copyToOriginal();" class="button">&lt; Copy</a>
+					<a href="javascript:focus('output');" class="button">&#x2194;</a>
+				</div>
 				<textarea id="out"></textarea>
 			</div>
 		</section>

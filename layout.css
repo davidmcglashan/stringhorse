@@ -48,8 +48,12 @@ textarea {
 	resize: none;
 }
 
-a.button {
+div.toolbar {
 	position: absolute;
 	right: 0.5em;
-	top: 0.5em;
+	top: 0.5em;	
+}
+
+a.button {
+
 }
