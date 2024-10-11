@@ -52,6 +52,7 @@
 						<li><a href="#precat">precat</a></li>
 						<li><a href="#r">r</a></li>
 						<li><a href="#rafter">rafter</a></li>
+						<li><a href="#rall">rall</a></li>
 						<li><a href="#rbefore">rbefore</a></li>
 						<li><a href="#sort">sort</a></li>
 						<li><a href="#sortza">sortza</a></li>
@@ -78,11 +79,14 @@
 					<a id="precat"><h4>precat [string]</h4></a>
 					<p>Adds [string] to the start of each line.</p>
 
-					<a id="r"><h4>r [string]</h4></a>
-					<p>Removes the first instance of [string] on each line.</p>
+					<a id="r"><h4>r [a] ([b])</h4></a>
+					<p>Replaces the first instance of [a] on each line with [b]. If [b] is not specified then [a] is replaced with '' (i.e. it is removed).</p>
 
 					<a id="rafter"><h4>rafter [string]</h4></a>
 					<p>Removes the text after first instance of [string] on each line, leaving [string] in place.</p>
+
+					<a id="rall"><h4>rall [a] ([b])</h4></a>
+					<p>Replaces every instance of [a] on each line with [b]. If [b] is not specified then all the [a]s are replaced with '' (i.e. they are removed).</p>
 
 					<a id="rbefore"><h4>rbefore [string]</h4></a>
 					<p>Removes the text before first instance of [string] on each line, leaving [string] in place.
