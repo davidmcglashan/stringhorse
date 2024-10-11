@@ -165,3 +165,57 @@ function cat(arr,cmd) {
 	}
 	return result
 }
+
+/**
+ * Keep the first [n] characters on each line
+ */
+function head(arr,cmd) {
+	result = []
+
+	let i = parseInt(cmd[1])
+
+	for ( let ar of arr ) {
+		result.push( ar.substring(0,i) )
+	}
+	return result
+}
+
+/**
+ * Keep the last [n] characters on each line
+ */
+function tail(arr,cmd) {
+	var result = []
+	let i = parseInt(cmd[1])
+
+	for ( let ar of arr ) {
+		result.push( ar.substring(ar.length-i,ar.length) )
+	}
+	return result	
+}
+
+/**
+ * Remove the first [n] characters on each line
+ */
+function rhead(arr,cmd) {
+	result = []
+
+	let i = parseInt(cmd[1])
+
+	for ( let ar of arr ) {
+		result.push( ar.substring(i) )
+	}
+	return result
+}
+
+/**
+ * Remove the last [n] characters on each line
+ */
+function rtail(arr,cmd) {
+		var result = []
+	let i = parseInt(cmd[1])
+
+	for ( let ar of arr ) {
+		result.push( ar.substring(0,ar.length-i) )
+	}
+	return result	
+}

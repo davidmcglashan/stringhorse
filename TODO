@@ -12,12 +12,6 @@
 - JSON
 - TAB autocomplete
 
-- rall replaces all
-- head [number] - keep the first [number] chars
-- tail [number] - keep the last [number] chars
-- rhead [number] - remove the first [number] chars
-- rtail [number] - remove the last [number] chars
-
 function lower(arr) {
 function precat(arr,cmd) {
 function trim(arr) {
