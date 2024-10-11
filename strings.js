@@ -137,7 +137,7 @@ function precat(arr,cmd) {
 	for ( let i=1; i < cmd.length; i++ ) {
 		str = str + cmd[i] + ' ' 
 	}
-	str = str.trim()
+	str = str.substring( 0, str.length-1 )
 
 	// Now put that string at the start of each line in the array.
 	for ( let ar of arr ) {
@@ -157,7 +157,7 @@ function cat(arr,cmd) {
 	for ( let i=1; i < cmd.length; i++ ) {
 		str = str + cmd[i] + ' ' 
 	}
-	str = str.trim()
+	str = str.substring( 0, str.length-1 )
 
 	// Now put that string at the end of each line in the array.
 	for ( let ar of arr ) {
