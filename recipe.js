@@ -10,7 +10,9 @@ function recipe() {
 	try {
 		for ( recipe of document.getElementById('rec').value.split('\n') ) {
 			if ( recipe.length > 0 ) {
-				result = window[recipe](result);
+				// Split the recipe line by its spaces. The first entry is our command, the rest are its parameters.
+				cmd = recipe.split(' ')
+				result = window[cmd[0]](result,cmd);
 			}
 		}
 	} catch( err ) {

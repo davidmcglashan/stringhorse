@@ -43,3 +43,23 @@ function lower(arr) {
 	}
 	return result
 }
+
+/**
+ * Pre-concatenates the array with the contents of cmd
+ */
+function precat(arr,cmd) {
+	result = []
+
+	// Build the string first.
+	str =''
+	for ( let i=1; i < cmd.length; i++ ) {
+		str = str + cmd[i] + ' ' 
+	}
+	str = str.trim()
+
+	// Now put that string at the start of each line in the array.
+	for ( let ar of arr ) {
+		result.push( str + '' + ar )
+	}
+	return result
+}
