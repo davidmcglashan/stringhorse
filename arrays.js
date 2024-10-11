@@ -1,3 +1,9 @@
+/**
+ * Takes whatever array is passed in and reverses it
+ */
+function reverse(arr) {
+	return arr.reverse()
+}
 
 /**
  * Takes whatever array is passed in and sorts it
@@ -9,7 +15,7 @@ function sort(arr) {
 /**
  * Takes whatever array is passed in and sorts it in reverse order
  */
-function sortZA(arr) {
+function sortza(arr) {
 	return arr.sort().reverse()
 }
 
