@@ -1,5 +1,7 @@
-- Help file with the commands in
+- use // to comment out a recipe line
 - put original text and recipe in localstorage and bring them back on pageload
+
+- Help file with the commands in
 - 'info' command with wc, lines, etc.
 - grep
 - sed
