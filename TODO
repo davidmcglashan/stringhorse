@@ -9,3 +9,12 @@
 - CSV
 - JSON
 - TAB autocomplete
+
+function lower(arr) {
+function precat(arr,cmd) {
+function trim(arr) {
+function trimblanks(arr) {
+function upper(arr) {
+
+rbefore ' '
+rafter (

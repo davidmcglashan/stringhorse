@@ -11,7 +11,12 @@
 		<meta charset="utf-8">
 	</head>
 	<body>
-		<header>String🐴</header>
+		<header>
+			String🐴
+			<div class="toolbar">
+				<a href="javascript:help();" class="button">Help</a>
+			</div>
+		</header>
 		<section id="ui" class="normal">
 			<div id="original">
 				Original Text &mdash; <a href="javascript:clear('src');">Clear</a>
@@ -35,6 +40,51 @@
 				</div>
 				<textarea id="out"></textarea>
 				<div class="mono hidden" id="www"></div> 
+			</div>
+			<div id="help" class="hidden">
+				Help
+				<div class="text">
+					<h2>Commands</h2>
+					<ul>
+						<li><a href="#flatten">flatten</a></li>
+						<li><a href="#flattens">flattens</a></li>
+						<li><a href="#lower">lower</a></li>
+						<li><a href="#precat">precat</a></li>
+						<li><a href="#r">r</a></li>
+						<li><a href="#sort">sort</a></li>
+						<li><a href="#sortza">sortza</a></li>
+						<li><a href="#tokenise">tokenise</a></li>
+						<li><a href="#trim">trim</a></li>
+						<li><a href="#trimblanks">trimblanks</a></li>
+						<li><a href="#upper">upper</a></li>
+						<li><a href="#wwwify">wwwify</a></li>
+					</ul>
+					<hr>
+					<a id="flatten"><h4>flatten</h4></a>
+					<p>Flattens the original text's lines into one long string.</p>
+
+					<a id="flattens"><h4>flattens</h4></a>
+					<p>Flattens the original text's lines into one long space-separated string.</p>
+
+					<a id="lower"><h4>lower</h4></a>
+					<p>Converts the original text into lower case.</p>
+
+					<a id="precat"><h4>precat</h4></a>
+					<p>Flattens the original text's lines into one long space-separated string.</p>
+
+					<a id="r"><h4>r</h4></a>
+					<a id="sort"><h4>sort</h4></a>
+					<a id="sortza"><h4>sortza</h4></a>
+					<a id="tokenise"><h4>tokenise</h4></a>
+					<a id="trim"><h4>trim</h4></a>
+					<a id="trimblanks"><h4>trimblanks</h4></a>
+					<a id="upper"><h4>upper</h4></a>
+					<p>Converts the original text into upper case.</p>
+
+					<a id="wwwify"><h4>wwwify</h4></a>
+					<p>Pretends the original text is a list of hyperlinks and displays them as anchor tags so they can be clicked and visited.</p>
+
+				</div>
 			</div>
 		</section>
 		<footer>

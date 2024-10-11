@@ -31,13 +31,15 @@ section#ui > div {
 	position:relative; 
 }
 
-section#ui.normal > div#output { 
+section#ui.normal > div#output,
+section#ui.normal > div#help { 
 	flex: 2; 
 }
 
 section#ui.original > div#original { flex: 20; }
 section#ui.recipe > div#recipe { flex: 20; }
 section#ui.output > div#output { flex: 20; }
+section#ui.output > div#help { flex: 20; }
 
 textarea {
 	position: absolute;
@@ -54,6 +56,7 @@ div.toolbar {
 	top: 0.5em;	
 }
 
-a.button {
-
+header > div.toolbar {
+	right: 1em;
+    top: 1.25em;
 }

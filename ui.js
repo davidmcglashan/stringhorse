@@ -32,6 +32,14 @@ function clear(ta) {
 }
 
 /**
+ * Swaps the output pane for the help one
+ */
+function help() {
+	document.getElementById('output').classList.toggle('hidden')
+	document.getElementById('help').classList.toggle('hidden')
+}
+
+/**
  * Pretend that everyline in the output is a URL and render a list of <a> tags.
  */
 function wwwify(urls) {

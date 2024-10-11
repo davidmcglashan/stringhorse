@@ -63,3 +63,15 @@ div.mono ul {
 	padding-inline-start: inherit;
 	line-height: 1.3em
 }
+
+div#help > div.text {
+	color: #000;
+}
+div#help > div.text h4,
+div#help > div.text p {
+	margin: 0;
+	margin-left: 0.5em;
+}
+div#help > div.text p {
+	margin-bottom: 1em;
+}

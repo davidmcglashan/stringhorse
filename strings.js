@@ -45,6 +45,24 @@ function lower(arr) {
 }
 
 /**
+ * Remove or replace. If there are two parameters then the first is
+ * replaced with the second. Otherwise the first is removed.
+ */
+function r(arr,cmd) {
+	var result = []
+
+	var replacement = cmd[2]
+	if ( replacement === undefined ) {
+		replacement = ''
+	}
+
+	for ( let ar of arr ) {
+		result.push( ar.replace(cmd[1],replacement) )
+	}
+	return result
+}
+
+/**
  * Pre-concatenates the array with the contents of cmd
  */
 function precat(arr,cmd) {
