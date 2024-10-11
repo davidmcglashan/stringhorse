@@ -12,13 +12,15 @@ function recipe() {
 	// This is the main loop, then. Get the recipe text, split by newlines and parse each one ...
 	try {
 		for ( recipe of document.getElementById('rec').value.split('\n') ) {
-			if ( recipe.length > 0 ) {
+			if ( recipe.length > 0 && !recipe.startsWith('//') ) {
 				// Split the recipe line by its spaces. The first entry is our command, the rest are its parameters.
 				cmd = recipe.split(' ')
+
+				// Execute. If a command returns NULL then we abort the whole recipe.
 				result = window[cmd[0]](result,cmd);
-			}
-			if ( result === undefined ) {
-				return
+				if ( result === undefined ) {
+					return
+				}
 			}
 		}
 	} catch( err ) {
