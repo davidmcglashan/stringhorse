@@ -51,6 +51,8 @@
 						<li><a href="#lower">lower</a></li>
 						<li><a href="#precat">precat</a></li>
 						<li><a href="#r">r</a></li>
+						<li><a href="#rafter">rafter</a></li>
+						<li><a href="#rbefore">rbefore</a></li>
 						<li><a href="#sort">sort</a></li>
 						<li><a href="#sortza">sortza</a></li>
 						<li><a href="#tokenise">tokenise</a></li>
@@ -60,6 +62,10 @@
 						<li><a href="#wwwify">wwwify</a></li>
 					</ul>
 					<hr>
+
+					<a id="cat"><h4>cat [string]</h4></a>
+					<p>Adds [string] to the end of each line.</p>
+
 					<a id="flatten"><h4>flatten</h4></a>
 					<p>Flattens the original text's lines into one long string.</p>
 
@@ -69,10 +75,18 @@
 					<a id="lower"><h4>lower</h4></a>
 					<p>Converts the original text into lower case.</p>
 
-					<a id="precat"><h4>precat</h4></a>
-					<p>Flattens the original text's lines into one long space-separated string.</p>
+					<a id="precat"><h4>precat [string]</h4></a>
+					<p>Adds [string] to the start of each line.</p>
 
-					<a id="r"><h4>r</h4></a>
+					<a id="r"><h4>r [string]</h4></a>
+					<p>Removes the first instance of [string] on each line.</p>
+
+					<a id="rafter"><h4>rafter [string]</h4></a>
+					<p>Removes the text after first instance of [string] on each line, leaving [string] in place.</p>
+
+					<a id="rbefore"><h4>rbefore [string]</h4></a>
+					<p>Removes the text before first instance of [string] on each line, leaving [string] in place.
+
 					<a id="sort"><h4>sort</h4></a>
 					<a id="sortza"><h4>sortza</h4></a>
 					<a id="tokenise"><h4>tokenise</h4></a>

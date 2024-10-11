@@ -63,6 +63,52 @@ function r(arr,cmd) {
 }
 
 /**
+ * Remove before. Requires a parameter to know before what? Otherwise a space is assumed. 
+ * The 'what?' string is found and everything ahead of it is removed from the string.
+ */
+function rbefore(arr,cmd) {
+	var result = []
+
+	var what = cmd[1]
+	if ( what === undefined || what.length === 0 ) {
+		what = ' '
+	}
+
+	for ( let ar of arr ) {
+		let i = ar.indexOf(what)
+		if ( i !== -1 ) {
+			result.push( ar.substring( i,ar.length ) )
+		} else {
+			result.push( ar )
+		}
+	}
+	return result
+}
+
+/**
+ * Remove after. Requires a parameter to know before what? Otherwise a space is assumed. 
+ * The 'what?' string is found and everything behind of it is removed from the string.
+ */
+function rafter(arr,cmd) {
+	var result = []
+
+	var what = cmd[1]
+	if ( what === undefined || what.length === 0 ) {
+		what = ' '
+	}
+
+	for ( let ar of arr ) {
+		let i = ar.indexOf(what)
+		if ( i !== -1 ) {
+			result.push( ar.substring( 0,i+what.length ) )
+		} else {
+			result.push( ar )
+		}
+	}
+	return result
+}
+
+/**
  * Pre-concatenates the array with the contents of cmd
  */
 function precat(arr,cmd) {
@@ -78,6 +124,26 @@ function precat(arr,cmd) {
 	// Now put that string at the start of each line in the array.
 	for ( let ar of arr ) {
 		result.push( str + '' + ar )
+	}
+	return result
+}
+
+/**
+ * Concatenates the array with the contents of cmd
+ */
+function cat(arr,cmd) {
+	result = []
+
+	// Build the string first.
+	str =''
+	for ( let i=1; i < cmd.length; i++ ) {
+		str = str + cmd[i] + ' ' 
+	}
+	str = str.trim()
+
+	// Now put that string at the end of each line in the array.
+	for ( let ar of arr ) {
+		result.push( ar + '' + str )
 	}
 	return result
 }

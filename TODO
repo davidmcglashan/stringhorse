@@ -1,4 +1,5 @@
-- Help file with the commands in
+- Finish help file with the commands in
+- return a string to serve as an error message
 - 'info' command with wc, lines, etc.
 - grep
 - sed
@@ -10,11 +11,14 @@
 - JSON
 - TAB autocomplete
 
+- rall replaces all
+- head [number] - keep the first [number] chars
+- tail [number] - keep the last [number] chars
+- rhead [number] - remove the first [number] chars
+- rtail [number] - remove the last [number] chars
+
 function lower(arr) {
 function precat(arr,cmd) {
 function trim(arr) {
 function trimblanks(arr) {
 function upper(arr) {
-
-rbefore ' '
-rafter (
