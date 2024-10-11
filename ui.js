@@ -1,3 +1,6 @@
+/**
+ * Focuses the passed-in element (makes it big on the UI).
+ */
 function focus(element) {
 	var ui = document.getElementById('ui')
 
