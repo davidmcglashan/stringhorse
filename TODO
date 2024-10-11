@@ -1,12 +1,10 @@
-- use // to comment out a recipe line
-- put original text and recipe in localstorage and bring them back on pageload
-
 - Help file with the commands in
 - 'info' command with wc, lines, etc.
 - grep
 - sed
 - encode %20 into space
 - decode
+- base64
 - lines , ( puts a new line in after every comma) - actually this is "tokenise ,"
 - CSV
 - JSON

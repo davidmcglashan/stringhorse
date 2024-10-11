@@ -2,6 +2,9 @@
  * Executes the currently entered recipe.
  */
 function recipe() {
+	// Store the recipe in localstorage for future us.
+	localStorage.recipe = document.getElementById('rec').value
+
 	document.getElementById('www').classList.add('hidden')
 	document.getElementById('out').classList.remove('hidden')
 
@@ -41,12 +44,24 @@ function recipe() {
 }
 
 /**
- * Detect Enter presses on the recipe textarea and run the recipe when we do
+ * Restore from localStorage
  */
-var recipetext = document.getElementById('rec')
-var timerId = 0;
+var srcText = document.getElementById('src')
+srcText.value = localStorage.src !== undefined ? localStorage.src : ''
+var recipeText = document.getElementById('rec')
+recipeText.value = localStorage.recipe !== undefined ? localStorage.recipe : ''
 
-recipetext.addEventListener("keyup", function(event) {
-    clearTimeout(timerId);
-    timerId = setTimeout( recipe, 750 );
+/**
+ * Detect changes on the original and recipe textareas and do stuff on a time-delayed keypress
+ */
+var recipeTimerId = 0;
+recipeText.addEventListener("keyup", function(event) {
+    clearTimeout(recipeTimerId);
+    recipeTimerId = setTimeout( recipe, 750 );
+});
+
+var srcTimerId = 0;
+srcText.addEventListener("keyup", function(event) {
+    clearTimeout(srcTimerId);
+    srcTimerId = setTimeout( function(e){ localStorage.src = srcText.value }, 750 );
 });
