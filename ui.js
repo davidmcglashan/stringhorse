@@ -23,6 +23,13 @@ function copyToOriginal() {
 }
 
 /**
+ * Clears a textarea
+ */
+function clear(ta) {
+	document.getElementById(ta).value = ''
+}
+
+/**
  * Pretend that everyline in the output is a URL and render a list of <a> tags.
  */
 function wwwify(urls) {
