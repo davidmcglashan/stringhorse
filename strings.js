@@ -51,6 +51,10 @@ function lower(arr) {
 function rall(arr,cmd) {
 	var result = []
 
+	if ( cmd[1] === undefined || cmd[1].length === 0 ) {
+		return new String( 'rall: rall requires at least one search string.' )
+	}
+
 	var replacement = cmd[2]
 	if ( replacement === undefined ) {
 		replacement = ''
@@ -68,6 +72,10 @@ function rall(arr,cmd) {
  */
 function r(arr,cmd) {
 	var result = []
+
+	if ( cmd[1] === undefined || cmd[1].length === 0 ) {
+		return new String( 'r: r requires at least one search string.' )
+	}
 
 	var replacement = cmd[2]
 	if ( replacement === undefined ) {
