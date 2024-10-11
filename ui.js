@@ -27,6 +27,8 @@ function copyToOriginal() {
  */
 function clear(ta) {
 	document.getElementById(ta).value = ''
+	localStorage.src = document.getElementById('src').value
+	localStorage.recipe = document.getElementById('rec').value
 }
 
 /**
