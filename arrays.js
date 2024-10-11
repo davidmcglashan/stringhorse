@@ -59,6 +59,38 @@ function flattens(arr) {
 }
 
 /**
+ * Explodes the array by inserting an empty string in between each line.
+ */
+function explode( arr ) {
+	result = []
+	for ( let ar of arr ) {
+		result.push( ar )
+		result.push( '' )
+	}
+	result.pop()
+	return result
+}
+
+/**
+ * Numbers the lines.
+ */
+function number( arr,cmd ) {
+	var i = 1
+	try {
+		i = parseInt(cmd[1]) || 1
+	} catch( err ) {
+		i = 1
+	}
+
+	result = []
+	for ( let ar of arr ) {
+		result.push( i + '. ' + ar )
+		i++
+	}
+	return result
+}
+
+/**
  * Matches strings against the passed-in term. Rejects lines which don't.
  */
 function grep(arr,cmd) {

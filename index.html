@@ -53,6 +53,7 @@
 						<li><a href="#cat">cat</a></li>
 						<li><a href="#decode">decode</a></li>
 						<li><a href="#encode">encode</a></li>
+						<li><a href="#explode">explode</a></li>
 						<li><a href="#flatten">flatten</a></li>
 						<li><a href="#flattens">flattens</a></li>
 						<li><a href="#grep">grep</a></li>
@@ -60,6 +61,7 @@
 						<li><a href="#info">info</a></li>
 						<li><a href="#lower">lower</a></li>
 						<li><a href="#ngrep">ngrep</a></li>
+						<li><a href="#number">number</a></li>
 						<li><a href="#precat">precat</a></li>
 						<li><a href="#r">r</a></li>
 						<li><a href="#rafter">rafter</a></li>
@@ -88,6 +90,9 @@
 					<a id="encode"><h4>encode</h4></a>
 					<p>Encode each line for safe use in a URL e.g. spaces become %20, and so on.</p>
 
+					<a id="explode"><h4>explode</h4></a>
+					<p>Explode the text by inserting blank lines in between the existing ones.</p>
+
 					<a id="flatten"><h4>flatten</h4></a>
 					<p>Flattens the original text's lines into one long string.</p>
 
@@ -108,6 +113,9 @@
 
 					<a id="ngrep"><h4>ngrep [string]</h4></a>
 					<p>Retains only lines which <em>do not</em> contain [string].</p>
+
+					<a id="number"><h4>number ([number])</h4></a>
+					<p>Number the lines starting at 1, or at [number] if it is provided.</p>
 
 					<a id="precat"><h4>precat [string]</h4></a>
 					<p>Adds [string] to the start of each line.</p>
