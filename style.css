@@ -23,6 +23,7 @@ section#ui > div {
 	background-color: #fff;
 	padding: 0.5em;
 	color: #888;
+	overflow: auto;
 }
 
 textarea {
@@ -47,4 +48,18 @@ a.button {
 a.button:hover {
 	background-color: #236;
 	color: #fff;
+}
+
+.hidden {
+	display: none;
+}
+
+div.mono {
+	font-family: "Sono", sans-serif;
+}
+
+div.mono ul {
+	list-style-type: none;
+	padding-inline-start: inherit;
+	line-height: 1.3em
 }

@@ -2,6 +2,9 @@
  * Executes the currently entered recipe.
  */
 function recipe() {
+	document.getElementById('www').classList.add('hidden')
+	document.getElementById('out').classList.remove('hidden')
+
 	// Our working object is a copy of the source text.
 	var result = document.getElementById('src').value.split('\n');
 	var recipe
@@ -13,6 +16,9 @@ function recipe() {
 				// Split the recipe line by its spaces. The first entry is our command, the rest are its parameters.
 				cmd = recipe.split(' ')
 				result = window[cmd[0]](result,cmd);
+			}
+			if ( result === undefined ) {
+				return
 			}
 		}
 	} catch( err ) {
@@ -30,15 +36,6 @@ function recipe() {
 	for ( let line of result ) {
 		tout.value = tout.value + line + '\n'
 	}
-}
-
-/**
- * Copy the output text into the original.
- */
-function copyToOriginal() {
-	var tout = document.getElementById('out')
-	var toriginal = document.getElementById('src')
-	toriginal.value = tout.value
 }
 
 /**

@@ -1,7 +1,6 @@
 - Help file with the commands in
 - put original text and recipe in localstorage and bring them back on pageload
 - 'info' command with wc, lines, etc.
-- change parser to pass parameters into the functions
 - grep
 - sed
 - CSV
