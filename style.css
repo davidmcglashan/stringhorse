@@ -76,3 +76,7 @@ div#help > div.text p {
 div#help > div.text p {
 	margin-bottom: 1em;
 }
+
+header div.toolbar a.button {
+	margin-left: 2em;
+}

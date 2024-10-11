@@ -1,5 +1,4 @@
 - Allow " " to be tokenised into a parameter for r and rall
-- baked in examples launched from the toolbar
 - encode %20 into space
 - decode
 - base64
@@ -7,3 +6,4 @@
 - CSV
 - JSON
 - TAB autocomplete
+- x-overflow with scrollbars! (maybe option this?)

@@ -40,6 +40,29 @@ function help() {
 }
 
 /**
+ * Shows an example based on the page source.
+ */
+function example() {
+	document.getElementById('src').value = document.getElementById('html').outerHTML
+	document.getElementById('rec').value = '// The Original Text pane on the left now shows the HTML source of this page, dynamically inserted.\n' +
+		'\n' +
+		'// This central pane holds the recipe. The commands in here are executed to provide the output.\n' +
+		'\n' +
+		'// <-- Two slashes like this is a comment. Lines beginning with these (like this one) are ignored.\n' +
+		'\n' +
+		'// Remove the comments from the recipe lines below, one-at-a-time to see stringhorse in action. The recipe will run after a short pause and the output will appear in the right hand pane ...\n' +
+		'\n' +
+		'//trim\n' +
+		'//grep <li><a\n' +
+		'//rbefore #\n' +
+		'//r # https://www.google.com/search?q=\n' +
+		'//rafter "\n' +
+		'//rtail 1\n' +
+		'//wwwify'
+	recipe()
+}
+
+/**
  * Pretend that everyline in the output is a URL and render a list of <a> tags.
  */
 function wwwify(urls) {
