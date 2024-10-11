@@ -43,7 +43,7 @@ function help() {
  * Shows an example based on the page source.
  */
 function example() {
-	document.getElementById('src').value = document.getElementById('html').outerHTML
+	document.getElementById('src').value = '<!DOCTYPE html>\n' + document.getElementById('html').outerHTML
 	document.getElementById('rec').value = '// The Original Text pane on the left now shows the HTML source of this page, dynamically inserted.\n' +
 		'\n' +
 		'// This central pane holds the recipe. The commands in here are executed to provide the output.\n' +
