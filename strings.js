@@ -87,9 +87,15 @@ function r(arr,cmd) {
 function rbefore(arr,cmd) {
 	var result = []
 
-	var what = cmd[1]
-	if ( what === undefined || what.length === 0 ) {
+	// Build the string first.
+	var what = ''
+	if ( cmd[1] === undefined || cmd[1].length === 0 ) {
 		what = ' '
+	} else {
+		for ( let i=1; i < cmd.length; i++ ) {
+			what = what + cmd[i] + ' ' 
+		}
+		what = what.substring( 0, what.length-1 )
 	}
 
 	for ( let ar of arr ) {
@@ -110,9 +116,15 @@ function rbefore(arr,cmd) {
 function rafter(arr,cmd) {
 	var result = []
 
-	var what = cmd[1]
-	if ( what === undefined || what.length === 0 ) {
+	// Build the string first.
+	var what = ''
+	if ( cmd[1] === undefined || cmd[1].length === 0 ) {
 		what = ' '
+	} else {
+		for ( let i=1; i < cmd.length; i++ ) {
+			what = what + cmd[i] + ' ' 
+		}
+		what = what.substring( 0, what.length-1 )
 	}
 
 	for ( let ar of arr ) {
@@ -211,7 +223,7 @@ function rhead(arr,cmd) {
  * Remove the last [n] characters on each line
  */
 function rtail(arr,cmd) {
-		var result = []
+	var result = []
 	let i = parseInt(cmd[1])
 
 	for ( let ar of arr ) {
