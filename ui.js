@@ -43,11 +43,11 @@ function help() {
  * Pretend that everyline in the output is a URL and render a list of <a> tags.
  */
 function wwwify(urls) {
-	var www = document.getElementById('www')
+	var info = document.getElementById('info')
 
 	// Create a <ul> to list the URLs
 	var ul = document.createElement('ul')
-	www.replaceChildren(ul)
+	info.replaceChildren(ul)
 
 	for ( let url of urls ) {
 		if ( url.length > 0 ) {
@@ -64,6 +64,6 @@ function wwwify(urls) {
 	}
 
 	// Make the UI visible
-	www.classList.remove('hidden')
+	info.classList.remove('hidden')
 	document.getElementById('out').classList.add('hidden')
 }

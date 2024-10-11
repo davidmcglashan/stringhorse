@@ -64,7 +64,8 @@ div.mono ul {
 	line-height: 1.3em
 }
 
-div#help > div.text {
+div#help > div.text,
+div.mono {
 	color: #000;
 }
 div#help > div.text h4,

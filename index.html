@@ -39,7 +39,7 @@
 					<a href="javascript:focus('output');" class="button">&#x2194;</a>
 				</div>
 				<textarea id="out"></textarea>
-				<div class="mono hidden" id="www"></div> 
+				<div class="mono hidden" id="info"></div> 
 			</div>
 			<div id="help" class="hidden">
 				Help
@@ -50,6 +50,7 @@
 						<li><a href="#flattens">flattens</a></li>
 						<li><a href="#grep">grep</a></li>
 						<li><a href="#head">head</a></li>
+						<li><a href="#info">info</a></li>
 						<li><a href="#lower">lower</a></li>
 						<li><a href="#ngrep">ngrep</a></li>
 						<li><a href="#precat">precat</a></li>
@@ -85,6 +86,9 @@
 
 					<a id="head"><h4>head [number]</h4></a>
 					<p>Keep only the first [number] characters on each line.</p>
+
+					<a id="info"><h4>info</h4></a>
+					<p>Shows some info about the output: lines, words, chars, etc.</p>
 
 					<a id="lower"><h4>lower</h4></a>
 					<p>Converts the original text into lower case.</p>
@@ -151,4 +155,5 @@
 	<script type="text/javascript" src="recipe.js"></script>
 	<script type="text/javascript" src="strings.js"></script>
 	<script type="text/javascript" src="arrays.js"></script>
+	<script type="text/javascript" src="info.js"></script>
 </html>

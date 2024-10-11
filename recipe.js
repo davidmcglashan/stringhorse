@@ -5,7 +5,7 @@ function recipe() {
 	// Store the recipe in localstorage for future us.
 	localStorage.recipe = document.getElementById('rec').value
 
-	document.getElementById('www').classList.add('hidden')
+	document.getElementById('info').classList.add('hidden')
 	document.getElementById('out').classList.remove('hidden')
 
 	// Our working object is a copy of the source text.

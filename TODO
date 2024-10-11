@@ -1,6 +1,5 @@
-- Allow " " to be tokenised into a parameter
-- 'info' command with wc, lines, etc.
-- sed
+- Allow " " to be tokenised into a parameter for r and rall
+- baked in examples launched from the toolbar
 - encode %20 into space
 - decode
 - base64
@@ -8,9 +7,3 @@
 - CSV
 - JSON
 - TAB autocomplete
-
-function lower(arr) {
-function precat(arr,cmd) {
-function trim(arr) {
-function trimblanks(arr) {
-function upper(arr) {
