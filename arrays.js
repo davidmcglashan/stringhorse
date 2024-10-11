@@ -46,7 +46,7 @@ function flatten(arr) {
 }
 
 /**
- * Takes whatever array in passed in and flattens it to a single, space separated string
+ * Takes whatever array is passed in and flattens it to a single, space separated string.
  */
 function flattens(arr) {
 	result = ''
@@ -55,5 +55,31 @@ function flattens(arr) {
 	}
 	array = []
 	array.push(result.trim())
+	return array
+}
+
+/**
+ * Matches strings against the passed-in term. Rejects lines which don't.
+ */
+function grep(arr,cmd) {
+	result = ''
+
+	// Build the string first.
+	var what = ''
+	if ( cmd[1] === undefined || cmd[1].length === 0 ) {
+		return new String( 'grep: grep requires something to match with' )
+	} else {
+		for ( let i=1; i < cmd.length; i++ ) {
+			what = what + cmd[i] + ' ' 
+		}
+		what = what.substring( 0, what.length-1 )
+	}
+
+	array = []
+	for ( let ar of arr ) {
+		if ( ar.indexOf(what) !== -1 ) {
+			array.push( ar )
+		}
+	}
 	return array
 }

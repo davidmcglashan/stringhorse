@@ -1,7 +1,5 @@
 - Allow " " to be tokenised into a parameter
-- return a string to serve as an error message
 - 'info' command with wc, lines, etc.
-- grep
 - sed
 - encode %20 into space
 - decode

@@ -23,6 +23,8 @@ function recipe() {
 				result = window[cmd[0]](result,cmd);
 				if ( result === undefined ) {
 					return
+				} else if ( result instanceof String ) {
+					break
 				}
 			}
 		}
@@ -37,9 +39,13 @@ function recipe() {
 
 	// Finished looping. Better print the results ...
 	var tout = document.getElementById('out')
-	tout.value = ''
-	for ( let line of result ) {
-		tout.value = tout.value + line + '\n'
+	if ( result instanceof String ) {
+		tout.value = result
+	} else {
+		tout.value = ''
+		for ( let line of result ) {
+			tout.value = tout.value + line + '\n'
+		}
 	}
 }
 
