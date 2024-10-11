@@ -50,6 +50,9 @@
 				<div class="text">
 					<h2>Commands</h2>
 					<ul>
+						<li><a href="#cat">cat</a></li>
+						<li><a href="#decode">decode</a></li>
+						<li><a href="#encode">encode</a></li>
 						<li><a href="#flatten">flatten</a></li>
 						<li><a href="#flattens">flattens</a></li>
 						<li><a href="#grep">grep</a></li>
@@ -78,6 +81,12 @@
 
 					<a id="cat"><h4>cat [string]</h4></a>
 					<p>Adds [string] to the end of each line.</p>
+
+					<a id="decode"><h4>decode</h4></a>
+					<p>Decode each line as if it's an encoded URL e.g. %20 becomes a space, and so on.</p>
+
+					<a id="encode"><h4>encode</h4></a>
+					<p>Encode each line for safe use in a URL e.g. spaces become %20, and so on.</p>
 
 					<a id="flatten"><h4>flatten</h4></a>
 					<p>Flattens the original text's lines into one long string.</p>
@@ -159,5 +168,6 @@
 	<script type="text/javascript" src="strings.js"></script>
 	<script type="text/javascript" src="arrays.js"></script>
 	<script type="text/javascript" src="info.js"></script>
+	<script type="text/javascript" src="web.js"></script>
 	<script type="text/javascript" src="recipe.js"></script>
 </html>
