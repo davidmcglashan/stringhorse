@@ -32,11 +32,22 @@ function tokenise(arr) {
 function flatten(arr) {
 	result = ''
 	for ( let ar of arr ) {
-		for ( let a of ar.split( ' ' ) ) {
-			result = result + a
-		}
+		result = result + ar
 	}
 	array = []
 	array.push(result)
+	return array
+}
+
+/**
+ * Takes whatever array in passed in and flattens it to a single, space separated string
+ */
+function flattens(arr) {
+	result = ''
+	for ( let ar of arr ) {
+		result = result + ar + ' ' 
+	}
+	array = []
+	array.push(result.trim())
 	return array
 }

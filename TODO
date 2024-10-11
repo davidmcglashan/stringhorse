@@ -5,6 +5,9 @@
 - 'info' command with wc, lines, etc.
 - grep
 - sed
+- encode %20 into space
+- decode
+- lines , ( puts a new line in after every comma) - actually this is "tokenise ,"
 - CSV
 - JSON
 - TAB autocomplete
