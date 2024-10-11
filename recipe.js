@@ -25,8 +25,9 @@ function recipe() {
  * Detect Enter presses on the recipe textarea and run the recipe when we do
  */
 var recipetext = document.getElementById('rec')
+var timerId = 0;
+
 recipetext.addEventListener("keyup", function(event) {
-    if (event.key === "Enter") {
-        recipe()
-    }
+    clearTimeout(timerId);
+    timerId = setTimeout( recipe, 1000 );
 });
