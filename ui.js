@@ -29,6 +29,7 @@ function clear(ta) {
 	document.getElementById(ta).value = ''
 	localStorage.src = document.getElementById('src').value
 	localStorage.recipe = document.getElementById('rec').value
+	recipe()
 }
 
 /**
@@ -59,6 +60,9 @@ function example() {
 		'//rafter "\n' +
 		'//rtail 1\n' +
 		'//wwwify'
+
+	localStorage.src = document.getElementById('src').value
+	localStorage.recipe = document.getElementById('rec').value
 	recipe()
 }
 

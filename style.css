@@ -23,7 +23,6 @@ section#ui > div {
 	background-color: #fff;
 	padding: 0.5em;
 	color: #888;
-	overflow: auto;
 }
 
 textarea {
@@ -62,6 +61,26 @@ div.mono ul {
 	list-style-type: none;
 	padding-inline-start: inherit;
 	line-height: 1.3em
+}
+
+div#help {
+	overflow: auto;
+}
+div#help > div {
+	position: absolute;
+}
+div#help > div.toolbar {
+	position: sticky;
+	top: 0;
+	right: 0;
+	left: 50%;
+	width: 50%;
+	text-align: right;
+	z-index: 1;
+}
+div#help > div.toolbar > a {
+	background-color: #fff;
+	padding: 0.25em;
 }
 
 div#help > div.text,
