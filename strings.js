@@ -239,3 +239,29 @@ function rtail(arr,cmd) {
 	}
 	return result	
 }
+
+/**
+ * Takes whatever array in passed in and splits all its constituent strings
+ */
+function split(arr,cmd) {
+	result = []
+	
+	// Build the string first.
+	var splitter = ''
+	if ( cmd[1] === undefined || cmd[1].length === 0 ) {
+		splitter = ' '
+	} else {
+		for ( let i=1; i < cmd.length; i++ ) {
+			splitter = splitter + cmd[i] + ' ' 
+		}
+		splitter = splitter.substring( 0, splitter.length-1 )
+	}
+
+
+	for ( let ar of arr ) {
+		for ( let a of ar.split( splitter ) ) {
+			result.push(a)
+		}
+	}
+	return result
+}

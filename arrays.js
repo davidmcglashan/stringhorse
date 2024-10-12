@@ -20,19 +20,6 @@ function sortza(arr) {
 }
 
 /**
- * Takes whatever array in passed in and tokenises all its constituent strings
- */
-function tokenise(arr) {
-	result = []
-	for ( let ar of arr ) {
-		for ( let a of ar.split( ' ' ) ) {
-			result.push(a)
-		}
-	}
-	return result
-}
-
-/**
  * Takes whatever array in passed in and flattens it to a single string
  */
 function flatten(arr) {

@@ -1,5 +1,3 @@
-- "See also" in the help
-- lines , ( puts a new line in after every comma) - actually this is "tokenise ,"
 - allow " " to be tokenised into a parameter for r and rall
 - example pulling and sorting the numbers in a grid
 - base64

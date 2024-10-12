@@ -75,8 +75,8 @@
 						<li><a href="#rtail">rtail</a></li>
 						<li><a href="#sort">sort</a></li>
 						<li><a href="#sortza">sortza</a></li>
+						<li><a href="#split">split</a></li>
 						<li><a href="#tail">tail</a></li>
-						<li><a href="#tokenise">tokenise</a></li>
 						<li><a href="#trim">trim</a></li>
 						<li><a href="#trimblanks">trimblanks</a></li>
 						<li><a href="#upper">upper</a></li>
@@ -101,17 +101,17 @@
 
 					<a id="explode"><h4>explode</h4></a>
 					<p>Explode the text by inserting blank lines in between the existing ones.</p>
-					<p class="see-also">See also <a href="#flatten">flatten</a> | <a href="#flattens">flattens</a></p>
+					<p class="see-also">See also <a href="#flatten">flatten</a> | <a href="#flattens">flattens</a> | <a href="#split">split</a></p>
 					<hr>
 
 					<a id="flatten"><h4>flatten</h4></a>
 					<p>Flattens the original text's lines into one long string.</p>
-					<p class="see-also">See also <a href="#explode">explode</a> | <a href="#flattens">flattens</a></p>
+					<p class="see-also">See also <a href="#explode">explode</a> | <a href="#flattens">flattens</a> | <a href="#split">split</a></p>
 					<hr>
 
 					<a id="flattens"><h4>flattens</h4></a>
 					<p>Flattens the original text's lines into one long space-separated string.</p>
-					<p class="see-also">See also <a href="#explode">explode</a> | <a href="#flatten">flatten</a></p>
+					<p class="see-also">See also <a href="#explode">explode</a> | <a href="#flatten">flatten</a> | <a href="#split">split</a></p>
 					<hr>
 
 					<a id="grep"><h4>grep [string]</h4></a>
@@ -192,12 +192,14 @@
 					<p class="see-also">See also <a href="#reverse">reverse</a> | <a href="#sort">sort</a></p>
 					<hr>
 
+					<a id="split"><h4>split ([string])</h4></a>
+					<p>Split the lines on occurances of [string] (or a space if not provided), removing the [string] in the process.</p>
+					<p class="see-also">See also <a href="#explode">explode</a> | <a href="#flatten">flatten</a> | <a href="#flattens">flattens</a></p>
+					<hr>
+
 					<a id="tail"><h4>tail [number]</h4></a>
 					<p>Keep only the last [number] characters on each line.</p>
 					<p class="see-also">See also <a href="#head">head</a> | <a href="#rhead">rhead</a> | <a href="#rtail">rtail</a></p>
-					<hr>
-
-					<a id="tokenise"><h4>tokenise</h4></a>
 					<hr>
 
 					<a id="trim"><h4>trim</h4></a>
