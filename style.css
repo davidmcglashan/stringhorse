@@ -36,12 +36,20 @@ textarea {
 	font-style: normal;
 }
 
+textarea.wrap {
+	text-wrap: nowrap;
+}
+
 a.button {
 	background-color: #36c;
 	padding: 0.1em 0.5em;
 	border-radius: 3px;
 	color: #fff;
 	text-decoration: none;
+}
+
+a.button.wrap {
+	background-color: #123;
 }
 
 a.button:hover {

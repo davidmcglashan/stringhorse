@@ -50,31 +50,4 @@ function recipe() {
 	}
 }
 
-/**
- * Restore from localStorage
- */
-var srcText = document.getElementById('src')
-var recipeText = document.getElementById('rec')
-
-if ( localStorage.src === undefined && localStorage.recipe === undefined ) {
-	example()
-} else {
-	srcText.value = localStorage.src !== undefined ? localStorage.src : ''
-	recipeText.value = localStorage.recipe !== undefined ? localStorage.recipe : ''
-	recipe()
-}
-
-/**
- * Detect changes on the original and recipe textareas and do stuff on a time-delayed keypress
- */
-var recipeTimerId = 0;
-recipeText.addEventListener("keyup", function(event) {
-    clearTimeout(recipeTimerId);
-    recipeTimerId = setTimeout( recipe, 750 );
-});
-
-var srcTimerId = 0;
-srcText.addEventListener("keyup", function(event) {
-    clearTimeout(srcTimerId);
-    srcTimerId = setTimeout( recipe, 750 );
-});
+restoreState()

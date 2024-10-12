@@ -1,9 +1,8 @@
-- Allow " " to be tokenised into a parameter for r and rall
-- encode %20 into space
-- decode
-- base64
+- "See also" in the help
 - lines , ( puts a new line in after every comma) - actually this is "tokenise ,"
+- allow " " to be tokenised into a parameter for r and rall
+- example pulling and sorting the numbers in a grid
+- base64
 - CSV
 - JSON
 - TAB autocomplete
-- x-overflow with scrollbars! (maybe option this?)

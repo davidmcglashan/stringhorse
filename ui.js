@@ -33,6 +33,19 @@ function clear(ta) {
 }
 
 /**
+ * Toggles wrapping on a text area
+ */
+function wrap(ta) {
+	document.getElementById(ta).classList.toggle( 'wrap' )
+	document.getElementById(ta+'-wrap-button').classList.toggle( 'wrap' )
+	if ( document.getElementById(ta).classList.contains( 'wrap' ) ) {
+		localStorage['wrap-'+ta] = 'true'
+	} else {
+		localStorage.removeItem( 'wrap-'+ta )
+	}
+}
+
+/**
  * Swaps the output pane for the help one
  */
 function help() {
@@ -64,4 +77,42 @@ function example() {
 	localStorage.src = document.getElementById('src').value
 	localStorage.recipe = document.getElementById('rec').value
 	recipe()
+}
+
+/**
+ * Restores the UI to its previous state invoking localstorage. Called once on page load.
+ */
+function restoreState() {
+	var srcText = document.getElementById('src')
+	var recipeText = document.getElementById('rec')
+
+	// Restore the original text and recipe from localStorage
+	if ( localStorage.src === undefined && localStorage.recipe === undefined ) {
+		example()
+	} else {
+		srcText.value = localStorage.src !== undefined ? localStorage.src : ''
+		recipeText.value = localStorage.recipe !== undefined ? localStorage.recipe : ''
+		recipe()
+	}
+
+	// Put listeners on the original and recipe textareas to do stuff on a time-delayed keypress
+	var recipeTimerId = 0;
+	recipeText.addEventListener("keyup", function(event) {
+	    clearTimeout(recipeTimerId);
+	    recipeTimerId = setTimeout( recipe, 750 );
+	});
+
+	var srcTimerId = 0;
+	srcText.addEventListener("keyup", function(event) {
+	    clearTimeout(srcTimerId);
+	    srcTimerId = setTimeout( recipe, 750 );
+	});
+
+	// Re-establish wrap on the original source and recipe lists
+	if ( localStorage.hasOwnProperty( 'wrap-src' ) ) {
+		wrap( 'src' )
+	}
+	if ( localStorage.hasOwnProperty( 'wrap-rec' ) ) {
+		wrap( 'rec' )
+	}
 }
