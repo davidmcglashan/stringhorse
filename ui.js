@@ -108,11 +108,14 @@ function restoreState() {
 	    srcTimerId = setTimeout( recipe, 750 );
 	});
 
-	// Re-establish wrap on the original source and recipe lists
+	// Re-establish wrap on the textareas
 	if ( localStorage.hasOwnProperty( 'wrap-src' ) ) {
 		wrap( 'src' )
 	}
 	if ( localStorage.hasOwnProperty( 'wrap-rec' ) ) {
 		wrap( 'rec' )
+	}
+	if ( localStorage.hasOwnProperty( 'wrap-out' ) ) {
+		wrap( 'out' )
 	}
 }
