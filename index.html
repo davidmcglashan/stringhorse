@@ -86,83 +86,134 @@
 
 					<a id="cat"><h4>cat [string]</h4></a>
 					<p>Adds [string] to the end of each line.</p>
+					<p class="see-also">See also <a href="#precat">precat</a></p>
+					<hr>
 
 					<a id="decode"><h4>decode</h4></a>
 					<p>Decode each line as if it's an encoded URL e.g. %20 becomes a space, and so on.</p>
+					<p class="see-also">See also <a href="#encode">encode</a></p>
+					<hr>
 
 					<a id="encode"><h4>encode</h4></a>
 					<p>Encode each line for safe use in a URL e.g. spaces become %20, and so on.</p>
+					<p class="see-also">See also <a href="#decode">decode</a></p>
+					<hr>
 
 					<a id="explode"><h4>explode</h4></a>
 					<p>Explode the text by inserting blank lines in between the existing ones.</p>
+					<p class="see-also">See also <a href="#flatten">flatten</a> | <a href="#flattens">flattens</a></p>
+					<hr>
 
 					<a id="flatten"><h4>flatten</h4></a>
 					<p>Flattens the original text's lines into one long string.</p>
+					<p class="see-also">See also <a href="#explode">explode</a> | <a href="#flattens">flattens</a></p>
+					<hr>
 
 					<a id="flattens"><h4>flattens</h4></a>
 					<p>Flattens the original text's lines into one long space-separated string.</p>
+					<p class="see-also">See also <a href="#explode">explode</a> | <a href="#flatten">flatten</a></p>
+					<hr>
 
 					<a id="grep"><h4>grep [string]</h4></a>
 					<p>Retains only lines which contain [string].</p>
+					<p class="see-also">See also <a href="#ngrep">ngrep</a></p>
+					<hr>
 
 					<a id="head"><h4>head [number]</h4></a>
 					<p>Keep only the first [number] characters on each line.</p>
+					<p class="see-also">See also <a href="#rhead">rhead</a> | <a href="#rtail">rtail</a> | <a href="#tail">tail</a></p>
+					<hr>
 
 					<a id="info"><h4>info</h4></a>
 					<p>Shows some info about the output: lines, words, chars, etc.</p>
+					<hr>
 
 					<a id="lower"><h4>lower</h4></a>
 					<p>Converts the original text into lower case.</p>
+					<p class="see-also">See also <a href="#upper">upper</a></p>
+					<hr>
 
 					<a id="ngrep"><h4>ngrep [string]</h4></a>
 					<p>Retains only lines which <em>do not</em> contain [string].</p>
+					<p class="see-also">See also <a href="#grep">grep</a></p>
+					<hr>
 
 					<a id="number"><h4>number ([number])</h4></a>
 					<p>Number the lines starting at 1, or at [number] if it is provided.</p>
+					<hr>
 
 					<a id="precat"><h4>precat [string]</h4></a>
 					<p>Adds [string] to the start of each line.</p>
+					<p class="see-also">See also <a href="#cat">cat</a></p>
+					<hr>
 
 					<a id="r"><h4>r [a] ([b])</h4></a>
 					<p>Replaces the first instance of [a] on each line with [b]. If [b] is not specified then [a] is replaced with '' (i.e. it is removed).</p>
+					<p class="see-also">See also <a href="#rafter">rafter</a> | <a href="#rall">rall</a> | <a href="#rbefore">rbefore</a></p>
+					<hr>
 
 					<a id="rafter"><h4>rafter [string]</h4></a>
 					<p>Removes the text after first instance of [string] on each line, leaving [string] in place.</p>
+					<p class="see-also">See also <a href="#r">r</a> | <a href="#rall">rall</a> | <a href="#rbefore">rbefore</a></p>
+					<hr>
 
 					<a id="rall"><h4>rall [a] ([b])</h4></a>
 					<p>Replaces every instance of [a] on each line with [b]. If [b] is not specified then all the [a]s are replaced with '' (i.e. they are removed).</p>
+					<p class="see-also">See also <a href="#r">r</a> | <a href="#rafter">rafter</a> | <a href="#rbefore">rbefore</a></p>
+					<hr>
 
 					<a id="rbefore"><h4>rbefore [string]</h4></a>
 					<p>Removes the text before first instance of [string] on each line, leaving [string] in place.</p>
+					<p class="see-also">See also <a href="#r">r</a> | <a href="#rafter">rafter</a> | <a href="#rall">rall</a></p>
+					<hr>
 
 					<a id="reverse"><h4>reverse</h4></a>
 					<p>Reverses the order of the original text.</p>
+					<p class="see-also">See also <a href="#sort">sort</a> | <a href="#sortza">sortza</a></p>
+					<hr>
 
 					<a id="rhead"><h4>rhead [number]</h4></a>
 					<p>Remove the first [number] characters on each line.</p>
+					<p class="see-also">See also <a href="#head">head</a> | <a href="#rtail">rtail</a> | <a href="#tail">tail</a></p>
+					<hr>
 
 					<a id="rtail"><h4>rtail [number]</h4></a>
 					<p>Remove the last [number] characters on each line.</p>
+					<p class="see-also">See also <a href="#head">head</a> | <a href="#rhead">rhead</a> | <a href="#tail">tail</a></p>
+					<hr>
 
 					<a id="sort"><h4>sort</h4></a>
 					<p>Sorts the original text alphabetically.</p>
+					<p class="see-also">See also <a href="#reverse">reverse</a> | <a href="#sortza">sortza</a></p>
+					<hr>
 
 					<a id="sortza"><h4>sortza</h4></a>
 					<p>Sorts the original text reverse-alphabetically.</p>
+					<p class="see-also">See also <a href="#reverse">reverse</a> | <a href="#sort">sort</a></p>
+					<hr>
 
 					<a id="tail"><h4>tail [number]</h4></a>
 					<p>Keep only the last [number] characters on each line.</p>
+					<p class="see-also">See also <a href="#head">head</a> | <a href="#rhead">rhead</a> | <a href="#rtail">rtail</a></p>
+					<hr>
 
 					<a id="tokenise"><h4>tokenise</h4></a>
+					<hr>
 
 					<a id="trim"><h4>trim</h4></a>
 					<p>Removes the whitespace from the start and end of each line.</p>
+					<p class="see-also">See also <a href="#trimblanks">trimblanks</a></p>
+					<hr>
 
 					<a id="trimblanks"><h4>trimblanks</h4></a>
 					<p>Removes any empty lines from the original text.</p>
+					<p class="see-also">See also <a href="#trim">trim</a></p>
+					<hr>
 
 					<a id="upper"><h4>upper</h4></a>
 					<p>Converts the original text into upper case.</p>
+					<p class="see-also">See also <a href="#lower">lower</a></p>
+					<hr>
 
 					<a id="wwwify"><h4>wwwify</h4></a>
 					<p>Pretends the original text is a list of hyperlinks and displays them as anchor tags so they can be clicked and visited.</p>

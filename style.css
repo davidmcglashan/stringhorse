@@ -103,6 +103,15 @@ div#help > div.text p {
 div#help > div.text p {
 	margin-bottom: 1em;
 }
+div#help > div.text p.see-also {
+	font-size: 90%;
+	color: #888;
+	margin: -0.75em 0 1em 1em;
+}
+
+hr {
+	border: 1px solid #f0f0f0;
+}
 
 header div.toolbar a.button {
 	margin-left: 2em;
