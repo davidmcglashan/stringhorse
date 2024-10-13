@@ -4,3 +4,4 @@
 - CSV
 - JSON
 - TAB autocomplete
+- errors in head, tail, etc. around handling their number inputs

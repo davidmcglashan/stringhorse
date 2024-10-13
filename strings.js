@@ -249,7 +249,7 @@ function split(arr,cmd) {
 	// Build the string first.
 	var splitter = ''
 	if ( cmd[1] === undefined || cmd[1].length === 0 ) {
-		splitter = ' '
+		splitter = /\s+/
 	} else {
 		for ( let i=1; i < cmd.length; i++ ) {
 			splitter = splitter + cmd[i] + ' ' 
@@ -263,5 +263,93 @@ function split(arr,cmd) {
 			result.push(a)
 		}
 	}
+	return result
+}
+
+/**
+ *  Splits the text into words using whitespace characters. Takes a numeric parameter to split in every 2nd, 3rd, etc. word.
+ */
+function words( arr,cmd ) {
+	var result = []
+	var splitter = /\s+/
+	var every = 1
+
+	try {
+		every = parseInt(cmd[1]) || 1
+	} catch( err ) {
+		every = 1
+	}
+
+	for ( let line of arr ) {
+		var res = ''
+		var i = 0
+
+		for ( let word of line.trim().split( splitter ) ) {
+			res = res + word + ' '
+			i=i+1
+			if ( i === every ) {
+				result.push(res.substring(0,res.length-1))
+				res = ''
+				i = 0
+			}
+		}
+
+		// If there's an unpushed remainder, push it before moving on
+		if ( res.length !== 0 ) {
+			result.push( res.substring(0,res.length-1) )
+		}
+	}
+
+	return result
+}
+
+/**
+ *  Highlights a particular 'column' or whitespace separated word from each line
+ */
+function column( arr,cmd ) {
+	var result = []
+	var splitter = /\s+/
+	var col = parseInt(cmd[1]) || 1
+
+	for ( let line of arr ) {
+		var i = 0
+
+		for ( let word of line.trim().split( splitter ) ) {
+			i=i+1
+			if ( i === col ) {
+				result.push(word)
+				break
+			}
+		}
+
+		// If we didn't even make it to the column put a blank line in
+		if ( i < col ) {
+			result.push( '' )
+		}
+	}
+
+	return result
+}
+
+/**
+ *  Removes a particular 'column' or whitespace separated word from each line
+ */
+function rcolumn( arr,cmd ) {
+	var result = []
+	var splitter = /\s+/
+	var col = parseInt(cmd[1]) || 1
+
+	for ( let line of arr ) {
+		var i = 0
+		rep = ''
+		for ( let word of line.trim().split( splitter ) ) {
+			i=i+1
+			if ( i !== col ) {
+				rep = rep + word + ' '
+			}
+		}
+		result.push( rep.substring(0,rep.length-1) )
+	}
+
 	return result
 }

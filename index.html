@@ -54,6 +54,7 @@
 					<h2>Commands</h2>
 					<ul>
 						<li><a href="#cat">cat</a></li>
+						<li><a href="#column">column</a></li>
 						<li><a href="#decode">decode</a></li>
 						<li><a href="#encode">encode</a></li>
 						<li><a href="#explode">explode</a></li>
@@ -70,6 +71,7 @@
 						<li><a href="#rafter">rafter</a></li>
 						<li><a href="#rall">rall</a></li>
 						<li><a href="#rbefore">rbefore</a></li>
+						<li><a href="#rcolumn">rcolumn</a></li>
 						<li><a href="#reverse">reverse</a></li>
 						<li><a href="#rhead">rhead</a></li>
 						<li><a href="#rtail">rtail</a></li>
@@ -80,6 +82,7 @@
 						<li><a href="#trim">trim</a></li>
 						<li><a href="#trimblanks">trimblanks</a></li>
 						<li><a href="#upper">upper</a></li>
+						<li><a href="#words">words</a></li>
 						<li><a href="#wwwify">wwwify</a></li>
 					</ul>
 					<hr>
@@ -87,6 +90,11 @@
 					<a id="cat"><h4>cat [string]</h4></a>
 					<p>Adds [string] to the end of each line.</p>
 					<p class="see-also">See also <a href="#precat">precat</a></p>
+					<hr>
+
+					<a id="column"><h4>column ([number])</h4></a>
+					<p>Removes everything except column [number], where a column is a whitspace-separated string. [number] defaults to 1.</p>
+					<p class="see-also">See also <a href="#rcolumn">rcolumn</a> | <a href="#words">words</a></p>
 					<hr>
 
 					<a id="decode"><h4>decode</h4></a>
@@ -167,6 +175,11 @@
 					<p class="see-also">See also <a href="#r">r</a> | <a href="#rafter">rafter</a> | <a href="#rall">rall</a></p>
 					<hr>
 
+					<a id="rcolumn"><h4>rcolumn ([number])</h4></a>
+					<p>Removes column [number], where a column is a whitspace-separated string. [number] defaults to 1.</p>
+					<p class="see-also">See also <a href="#rcolumn">rcolumn</a> | <a href="#words">words</a></p>
+					<hr>
+
 					<a id="reverse"><h4>reverse</h4></a>
 					<p>Reverses the order of the original text.</p>
 					<p class="see-also">See also <a href="#sort">sort</a> | <a href="#sortza">sortza</a></p>
@@ -215,6 +228,11 @@
 					<a id="upper"><h4>upper</h4></a>
 					<p>Converts the original text into upper case.</p>
 					<p class="see-also">See also <a href="#lower">lower</a></p>
+					<hr>
+
+					<a id="words"><h4>words ([number])</h4></a>
+					<p>Splits the original text into words separated by whitespace and reformats the text with [number] words on each line. [number] defaults to 1 when omitted.</p>
+					<p class="see-also">See also <a href="#column">column</a> | <a href="#rcolumn">rcolumn</a></p>
 					<hr>
 
 					<a id="wwwify"><h4>wwwify</h4></a>
