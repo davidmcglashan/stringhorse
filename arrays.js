@@ -6,12 +6,28 @@ function reverse(arr) {
 }
 
 /**
- * Takes whatever array is passed in and sorts it
+ * Takes whatever array is passed in and sorts it using more natural comparators so that 1, 2, 10 is preserved.
  */
-function sort(arr) {
+function nsort(arr,cmd) {
+	var collator = new Intl.Collator(undefined, {numeric: true, sensitivity: 'base'})
+	return doSort( arr, cmd, collator )
+}
+
+/**
+ * Takes whatever array is passed in and sorts it strictly alphabetically
+ */
+function sort(arr,cmd) {
+	var collator = new Intl.Collator(undefined, {numeric: false, sensitivity: 'base'})
+	return doSort( arr, cmd, collator )
+}
+
+/**
+ * 
+ */
+function doSort(arr,cmd,collator) {
 	// Simply sort if there's no parameter.
 	if ( cmd[1] === undefined || cmd[1].length === 0 ) {
-		return arr.sort()
+		return arr.sort( collator.compare )
 	}
 
 	// Which column to sort by?
@@ -42,7 +58,7 @@ function sort(arr) {
 	}
 
 	var result = []
-	keys = Object.keys(dict).sort()
+	keys = Object.keys(dict).sort( collator.compare )
 	for ( let key of keys ) {
 		for ( let line of dict[key] ) {
 			result.push( line )
