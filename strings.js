@@ -304,6 +304,43 @@ function words( arr,cmd ) {
 }
 
 /**
+ *  Splits the text into strings using TABs. Takes a numeric parameter to split in every 2nd, 3rd, etc. word.
+ */
+function twords( arr,cmd ) {
+	var result = []
+	var splitter = '\t'
+	var every = 1
+
+	try {
+		every = parseInt(cmd[1]) || 1
+	} catch( err ) {
+		every = 1
+	}
+
+	for ( let line of arr ) {
+		var res = ''
+		var i = 0
+
+		for ( let word of line.trim().split( splitter ) ) {
+			res = res + word + '\t'
+			i=i+1
+			if ( i === every ) {
+				result.push(res.substring(0,res.length-1))
+				res = ''
+				i = 0
+			}
+		}
+
+		// If there's an unpushed remainder, push it before moving on
+		if ( res.length !== 0 ) {
+			result.push( res.substring(0,res.length-1) )
+		}
+	}
+
+	return result
+}
+
+/**
  *  Highlights a particular 'column' or whitespace separated word from each line
  */
 function column( arr,cmd ) {
