@@ -9,14 +9,52 @@ function reverse(arr) {
  * Takes whatever array is passed in and sorts it
  */
 function sort(arr) {
-	return arr.sort()
-}
+	// Simply sort if there's no parameter.
+	if ( cmd[1] === undefined || cmd[1].length === 0 ) {
+		return arr.sort()
+	}
 
-/**
- * Takes whatever array is passed in and sorts it in reverse order
- */
-function sortza(arr) {
-	return arr.sort().reverse()
+	// Which column to sort by?
+	var col = parseInt(cmd[1]) || 1
+
+	// Extract a little dictionary of lines by their column. Then we'll sort the keys and re-assemble the array.
+	var dict = {}
+	var unsortable = []
+
+	for ( let line of arr ) {
+		var i = 0
+
+		for ( let word of line.trim().split( /\s+/ ) ) {
+			i=i+1
+			if ( i === col ) {
+				if ( dict[word] === undefined ) {
+					dict[word] = []
+				}
+				dict[word].push(line)
+				break
+			}
+		}
+
+		// If we didn't even make it to the column put it in unsortable
+		if ( i < col ) {
+			unsortable.push(line)
+		}
+	}
+
+	var result = []
+	keys = Object.keys(dict).sort()
+	for ( let key of keys ) {
+		for ( let line of dict[key] ) {
+			result.push( line )
+		}
+	}
+
+	// Re-include the unsortable ones at the bottom.
+	for ( let line of unsortable ) {
+		result.push( line )
+	}
+
+	return result
 }
 
 /**
