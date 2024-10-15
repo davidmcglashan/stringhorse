@@ -1,7 +1,7 @@
 /**
  * Pretend that everyline in the output is a URL and render a list of <a> tags.
  */
-function wwwify(urls) {
+function _wwwify(urls) {
 	var info = document.getElementById('info')
 
 	// Create a <ul> to list the URLs
@@ -30,7 +30,7 @@ function wwwify(urls) {
 /**
  * Takes whatever array is passed in and encodeURIs it
  */
-function encode(arr) {
+function _encode(arr) {
 	result = []
 	for ( let ar of arr ) {
 		result.push( encodeURI(ar) )
@@ -41,7 +41,7 @@ function encode(arr) {
 /**
  * Takes whatever array is passed in and encodeURIs it
  */
-function decode(arr) {
+function _decode(arr) {
 	result = []
 	for ( let ar of arr ) {
 		result.push( decodeURI(ar) )

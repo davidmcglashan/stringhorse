@@ -21,7 +21,7 @@ function recipe() {
 				cmd = recipe.split(' ')
 
 				// Execute. If a command returns NULL then we abort the whole recipe.
-				result = window[cmd[0]](result,cmd);
+				result = window['_'+cmd[0]](result,cmd);
 				if ( result === undefined ) {
 					return
 				} else if ( result instanceof String ) {

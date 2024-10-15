@@ -1,7 +1,7 @@
 /**
  * Takes whatever array is passed in and trims each line of its whitespace
  */
-function trim(arr) {
+function _trim(arr) {
 	result = []
 	for ( let ar of arr ) {
 		result.push( ar.trim() )
@@ -12,7 +12,7 @@ function trim(arr) {
 /**
  * Takes whatever array is passed in and trims each line of its whitespace
  */
-function trimblanks(arr) {
+function _trimblanks(arr) {
 	result = []
 	for ( let ar of arr ) {
 		if ( ar.length > 0 ) {
@@ -25,7 +25,7 @@ function trimblanks(arr) {
 /**
  * Takes whatever array is passed in and converts it to uppercase
  */
-function upper(arr) {
+function _upper(arr) {
 	result = []
 	for ( let ar of arr ) {
 		result.push( ar.toUpperCase() )
@@ -36,7 +36,7 @@ function upper(arr) {
 /**
  * Takes whatever array is passed in and converts it to lowercase
  */
-function lower(arr) {
+function _lower(arr) {
 	result = []
 	for ( let ar of arr ) {
 		result.push( ar.toLowerCase() )
@@ -48,7 +48,7 @@ function lower(arr) {
  * Remove or replace. If there are two parameters then the first is
  * replaced with the second. Otherwise the first is removed.
  */
-function rall(arr,cmd) {
+function _rall(arr,cmd) {
 	var result = []
 
 	if ( cmd[1] === undefined || cmd[1].length === 0 ) {
@@ -70,7 +70,7 @@ function rall(arr,cmd) {
  * Remove or replace. If there are two parameters then the first is
  * replaced with the second. Otherwise the first is removed.
  */
-function r(arr,cmd) {
+function _r(arr,cmd) {
 	var result = []
 
 	if ( cmd[1] === undefined || cmd[1].length === 0 ) {
@@ -92,7 +92,7 @@ function r(arr,cmd) {
  * Remove before. Requires a parameter to know before what? Otherwise a space is assumed. 
  * The 'what?' string is found and everything ahead of it is removed from the string.
  */
-function rbefore(arr,cmd) {
+function _rbefore(arr,cmd) {
 	var result = []
 
 	// Build the string first.
@@ -121,7 +121,7 @@ function rbefore(arr,cmd) {
  * Remove after. Requires a parameter to know before what? Otherwise a space is assumed. 
  * The 'what?' string is found and everything behind of it is removed from the string.
  */
-function rafter(arr,cmd) {
+function _rafter(arr,cmd) {
 	var result = []
 
 	// Build the string first.
@@ -149,7 +149,7 @@ function rafter(arr,cmd) {
 /**
  * Pre-concatenates the array with the contents of cmd
  */
-function precat(arr,cmd) {
+function _precat(arr,cmd) {
 	result = []
 
 	// Build the string first.
@@ -169,7 +169,7 @@ function precat(arr,cmd) {
 /**
  * Concatenates the array with the contents of cmd
  */
-function cat(arr,cmd) {
+function _cat(arr,cmd) {
 	result = []
 
 	// Build the string first.
@@ -189,7 +189,7 @@ function cat(arr,cmd) {
 /**
  * Keep the first [n] characters on each line
  */
-function head(arr,cmd) {
+function _head(arr,cmd) {
 	result = []
 
 	let i = parseInt(cmd[1])
@@ -203,7 +203,7 @@ function head(arr,cmd) {
 /**
  * Keep the last [n] characters on each line
  */
-function tail(arr,cmd) {
+function _tail(arr,cmd) {
 	var result = []
 	let i = parseInt(cmd[1])
 
@@ -216,7 +216,7 @@ function tail(arr,cmd) {
 /**
  * Remove the first [n] characters on each line
  */
-function rhead(arr,cmd) {
+function _rhead(arr,cmd) {
 	result = []
 
 	let i = parseInt(cmd[1])
@@ -230,7 +230,7 @@ function rhead(arr,cmd) {
 /**
  * Remove the last [n] characters on each line
  */
-function rtail(arr,cmd) {
+function _rtail(arr,cmd) {
 	var result = []
 	let i = parseInt(cmd[1])
 
@@ -243,7 +243,7 @@ function rtail(arr,cmd) {
 /**
  * Takes whatever array in passed in and splits all its constituent strings
  */
-function split(arr,cmd) {
+function _split(arr,cmd) {
 	result = []
 	
 	// Build the string first.
@@ -269,7 +269,7 @@ function split(arr,cmd) {
 /**
  *  Splits the text into words using whitespace characters. Takes a numeric parameter to split in every 2nd, 3rd, etc. word.
  */
-function words( arr,cmd ) {
+function _words( arr,cmd ) {
 	var result = []
 	var splitter = /\s+/
 	var every = 1
@@ -306,7 +306,7 @@ function words( arr,cmd ) {
 /**
  *  Splits the text into strings using TABs. Takes a numeric parameter to split in every 2nd, 3rd, etc. word.
  */
-function twords( arr,cmd ) {
+function _twords( arr,cmd ) {
 	var result = []
 	var splitter = '\t'
 	var every = 1
@@ -343,7 +343,7 @@ function twords( arr,cmd ) {
 /**
  *  Highlights a particular 'column' or whitespace separated word from each line
  */
-function column( arr,cmd ) {
+function _column( arr,cmd ) {
 	var result = []
 	var splitter = /\s+/
 	var col = parseInt(cmd[1]) || 1
@@ -371,7 +371,7 @@ function column( arr,cmd ) {
 /**
  *  Removes a particular 'column' or whitespace separated word from each line
  */
-function rcolumn( arr,cmd ) {
+function _rcolumn( arr,cmd ) {
 	var result = []
 	var splitter = /\s+/
 	var col = parseInt(cmd[1]) || 1
@@ -394,21 +394,21 @@ function rcolumn( arr,cmd ) {
 /**
  * Keep only the alphabet characters from each line in the text
  */
-function kalphas( arr, cmd ) {
+function _kalphas( arr, cmd ) {
 	return keep( arr, cmd, /[\W\d]+/g )
 }
 
 /**
  * Keep only the numbers from each line in the text
  */
-function knumbers( arr, cmd ) {
+function _knumbers( arr, cmd ) {
 	return keep( arr, cmd, /\D+/g )
 }
 
 /**
  * Keep only the symbols from each line in the text
  */
-function ksymbols( arr, cmd ) {
+function _ksymbols( arr, cmd ) {
 	return keep( arr, cmd, /[A-Za-z0-9 ]+/g )
 }
 
@@ -439,7 +439,7 @@ function keep( arr, cmd, regexp ) {
 /**
  * Removes only the letters from each line in the text
  */
-function ralphas( arr,cmd ) {
+function _ralphas( arr,cmd ) {
 	var result = []
 	for ( let line of arr ) {
 		result.push( line.replace( /[A-Za-z]/g, '') )
@@ -451,7 +451,7 @@ function ralphas( arr,cmd ) {
 /**
  * Removes only the numbers from each line in the text
  */
-function rnumbers( arr,cmd ) {
+function _rnumbers( arr,cmd ) {
 	var result = []
 	for ( let line of arr ) {
 		result.push( line.replace( /[0-9]/g, '') )
@@ -463,7 +463,7 @@ function rnumbers( arr,cmd ) {
 /**
  * Removes only the symbols from each line in the text
  */
-function rsymbols( arr,cmd ) {
+function _rsymbols( arr,cmd ) {
 	var result = []
 	for ( let line of arr ) {
 		result.push( line.replace( /[\W_]/g, '') )

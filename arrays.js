@@ -1,14 +1,14 @@
 /**
  * Takes whatever array is passed in and reverses it
  */
-function reverse(arr) {
+function _reverse(arr) {
 	return arr.reverse()
 }
 
 /**
  * Takes whatever array is passed in and sorts it using more natural comparators so that 1, 2, 10 is preserved.
  */
-function nsort(arr,cmd) {
+function _nsort(arr,cmd) {
 	var collator = new Intl.Collator(undefined, {numeric: true, sensitivity: 'base'})
 	return doSort( arr, cmd, collator )
 }
@@ -16,7 +16,7 @@ function nsort(arr,cmd) {
 /**
  * Takes whatever array is passed in and sorts it strictly alphabetically
  */
-function sort(arr,cmd) {
+function _sort(arr,cmd) {
 	var collator = new Intl.Collator(undefined, {numeric: false, sensitivity: 'base'})
 	return doSort( arr, cmd, collator )
 }
@@ -76,7 +76,7 @@ function doSort(arr,cmd,collator) {
 /**
  * Takes whatever array in passed in and flattens it to a single string
  */
-function flatten(arr) {
+function _flatten(arr) {
 	result = ''
 	for ( let ar of arr ) {
 		result = result + ar
@@ -89,7 +89,7 @@ function flatten(arr) {
 /**
  * Takes whatever array is passed in and flattens it to a single, space separated string.
  */
-function flattens(arr) {
+function _flattens(arr) {
 	result = ''
 	for ( let ar of arr ) {
 		result = result + ar + ' ' 
@@ -102,7 +102,7 @@ function flattens(arr) {
 /**
  * Explodes the array by inserting an empty string in between each line.
  */
-function explode( arr ) {
+function _explode( arr ) {
 	result = []
 	for ( let ar of arr ) {
 		result.push( ar )
@@ -115,7 +115,7 @@ function explode( arr ) {
 /**
  * Numbers the lines.
  */
-function number( arr,cmd ) {
+function _number( arr,cmd ) {
 	var i = 1
 	try {
 		i = parseInt(cmd[1]) || 1
@@ -134,7 +134,7 @@ function number( arr,cmd ) {
 /**
  * Matches strings against the passed-in term. Rejects lines which don't.
  */
-function grep(arr,cmd) {
+function _grep(arr,cmd) {
 	result = ''
 
 	// Build the string first.
@@ -160,13 +160,13 @@ function grep(arr,cmd) {
 /**
  * Matches strings against the passed-in term. Rejects lines which don't.
  */
-function ngrep(arr,cmd) {
+function _ngrep(arr,cmd) {
 	result = ''
 
 	// Build the string first.
 	var what = ''
 	if ( cmd[1] === undefined || cmd[1].length === 0 ) {
-		return new String( 'grep: grep requires something to match with' )
+		return new String( 'ngrep: ngrep requires something to match with' )
 	} else {
 		for ( let i=1; i < cmd.length; i++ ) {
 			what = what + cmd[i] + ' ' 

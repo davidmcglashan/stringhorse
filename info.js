@@ -1,7 +1,7 @@
 /**
  * Displays some info about the text. This is an abortive function with no return object.
  */
-function info(arr,cmd) {
+function _info(arr,cmd) {
 	var info = document.getElementById('info')
 
 	// Create a <ul> to list the URLs
@@ -30,6 +30,9 @@ function info(arr,cmd) {
 	document.getElementById('out').classList.add('hidden')
 }
 
+/**
+ * Inserts a <dt><dd> tuple for the _info command.
+ */
 function datum( dl, label, value ) {
 	var dt = document.createElement('dt')
 	dt.innerHTML = label

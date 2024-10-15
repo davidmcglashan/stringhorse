@@ -1,5 +1,4 @@
 **** FUNCTIONS *********************************************************
- - rnumbers, ralphas, rsymbols
  - something to magically deal with TABs and spaces
    - resolve multiple spaces into 1 space
    - resolve multiple spaces into 1 TAB
@@ -26,5 +25,4 @@
 
 **** PROGRAMMING *************************
  - errors in head, tail, etc. around handling their number inputs
- - function name protection e.g. reflective ones must begin _
  - allow " " to be tokenised into a parameter for r and rall
