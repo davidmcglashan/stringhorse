@@ -390,3 +390,64 @@ function rcolumn( arr,cmd ) {
 
 	return result
 }
+
+/**
+ * Keep only the alphabet characters from each line in the text
+ */
+function kalphas( arr, cmd ) {
+	return keep( arr, cmd, /[\W\d]+/g )
+}
+
+/**
+ * Keep only the numbers from each line in the text
+ */
+function knumbers( arr, cmd ) {
+	return keep( arr, cmd, /\D+/g )
+}
+
+/**
+ * Keep only the symbols from each line in the text
+ */
+function ksymbols( arr, cmd ) {
+	return keep( arr, cmd, /[A-Za-z0-9 ]+/g )
+}
+
+/**
+ * Generic keep function supporting knumbers, kalphas, and ksymbols
+ */
+function keep( arr, cmd, regexp ) {
+	var result = []
+	
+	// Work out what character to put in between the numbers, if any ...
+	var sep = ''
+	if ( cmd[1] === undefined || cmd[1].length === 0 ) {
+		sep = ''
+	} else if ( cmd[1] === 'tab' ) {
+		sep = '\t'
+	} else if ( cmd[1] === 'space' ) {
+		sep = ' '
+	}
+
+	// Do the replacement on each line.
+	for ( let line of arr ) {
+		result.push( line.replace( regexp, sep ).trim() )
+	}
+
+	return result
+}
+
+/**
+ * Removes only the numbers from each line in the text
+ */
+function rnumbers( arr,cmd ) {
+	var result = []
+	for ( let line of arr ) {
+		rep = line.replace( /[0-9]/g, '')
+		if ( rep.length > 0 ) {
+			result.push( rep )
+		}
+	}
+
+	return result
+
+}

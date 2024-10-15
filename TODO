@@ -2,7 +2,8 @@
 - something to magically deal with TABs and spaces
   - resolve multiple spaces into 1 space
   - resolve multiple spaces into 1 TAB
-- extract numbers, alphas
+  - turn spaces into TABs (which are hard to type) and vice versa
+- rtab replaces all the TABs with the passed in string
 - variables and arrays!
   - tabbed UI you can manually set
   - programmatically set arrays
@@ -10,27 +11,11 @@
 - random text
   - lorem
   - magic words
+- TAB autocomplete
+- errors in head, tail, etc. around handling their number inputs
+- app history/about in help
+- function name protection e.g. reflective ones must begin _
 - example pulling and sorting the numbers in a grid
 - base64
 - CSV
 - JSON
-- TAB autocomplete
-- errors in head, tail, etc. around handling their number inputs
-
-SELECT
-    t.ticketNo AS "PCN",
-    p.firstName AS "First name",
-    p.lastName AS "Last name",
-    s.statusName AS "Status",
-    ls.changedAt AS "Modified date",
-    ps.siteName AS "Site"
-FROM
-    log_tickets_status ls
-    LEFT JOIN people p ON p.id = ls.uid
-    LEFT JOIN tickets t ON ls.tid = t.id
-    LEFT JOIN tickets_status s ON s.id = ls.status
-    LEFT JOIN parking_sites ps ON ps.id = t.site
-WHERE
-    ls.status IN(9, 11)
-    AND ls.changedAt BETWEEN "2024-07-01 00:00:00"
-    AND "2024-07-31 23:59:59"
