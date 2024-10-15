@@ -22,7 +22,7 @@ function sort(arr,cmd) {
 }
 
 /**
- * 
+ * Performs the sort function.
  */
 function doSort(arr,cmd,collator) {
 	// Simply sort if there's no parameter.

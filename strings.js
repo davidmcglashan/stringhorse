@@ -437,17 +437,37 @@ function keep( arr, cmd, regexp ) {
 }
 
 /**
+ * Removes only the letters from each line in the text
+ */
+function ralphas( arr,cmd ) {
+	var result = []
+	for ( let line of arr ) {
+		result.push( line.replace( /[A-Za-z]/g, '') )
+	}
+
+	return result
+}
+
+/**
  * Removes only the numbers from each line in the text
  */
 function rnumbers( arr,cmd ) {
 	var result = []
 	for ( let line of arr ) {
-		rep = line.replace( /[0-9]/g, '')
-		if ( rep.length > 0 ) {
-			result.push( rep )
-		}
+		result.push( line.replace( /[0-9]/g, '') )
 	}
 
 	return result
+}
 
+/**
+ * Removes only the symbols from each line in the text
+ */
+function rsymbols( arr,cmd ) {
+	var result = []
+	for ( let line of arr ) {
+		result.push( line.replace( /[\W_]/g, '') )
+	}
+
+	return result
 }
