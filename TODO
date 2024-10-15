@@ -1,21 +1,30 @@
-- allow " " to be tokenised into a parameter for r and rall
-- something to magically deal with TABs and spaces
-  - resolve multiple spaces into 1 space
-  - resolve multiple spaces into 1 TAB
-  - turn spaces into TABs (which are hard to type) and vice versa
-- rtab replaces all the TABs with the passed in string
-- variables and arrays!
-  - tabbed UI you can manually set
-  - programmatically set arrays
-- random numbers
-- random text
-  - lorem
-  - magic words
-- TAB autocomplete
-- errors in head, tail, etc. around handling their number inputs
-- app history/about in help
-- function name protection e.g. reflective ones must begin _
-- example pulling and sorting the numbers in a grid
-- base64
-- CSV
-- JSON
+**** FUNCTIONS *********************************************************
+ - rnumbers, ralphas, rsymbols
+ - something to magically deal with TABs and spaces
+   - resolve multiple spaces into 1 space
+   - resolve multiple spaces into 1 TAB
+   - turn spaces into TABs (which are hard to type) and vice versa
+ - rtab replaces all the TABs with the passed in string
+ - variables and arrays!
+   - tabbed UI you can manually set
+   - programmatically set arrays
+ - random numbers
+ - random text
+   - lorem
+   - magic words
+ - base64
+ - CSV
+ - JSON
+
+**** UI *************************
+ - TAB autocomplete
+ - tooltips on the buttons
+ - app history/about in help
+ - off state for wrap should be a hollow box
+ - example pulling and sorting the numbers in a grid
+ - icons for dock/WPA
+
+**** PROGRAMMING *************************
+ - errors in head, tail, etc. around handling their number inputs
+ - function name protection e.g. reflective ones must begin _
+ - allow " " to be tokenised into a parameter for r and rall
