@@ -23,7 +23,6 @@
  - dark mode (CSS to override colours, toggle in the toolbar)
 
 **** PROGRAMMING *************************
- - errors in head, tail, etc. around handling their number inputs
  - philosophically realign some of the commands
  - allow " " to be tokenised into a parameter for r and rall
  - 1.0
