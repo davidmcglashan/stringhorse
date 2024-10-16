@@ -20,6 +20,7 @@ function copyToOriginal() {
 	var tout = document.getElementById('out')
 	var toriginal = document.getElementById('src')
 	toriginal.value = tout.value
+	localStorage.src = tout.value
 }
 
 /**
