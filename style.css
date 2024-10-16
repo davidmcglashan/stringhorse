@@ -75,9 +75,19 @@ section#ui.output div#output a.button {
 	text-decoration: none;
 }
 
-a.button:hover {
+section#ui.original div#original a.button:hover,
+section#ui.recipe div#recipe a.button:hover,
+section#ui.output div#output a.button:hover,
+a.button:hover,
+a.invert:hover {
+	border: 1px solid #236;
 	background-color: #236;
 	color: #fff;
+}
+
+a:hover {
+	text-decoration: none;
+	color: #a33;
 }
 
 .hidden {

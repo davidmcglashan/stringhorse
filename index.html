@@ -22,41 +22,41 @@
 			<img src="horse.png">
 			stringhorse
 			<div class="toolbar">
-				<a href="javascript:example();">Example</a>
-				<a href="javascript:help();" class="invert">Help</a>
+				<a title="See an example" href="javascript:example();">Example</a>
+				<a title="Open the help" href="javascript:help();" class="invert">Help</a>
 			</div>
 		</header>
 		<section id="ui" class="normal">
 			<div id="original">
 				Original Text
 				<span class="hideonwide">
-					&mdash; <a href="javascript:clear('src');">Clear</a>
+					&mdash; <a title="Clear the text in the Original Text pane" href="javascript:clear('src');">Clear</a>
 				</span>
 				<div class="toolbar hideonwide">
-					<a id="src-wrap-button" href="javascript:wrap('src');" class="invert">Wrap</a>
-					<a href="javascript:focus('original');" class="button">Wide</a>
+					<a title="Toggle text wrapping in the Original Text pane" id="src-wrap-button" href="javascript:wrap('src');" class="invert">Wrap</a>
+					<a title="Toggle a wide view of the Original Text pane" href="javascript:focus('original');" class="button">Wide</a>
 				</div>
 				<textarea id="src"></textarea>
 			</div>
 			<div id="recipe">
 				Recipe
 				<span class="hideonwide">
-					&mdash; <a href="javascript:clear('rec');">Clear</a>
+					&mdash; <a title="Clear the text in the Recipe pane" href="javascript:clear('rec');">Clear</a>
 				</span>
 				<div class="toolbar hideonwide">
-					<a id="rec-wrap-button" href="javascript:wrap('rec');" class="invert">Wrap</a>
-					<a href="javascript:focus('recipe');" class="button">Wide</a>
+					<a title="Toggle text wrapping in the Recipe pane" id="rec-wrap-button" href="javascript:wrap('rec');" class="invert">Wrap</a>
+					<a title="Toggle a wide view of the Recipe pane" href="javascript:focus('recipe');" class="button">Wide</a>
 				</div>
 				<textarea id="rec"></textarea>
 			</div>
 			<div id="output">
 				Output
 				<span class="hideonwide">
-					&mdash; <a href="javascript:copyToOriginal();">Copy to Original</a>
+					&mdash; <a title="Copy the output text into the Original Text pane"href="javascript:copyToOriginal();">Copy to Original</a>
 				</span>
 				<div class="toolbar hideonwide">
-					<a id="out-wrap-button" href="javascript:wrap('out');" class="invert">Wrap</a>
-					<a href="javascript:focus('output');" class="button">Wide</a>
+					<a title="Toggle text wrapping in the Output pane"id="out-wrap-button" href="javascript:wrap('out');" class="invert">Wrap</a>
+					<a title="Toggle a wide view of the Output pane"href="javascript:focus('output');" class="button">Wide</a>
 				</div>
 				<textarea id="out"></textarea>
 				<div class="mono hidden" id="info"></div> 
@@ -64,52 +64,52 @@
 			<div id="help" class="hidden">
 				<div>Help</div>
 				<div class="toolbar">
-					<a href="javascript:help();">&times; Close</a>
+					<a title="Close the help" href="javascript:help();">&times; Close</a>
 				</div>
 				<div class="text">
 					<h2>Commands</h2>
 					<ul>
-						<li><a href="#cat">cat</a></li>
-						<li><a href="#clines">clines</a></li>
-						<li><a href="#column">column</a></li>
-						<li><a href="#cspaces">cspaces</a></li>
-						<li><a href="#ctabs">ctabs</a></li>
-						<li><a href="#decode">decode</a></li>
-						<li><a href="#encode">encode</a></li>
-						<li><a href="#explode">explode</a></li>
-						<li><a href="#grep">grep</a></li>
-						<li><a href="#head">head</a></li>
-						<li><a href="#info">info</a></li>
-						<li><a href="#kalphas">kalphas</a></li>
-						<li><a href="#knumbers">knumbers</a></li>
-						<li><a href="#ksymbols">ksymbols</a></li>
-						<li><a href="#lower">lower</a></li>
-						<li><a href="#ngrep">ngrep</a></li>
-						<li><a href="#nsort">nsort</a></li>
-						<li><a href="#number">number</a></li>
-						<li><a href="#precat">precat</a></li>
-						<li><a href="#r">r</a></li>
-						<li><a href="#rafter">rafter</a></li>
-						<li><a href="#rall">rall</a></li>
-						<li><a href="#ralphas">ralphas</a></li>						
-						<li><a href="#rbefore">rbefore</a></li>
-						<li><a href="#rcolumn">rcolumn</a></li>
-						<li><a href="#reverse">reverse</a></li>
-						<li><a href="#rhead">rhead</a></li>
-						<li><a href="#rnumbers">rnumbers</a></li>
-						<li><a href="#rsymbols">rsymbols</a></li>
-						<li><a href="#rtail">rtail</a></li>
-						<li><a href="#sort">sort</a></li>
-						<li><a href="#split">split</a></li>
-						<li><a href="#sspaces">sspaces</a></li>
-						<li><a href="#stabs">stabs</a></li>
-						<li><a href="#tail">tail</a></li>
-						<li><a href="#trim">trim</a></li>
-						<li><a href="#trimblanks">trimblanks</a></li>
-						<li><a href="#twords">twords</a></li>
-						<li><a href="#upper">upper</a></li>
-						<li><a href="#words">words</a></li>
-						<li><a href="#wwwify">wwwify</a></li>
+						<li><a title="cat" href="#cat">cat</a></li>
+						<li><a title="clines" href="#clines">clines</a></li>
+						<li><a title="column" href="#column">column</a></li>
+						<li><a title="cspaces" href="#cspaces">cspaces</a></li>
+						<li><a title="ctabs" href="#ctabs">ctabs</a></li>
+						<li><a title="decode" href="#decode">decode</a></li>
+						<li><a title="encode" href="#encode">encode</a></li>
+						<li><a title="explode" href="#explode">explode</a></li>
+						<li><a title="grep" href="#grep">grep</a></li>
+						<li><a title="head" href="#head">head</a></li>
+						<li><a title="info" href="#info">info</a></li>
+						<li><a title="kalphas" href="#kalphas">kalphas</a></li>
+						<li><a title="knumbers" href="#knumbers">knumbers</a></li>
+						<li><a title="ksymbols" href="#ksymbols">ksymbols</a></li>
+						<li><a title="lower" href="#lower">lower</a></li>
+						<li><a title="ngrep" href="#ngrep">ngrep</a></li>
+						<li><a title="nsort" href="#nsort">nsort</a></li>
+						<li><a title="number" href="#number">number</a></li>
+						<li><a title="precat" href="#precat">precat</a></li>
+						<li><a title="r" href="#r">r</a></li>
+						<li><a title="rafter" href="#rafter">rafter</a></li>
+						<li><a title="rall" href="#rall">rall</a></li>
+						<li><a title="ralphas" href="#ralphas">ralphas</a></li>						
+						<li><a title="rbefore" href="#rbefore">rbefore</a></li>
+						<li><a title="rcolumn" href="#rcolumn">rcolumn</a></li>
+						<li><a title="reverse" href="#reverse">reverse</a></li>
+						<li><a title="rhead" href="#rhead">rhead</a></li>
+						<li><a title="rnumbers" href="#rnumbers">rnumbers</a></li>
+						<li><a title="rsymbols" href="#rsymbols">rsymbols</a></li>
+						<li><a title="rtail" href="#rtail">rtail</a></li>
+						<li><a title="sort" href="#sort">sort</a></li>
+						<li><a title="split" href="#split">split</a></li>
+						<li><a title="sspaces" href="#sspaces">sspaces</a></li>
+						<li><a title="stabs" href="#stabs">stabs</a></li>
+						<li><a title="tail" href="#tail">tail</a></li>
+						<li><a title="trim" href="#trim">trim</a></li>
+						<li><a title="trimblanks" href="#trimblanks">trimblanks</a></li>
+						<li><a title="twords" href="#twords">twords</a></li>
+						<li><a title="upper" href="#upper">upper</a></li>
+						<li><a title="words" href="#words">words</a></li>
+						<li><a title="wwwify" href="#wwwify">wwwify</a></li>
 					</ul>
 					<hr>
 
@@ -317,7 +317,7 @@
 			</div>
 		</section>
 		<footer>
-			v0.9 | <strong>&copy; 2024 David McGlashan</strong> | <a href="https://stringhorse.dvdmcglshn.com/">stringhorse.dvdmcglshn.com</a> | <a href="https://creativecommons.org/publicdomain/zero/1.0/">CC0 1.0 Universal</a> | <a href="https://github.com/davidmcglashan/stringhorse">Source on github.com</a> | <a href="https://www.flaticon.com/free-icons/horse" title="horse icons">Horse icons created by Freepik - Flaticon</a>
+			v0.9 | <strong>&copy; 2024 David McGlashan</strong> | <a title="Stringhorse web site" href="https://stringhorse.dvdmcglshn.com/">stringhorse.dvdmcglshn.com</a> | <a title="Creative Commons license details" href="https://creativecommons.org/publicdomain/zero/1.0/">CC0 1.0 Universal</a> | <a title="Source code on github.com" href="https://github.com/davidmcglashan/stringhorse">Source on github.com</a> | <a href="https://www.flaticon.com/free-icons/horse" title="horse icons">Horse icons created by Freepik - Flaticon</a>
 		</footer>
 	</body>
 	<script type="text/javascript" src="ui.js"></script>

@@ -15,7 +15,6 @@
  - 2.0
 
 **** UI *************************
- - tooltips on the buttons
  - app history/about in help
  - make the panel headers a bit more emphatic
  - v1.0
@@ -24,8 +23,8 @@
  - dark mode (CSS to override colours, toggle in the toolbar)
 
 **** PROGRAMMING *************************
- - copy to original doesn't invoke local storage
  - errors in head, tail, etc. around handling their number inputs
  - philosophically realign some of the commands
  - allow " " to be tokenised into a parameter for r and rall
  - 1.0
+ - Make the help file self-writing - embed a JSON with the metadata in "command, description, see also"
