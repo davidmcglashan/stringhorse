@@ -45,45 +45,43 @@ function _lower(arr) {
 }
 
 /**
- * Remove or replace. If there are two parameters then the first is
- * replaced with the second. Otherwise the first is removed.
+ * Remove all the instances of the search string.
  */
 function _rall(arr,cmd) {
 	var result = []
 
 	if ( cmd[1] === undefined || cmd[1].length === 0 ) {
-		return new String( 'rall: rall requires at least one search string.' )
+		return new String( 'rall: rall requires a search string to remove.' )
 	}
-
-	var replacement = cmd[2]
-	if ( replacement === undefined ) {
-		replacement = ''
+	var search = ''
+	for ( let i=1; i < cmd.length; i++ ) {
+		search = search + cmd[i] + ' ' 
 	}
+	search = search.substring( 0, search.length-1 )
 
 	for ( let ar of arr ) {
-		result.push( ar.replaceAll(cmd[1],replacement) )
+		result.push( ar.replaceAll( search,'' ) )
 	}
 	return result
 }
 
 /**
- * Remove or replace. If there are two parameters then the first is
- * replaced with the second. Otherwise the first is removed.
+ * Remove the first instance of the search string.
  */
 function _r(arr,cmd) {
 	var result = []
 
 	if ( cmd[1] === undefined || cmd[1].length === 0 ) {
-		return new String( 'r: r requires at least one search string.' )
+		return new String( 'r: r requires a search string to remove.' )
 	}
-
-	var replacement = cmd[2]
-	if ( replacement === undefined ) {
-		replacement = ''
+	var search = ''
+	for ( let i=1; i < cmd.length; i++ ) {
+		search = search + cmd[i] + ' ' 
 	}
+	search = search.substring( 0, search.length-1 )
 
 	for ( let ar of arr ) {
-		result.push( ar.replace(cmd[1],replacement) )
+		result.push( ar.replace( search,'' ) )
 	}
 	return result
 }
@@ -574,5 +572,37 @@ function _sspaces( arr, cmd ) {
 		result.push( line.replace( / /g, rep ) )
 	}
 
+	return result
+}
+
+/**
+ * Swap all. Expects two parameters The first is globally replaced by the second.
+ */
+function _sall(arr,cmd) {
+	var result = []
+
+	if ( cmd[1] === undefined || cmd[1].length === 0 || cmd[2] === undefined || cmd[2].length === 0) {
+		return new String( 's: s requires a search and a replace parameter.' )
+	}
+
+	for ( let ar of arr ) {
+		result.push( ar.replaceAll(cmd[1],cmd[2]) )
+	}
+	return result
+}
+
+/**
+ * Swap. Expects two parameters The first instance of the first parameter is replaced with the second.
+ */
+function _s(arr,cmd) {
+	var result = []
+
+	if ( cmd[1] === undefined || cmd[1].length === 0 || cmd[2] === undefined || cmd[2].length === 0) {
+		return new String( 's: s requires a search and a replace parameter.' )
+	}
+
+	for ( let ar of arr ) {
+		result.push( ar.replace(cmd[1],cmd[2]) )
+	}
 	return result
 }
