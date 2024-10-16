@@ -12,35 +12,44 @@
 	</head>
 	<body>
 		<header>
-			String🐴
+			<img src="horse.png">
+			stringhorse
 			<div class="toolbar">
 				<a href="javascript:example();">Example</a>
-				<a href="javascript:help();" class="button">Help</a>
+				<a href="javascript:help();" class="invert">Help</a>
 			</div>
 		</header>
 		<section id="ui" class="normal">
 			<div id="original">
-				Original Text &mdash; <a href="javascript:clear('src');">Clear</a>
-				<div class="toolbar">
-					<a id="src-wrap-button" href="javascript:wrap('src');" class="button">&#x21a9;</a>
-					<a href="javascript:focus('original');" class="button">&#x2194;</a>
+				Original Text
+				<span class="hideonwide">
+					&mdash; <a href="javascript:clear('src');">Clear</a>
+				</span>
+				<div class="toolbar hideonwide">
+					<a id="src-wrap-button" href="javascript:wrap('src');" class="invert">Wrap</a>
+					<a href="javascript:focus('original');" class="button">Wide</a>
 				</div>
 				<textarea id="src"></textarea>
 			</div>
 			<div id="recipe">
-				Recipe &mdash; <a href="javascript:clear('rec');">Clear</a>
-				<div class="toolbar">
-					<a id="rec-wrap-button" href="javascript:wrap('rec');" class="button">&#x21a9;</a>
-					<a href="javascript:focus('recipe');" class="button">&#x2194;</a>
+				Recipe
+				<span class="hideonwide">
+					&mdash; <a href="javascript:clear('rec');">Clear</a>
+				</span>
+				<div class="toolbar hideonwide">
+					<a id="rec-wrap-button" href="javascript:wrap('rec');" class="invert">Wrap</a>
+					<a href="javascript:focus('recipe');" class="button">Wide</a>
 				</div>
 				<textarea id="rec"></textarea>
 			</div>
 			<div id="output">
 				Output
-				<div class="toolbar">
-					<a href="javascript:copyToOriginal();" class="button">&lt; Copy</a>
-					<a id="out-wrap-button" href="javascript:wrap('out');" class="button">&#x21a9;</a>
-					<a href="javascript:focus('output');" class="button">&#x2194;</a>
+				<span class="hideonwide">
+					&mdash; <a href="javascript:copyToOriginal();">Copy to Original</a>
+				</span>
+				<div class="toolbar hideonwide">
+					<a id="out-wrap-button" href="javascript:wrap('out');" class="invert">Wrap</a>
+					<a href="javascript:focus('output');" class="button">Wide</a>
 				</div>
 				<textarea id="out"></textarea>
 				<div class="mono hidden" id="info"></div> 
@@ -277,8 +286,7 @@
 			</div>
 		</section>
 		<footer>
-			&copy; 2024 David McGlashan<br>
-			<a href="https://stringhorse.dvdmcglshn.com/">stringhorse.dvdmcglshn.com</a> | <a href="https://creativecommons.org/publicdomain/zero/1.0/">CC0 1.0 Universal</a> | <a href="https://github.com/davidmcglashan/stringhorse">Source on github.com</a>
+			v0.9 | <strong>&copy; 2024 David McGlashan</strong> | <a href="https://stringhorse.dvdmcglshn.com/">stringhorse.dvdmcglshn.com</a> | <a href="https://creativecommons.org/publicdomain/zero/1.0/">CC0 1.0 Universal</a> | <a href="https://github.com/davidmcglashan/stringhorse">Source on github.com</a> | <a href="https://www.flaticon.com/free-icons/horse" title="horse icons">Horse icons created by Freepik - Flaticon</a>
 		</footer>
 	</body>
 	<script type="text/javascript" src="ui.js"></script>

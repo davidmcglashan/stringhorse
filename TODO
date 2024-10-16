@@ -16,14 +16,12 @@
  - JSON
 
 **** UI *************************
- - TAB autocomplete
  - tooltips on the buttons
  - app history/about in help
- - off state for wrap should be a hollow box
- - example pulling and sorting the numbers in a grid
  - icons for dock/WPA w/ accreditation
- - reduce paddings a bit?
  - v1.0
+ - TAB autocomplete
+ - example pulling and sorting the numbers in a grid
 
 **** PROGRAMMING *************************
  - errors in head, tail, etc. around handling their number inputs

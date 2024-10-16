@@ -14,16 +14,16 @@ footer {
 
 section#ui {
 	position: absolute;
-	left: 1em;
-	right: 1em;
-	top: 4.75em;
-	bottom: 4.25em;
+	left: 0.5em;
+	right: 0.5em;
+	top: 3.75em;
+	bottom: 3em;
 
 	display:flex;
 	justify-content: space-between;
 	flex-direction: row;
 	align-items: stretch;
-	gap: 1em;
+	gap: 0.5em;
 }
 
 section#ui > div { 
@@ -40,6 +40,15 @@ section#ui.original > div#original { flex: 20; }
 section#ui.recipe > div#recipe { flex: 20; }
 section#ui.output > div#output { flex: 20; }
 section#ui.output > div#help { flex: 20; }
+
+/* Hide the toolbars of non-focus'd panes */
+section#ui.original > div#recipe .hideonwide, 
+section#ui.original > div#output .hideonwide,
+section#ui.recipe > div#original .hideonwide, 
+section#ui.recipe > div#output .hideonwide, 
+section#ui.output > div#original .hideonwide, 
+section#ui.output > div#recipe .hideonwide
+{ display:none; }
 
 textarea {
 	position: absolute;

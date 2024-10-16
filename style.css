@@ -11,7 +11,15 @@ body {
 header {
 	border-bottom: 1px solid #e8e8e8;
 	padding: 1em;
+	padding-left: 5em;
 	background-color: #fff;
+}
+
+header > img {
+	width: 3em;
+    position: absolute;
+    left: 1em;
+    top: 0.1em;
 }
 
 footer {
@@ -40,16 +48,31 @@ textarea.wrap {
 	text-wrap: nowrap;
 }
 
+a.invert.wrap,
 a.button {
-	background-color: #36c;
+	background-color: #fff;
+	border: 1px solid #ccc;
+	color: #888;
 	padding: 0.1em 0.5em;
 	border-radius: 3px;
-	color: #fff;
 	text-decoration: none;
 }
 
-a.button.wrap {
-	background-color: #123;
+section#ui a.button,
+section#ui a.invert {
+	font-size: 0.8em;
+}
+
+a.invert,
+section#ui.original div#original a.button,
+section#ui.recipe div#recipe a.button,
+section#ui.output div#output a.button {
+	background-color: #36c;
+	border: 1px solid #36c;
+	color: #fff;
+	padding: 0.1em 0.5em;
+	border-radius: 3px;
+	text-decoration: none;
 }
 
 a.button:hover {
@@ -113,6 +136,7 @@ hr {
 	border: 1px solid #f0f0f0;
 }
 
-header div.toolbar a.button {
+header div.toolbar a.button,
+header div.toolbar a.invert {
 	margin-left: 2em;
 }
