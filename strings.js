@@ -192,6 +192,10 @@ function _cat(arr,cmd) {
 function _head(arr,cmd) {
 	result = []
 
+	// Check there was an input ...
+	if ( cmd[1] === undefined || cmd[1].length === 0 ) {
+		return new String( 'head: head requires a numeric parameter for the length of its string.' )
+	}
 	let i = parseInt(cmd[1])
 
 	for ( let ar of arr ) {
@@ -205,6 +209,11 @@ function _head(arr,cmd) {
  */
 function _tail(arr,cmd) {
 	var result = []
+
+	// Check there was an input ...
+	if ( cmd[1] === undefined || cmd[1].length === 0 ) {
+		return new String( 'tail: tail requires a numeric parameter for the length of its string.' )
+	}
 	let i = parseInt(cmd[1])
 
 	for ( let ar of arr ) {
@@ -219,6 +228,10 @@ function _tail(arr,cmd) {
 function _rhead(arr,cmd) {
 	result = []
 
+	// Check there was an input ...
+	if ( cmd[1] === undefined || cmd[1].length === 0 ) {
+		return new String( 'rhead: rhead requires a numeric parameter for the length of its removal.' )
+	}
 	let i = parseInt(cmd[1])
 
 	for ( let ar of arr ) {
@@ -232,6 +245,11 @@ function _rhead(arr,cmd) {
  */
 function _rtail(arr,cmd) {
 	var result = []
+	
+	// Check there was an input ...
+	if ( cmd[1] === undefined || cmd[1].length === 0 ) {
+		return new String( 'rtail: rtail requires a numeric parameter for the length of its removal.' )
+	}
 	let i = parseInt(cmd[1])
 
 	for ( let ar of arr ) {
@@ -256,7 +274,6 @@ function _split(arr,cmd) {
 		}
 		splitter = splitter.substring( 0, splitter.length-1 )
 	}
-
 
 	for ( let ar of arr ) {
 		for ( let a of ar.split( splitter ) ) {
