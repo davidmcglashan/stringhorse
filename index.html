@@ -54,12 +54,11 @@
 					<h2>Commands</h2>
 					<ul>
 						<li><a href="#cat">cat</a></li>
+						<li><a href="#clines">clines</a></li>
 						<li><a href="#column">column</a></li>
 						<li><a href="#decode">decode</a></li>
 						<li><a href="#encode">encode</a></li>
 						<li><a href="#explode">explode</a></li>
-						<li><a href="#flatten">flatten</a></li>
-						<li><a href="#flattens">flattens</a></li>
 						<li><a href="#grep">grep</a></li>
 						<li><a href="#head">head</a></li>
 						<li><a href="#info">info</a></li>
@@ -99,6 +98,10 @@
 					<p class="see-also">See also <a href="#precat">precat</a></p>
 					<hr>
 
+					<a id="column"><h4>clines (space|tab)</h4></a>
+					<p>Collapses the original text's lines into one long string, optionally separated by a tab or a space.</p>
+					<hr>
+
 					<a id="column"><h4>column ([number])</h4></a>
 					<p>Removes everything except column [number], where a column is a whitspace-separated string. [number] defaults to 1.</p>
 					<p class="see-also">See also <a href="#rcolumn">rcolumn</a></p>
@@ -116,17 +119,7 @@
 
 					<a id="explode"><h4>explode</h4></a>
 					<p>Explode the text by inserting blank lines in between the existing ones.</p>
-					<p class="see-also">See also <a href="#flatten">flatten</a> | <a href="#flattens">flattens</a> | <a href="#split">split</a></p>
-					<hr>
-
-					<a id="flatten"><h4>flatten</h4></a>
-					<p>Flattens the original text's lines into one long string.</p>
-					<p class="see-also">See also <a href="#explode">explode</a> | <a href="#flattens">flattens</a> | <a href="#split">split</a></p>
-					<hr>
-
-					<a id="flattens"><h4>flattens</h4></a>
-					<p>Flattens the original text's lines into one long space-separated string.</p>
-					<p class="see-also">See also <a href="#explode">explode</a> | <a href="#flatten">flatten</a> | <a href="#split">split</a></p>
+					<p class="see-also">See also <a href="#split">split</a></p>
 					<hr>
 
 					<a id="grep"><h4>grep [string]</h4></a>
@@ -244,7 +237,7 @@
 
 					<a id="split"><h4>split ([string])</h4></a>
 					<p>Split the lines on occurances of [string] (or a space if not provided), removing the [string] in the process.</p>
-					<p class="see-also">See also <a href="#explode">explode</a> | <a href="#flatten">flatten</a> | <a href="#flattens">flattens</a></p>
+					<p class="see-also">See also <a href="#explode">explode</a></p>
 					<hr>
 
 					<a id="tail"><h4>tail [number]</h4></a>

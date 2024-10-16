@@ -76,24 +76,23 @@ function doSort(arr,cmd,collator) {
 /**
  * Takes whatever array in passed in and flattens it to a single string
  */
-function _flatten(arr) {
+function _clines(arr,cmd) {
 	result = ''
-	for ( let ar of arr ) {
-		result = result + ar
-	}
-	array = []
-	array.push(result)
-	return array
-}
 
-/**
- * Takes whatever array is passed in and flattens it to a single, space separated string.
- */
-function _flattens(arr) {
-	result = ''
-	for ( let ar of arr ) {
-		result = result + ar + ' ' 
+	// Work out what character to put in between the lines, if any ...
+	var sep = ''
+	if ( cmd[1] === undefined || cmd[1].length === 0 ) {
+		sep = ''
+	} else if ( cmd[1] === 'tab' ) {
+		sep = '\t'
+	} else if ( cmd[1] === 'space' ) {
+		sep = ' '
 	}
+
+	for ( let ar of arr ) {
+		result = result + ar + sep
+	}
+
 	array = []
 	array.push(result.trim())
 	return array
