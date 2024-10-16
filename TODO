@@ -4,6 +4,7 @@
    - resolve multiple spaces into 1 TAB
    - turn spaces into TABs (which are hard to type) and vice versa
  - rtab replaces all the TABs with the passed in string
+ - 1.0
  - variables and arrays!
    - tabbed UI you can manually set
    - programmatically set arrays
@@ -11,18 +12,25 @@
  - random text
    - lorem
    - magic words
+ - 1.1
  - base64
+ - 1.2
  - CSV
  - JSON
+ - 2.0
 
 **** UI *************************
  - tooltips on the buttons
  - app history/about in help
  - icons for dock/WPA w/ accreditation
+ - make the panel headers a bit more emphatic
  - v1.0
  - TAB autocomplete
  - example pulling and sorting the numbers in a grid
+ - dark mode (CSS to override colours, toggle in the toolbar)
 
 **** PROGRAMMING *************************
  - errors in head, tail, etc. around handling their number inputs
+ - philosophically realign some of the commands
  - allow " " to be tokenised into a parameter for r and rall
+ - 1.0
