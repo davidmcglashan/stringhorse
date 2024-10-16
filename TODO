@@ -1,9 +1,4 @@
 **** FUNCTIONS *********************************************************
- - something to magically deal with TABs and spaces
-   - resolve multiple spaces into 1 space
-   - resolve multiple spaces into 1 TAB
-   - turn spaces into TABs (which are hard to type) and vice versa
- - rtab replaces all the TABs with the passed in string
  - 1.0
  - variables and arrays!
    - tabbed UI you can manually set
@@ -29,6 +24,7 @@
  - dark mode (CSS to override colours, toggle in the toolbar)
 
 **** PROGRAMMING *************************
+ - copy to original doesn't invoke local storage
  - errors in head, tail, etc. around handling their number inputs
  - philosophically realign some of the commands
  - allow " " to be tokenised into a parameter for r and rall

@@ -471,3 +471,91 @@ function _rsymbols( arr,cmd ) {
 
 	return result
 }
+
+/**
+ * Collapse multiple spaces into one. Or a TAB
+ */
+function _cspaces( arr, cmd ) {
+	var result = []
+	
+	// Work out what the replacement character should be ...
+	var rep = ' '
+	if ( cmd[1] === undefined || cmd[1].length === 0 ) {
+		rep = ' '
+	} else if ( cmd[1] === 'tab' ) {
+		rep = '\t'
+	}
+
+	// Do the replacement on each line.
+	for ( let line of arr ) {
+		result.push( line.replace( / +/g, rep ) )
+	}
+
+	return result
+}
+
+/**
+ * Collapse multiple TABs into one. Or a space
+ */
+function _ctabs( arr, cmd ) {
+	var result = []
+	
+	// Work out what the replacement character should be ...
+	var rep = '\t'
+	if ( cmd[1] === undefined || cmd[1].length === 0 ) {
+		rep = '\t'
+	} else if ( cmd[1] === 'space' ) {
+		rep = ' '
+	}
+
+	// Do the replacement on each line.
+	for ( let line of arr ) {
+		result.push( line.replace( /\t+/g, rep ) )
+	}
+
+	return result
+}
+
+/**
+ * Replace the TABs with spaces, or the optional passed-in string
+ */
+function _stabs( arr, cmd ) {
+	var result = []
+	
+	// Work out what the replacement character should be ...
+	var rep = ' '
+	if ( cmd[1] === undefined || cmd[1].length === 0 ) {
+		rep = ' '
+	} else {
+		rep = cmd[1]
+	}
+
+	// Do the replacement on each line.
+	for ( let line of arr ) {
+		result.push( line.replace( /\t/g, rep ) )
+	}
+
+	return result
+}
+
+/**
+ * Replace the spaces with TABs, or the optional passed-in string
+ */
+function _sspaces( arr, cmd ) {
+	var result = []
+	
+	// Work out what the replacement character should be ...
+	var rep = '\t'
+	if ( cmd[1] === undefined || cmd[1].length === 0 ) {
+		rep = '\t'
+	} else {
+		rep = cmd[1]
+	}
+
+	// Do the replacement on each line.
+	for ( let line of arr ) {
+		result.push( line.replace( / /g, rep ) )
+	}
+
+	return result
+}
