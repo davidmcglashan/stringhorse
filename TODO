@@ -21,9 +21,10 @@
  - app history/about in help
  - off state for wrap should be a hollow box
  - example pulling and sorting the numbers in a grid
- - icons for dock/WPA
+ - icons for dock/WPA w/ accreditation
+ - reduce paddings a bit?
  - v1.0
- 
+
 **** PROGRAMMING *************************
  - errors in head, tail, etc. around handling their number inputs
  - allow " " to be tokenised into a parameter for r and rall
