@@ -30,7 +30,6 @@ section#ui > div {
 	border: 1px solid #e0e0e0;
 	background-color: #fff;
 	padding: 0.5em;
-	color: #888;
 }
 
 textarea {
@@ -104,7 +103,8 @@ div.mono ul {
 	line-height: 1.3em
 }
 
-div#help {
+div#help,
+div#mono {
 	overflow: auto;
 }
 div#help > div {
@@ -125,9 +125,6 @@ div#help > div.toolbar > a {
 }
 
 div#help > div.text,
-div.mono {
-	color: #000;
-}
 div#help > div.text h4,
 div#help > div.text p {
 	margin: 0;

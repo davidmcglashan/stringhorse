@@ -69,3 +69,12 @@ header > div.toolbar {
 	right: 1em;
     top: 1.25em;
 }
+
+.scrollpane {
+	overflow: auto;
+	position: absolute;
+	top: 2em;
+	bottom: 0em;
+	left: 0.5em;
+	right: 0em;
+}

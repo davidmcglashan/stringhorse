@@ -3,10 +3,13 @@
  */
 function _wwwify(urls) {
 	var info = document.getElementById('info')
+	var mono = document.createElement('div')
+	mono.classList.add('mono')
+	info.replaceChildren(mono)
 
 	// Create a <ul> to list the URLs
 	var ul = document.createElement('ul')
-	info.replaceChildren(ul)
+	mono.appendChild(ul)
 
 	for ( let url of urls ) {
 		if ( url.length > 0 ) {

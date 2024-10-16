@@ -28,7 +28,7 @@
 		</header>
 		<section id="ui" class="normal">
 			<div id="original">
-				Original Text
+				<strong>Original Text</strong>
 				<span class="hideonwide">
 					&mdash; <a title="Clear the text in the Original Text pane" href="javascript:clear('src');">Clear</a>
 				</span>
@@ -39,7 +39,7 @@
 				<textarea id="src"></textarea>
 			</div>
 			<div id="recipe">
-				Recipe
+				<strong>Recipe</strong>
 				<span class="hideonwide">
 					&mdash; <a title="Clear the text in the Recipe pane" href="javascript:clear('rec');">Clear</a>
 				</span>
@@ -50,7 +50,7 @@
 				<textarea id="rec"></textarea>
 			</div>
 			<div id="output">
-				Output
+				<strong>Output</strong>
 				<span class="hideonwide">
 					&mdash; <a title="Copy the output text into the Original Text pane"href="javascript:copyToOriginal();">Copy to Original</a>
 				</span>
@@ -59,10 +59,12 @@
 					<a title="Toggle a wide view of the Output pane"href="javascript:focus('output');" class="button">Wide</a>
 				</div>
 				<textarea id="out"></textarea>
-				<div class="mono hidden" id="info"></div> 
+				<div class="scrollpane hidden" id="info"></div>
 			</div>
 			<div id="help" class="hidden">
-				<div>Help</div>
+				<div>
+					<strong>Help</strong>
+				</div>
 				<div class="toolbar">
 					<a title="Close the help" href="javascript:help();">&times; Close</a>
 				</div>
