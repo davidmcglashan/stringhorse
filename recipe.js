@@ -17,8 +17,18 @@ function recipe() {
 	try {
 		for ( recipe of document.getElementById('rec').value.split('\n') ) {
 			if ( recipe.length > 0 && !recipe.startsWith('//') ) {
-				// Split the recipe line by its spaces. The first entry is our command, the rest are its parameters.
-				cmd = recipe.split(' ')
+				// Split the recipe line at its first spaces. The first entry is our command, the rest are its parameters.
+				cmd = recipe.split(/ (.*)/)
+
+				// Do the replacements for chars not allowed in Javascript function names
+				cmd[0] = cmd[0].replaceAll('+','plus')
+				cmd[0] = cmd[0].replaceAll('<','lt')
+				cmd[0] = cmd[0].replaceAll('>','gt')
+				cmd[0] = cmd[0].replaceAll('-','minus')
+				cmd[0] = cmd[0].replaceAll('*','star')
+				cmd[0] = cmd[0].replaceAll('!','not')
+				cmd[0] = cmd[0].replaceAll('=','equals')
+				cmd[0] = cmd[0].replaceAll('|','pipe')
 
 				// Execute. If a command returns NULL then we abort the whole recipe.
 				result = window['_'+cmd[0]](result,cmd);

@@ -3,6 +3,7 @@
  - variables and arrays!
    - tabbed UI you can manually set
    - programmatically set arrays
+   - programmatically set vars e.g. s delimiter
  - random numbers
  - random text
    - lorem
@@ -16,13 +17,17 @@
 
 **** UI *************************
  - app history/about in help
+ - double check all the help has 'see also's and working links
+ - Fix the examples now the commands are redone
  - v1.0
  - TAB autocomplete
  - example pulling and sorting the numbers in a grid
  - dark mode (CSS to override colours, toggle in the toolbar)
 
 **** PROGRAMMING *************************
- - philosophically realign some of the commands
- - allow " " to be tokenised into a parameter for r and rall
- - 1.0
+ - Function comments
+ - Functions restructure (group in JS files by functional area)
  - Make the help file self-writing - embed a JSON with the metadata in "command, description, see also"
+ - Show the help in error messages
+ - 1.0
+ - allow " " to be tokenised into a parameter for r and rall

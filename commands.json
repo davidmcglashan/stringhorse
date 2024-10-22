@@ -1,0 +1,265 @@
+{
+	"commands":[
+	{
+		"command": "==",
+		"params": "[string]",
+		"desc": "Retains only lines which contain [string].",
+		"also": ["!="]
+	},{
+		"command": "!=",
+		"params": "[string]",
+		"desc": "Retains only lines which <em>do not</em> contain [string].",
+		"also": ["=="]
+	},
+
+	{
+		"command": "+>",
+		"params": "[string]",
+		"desc": "Adds [string] to the end of each line.",
+		"also": ["+<","-<","->","k<","k>"]
+	},{
+		"command": "+<",
+		"params": "[string]",
+		"desc": "Adds [string] to the start of each line.",
+		"also": ["+>","-<","->","k<","k>"]
+	},
+	{
+		"command": "k<",
+		"params": "[number]",
+		"desc": "Keep only the first [number] characters on each line.",
+		"also": ["+<","+>","-<","->","k>"]
+	},{
+		"command": "-<",
+		"params": "[number]",
+		"desc": "Remove the first [number] characters on each line.",
+		"also": ["+<","+>","->","k<","k>"]
+	},
+	{
+		"command": "k>",
+		"params": "[number]",
+		"desc": "Keep only the last [number] characters on each line.",
+		"also": ["+<","+>","-<","->","k<"]
+	},
+	{
+		"command": "->",
+		"params": "[number]",
+		"desc": "Remove the last [number] characters on each line.",
+		"also": ["+<","+>","-<","k<","k>"]
+	},
+
+
+	{
+		"command": "kaz",
+		"params": "(tab|space)",
+		"desc": "Keeps only the alphabet characters in each line. Optional second parameter defines whether to separate these with TABs or spaces.",
+		"also": ["k09","k**"]
+	},{
+		"command": "k09",
+		"params": "(tab|space)",
+		"desc": "Keeps only the numbers in each line. Optional second parameter defines whether to separate these with TABs or spaces.",
+		"also": ["kaz","k**"]
+	},{
+		"command": "k**",
+		"params": "(tab|space)",
+		"desc": "Keeps only the symbols in each line. Optional second parameter defines whether to separate these with TABs or spaces.",
+		"also": ["kaz","k09"]
+	},{
+		"command": "kcolumn",
+		"params": "([number])",
+		"desc": "Removes everything except column [number], where a column is a whitspace-separated string. [number] defaults to 1.",
+		"also": ["-column"]
+	},
+
+	{
+		"command": "lower",
+		"desc": "Converts the original text into lower case.",
+		"also": ["upper"]
+	},{
+		"command": "upper",
+		"desc": "Converts the original text into upper case.",
+		"also": ["lower"]
+	},
+
+	{
+		"command": "number",
+		"params": "([number])",
+		"desc": "Number the lines starting at 1, or at [number] if it is provided.",
+	},
+
+	{
+		"command": "-",
+		"params": "[a]",
+		"desc": "Removes the first instance of [a] on each line.",
+		"also": ["--","-<","->"]
+	},{
+		"command": "->",
+		"params": "[string]",
+		"desc": "Removes the text after first instance of [string] on each line, leaving [string] in place.",
+		"also": ["-<","-","--"]
+	},{
+		"command": "--",
+		"params": "[a]",
+		"desc": "Removes every instance of [a] on each line.",
+		"also": ["-","-<","->"]
+	},{
+		"command": "-az",
+		"desc": "Removes the alphabet characters from each line, leaving only whitespace, the symbols, and the numbers.",
+		"also": ["-09","-**"]
+	},{
+		"command": "-<",
+		"params": "[string]",
+		"desc": "Removes the text before first instance of [string] on each line, leaving [string] in place.",
+		"also": ["-","--","->"]
+	},
+	{
+		"command": "-09",
+		"desc": "Removes the numbers from each line, leaving only whitespace, the symbols, and the alphabet characters.",
+		"also": ["-az","-**"]
+	},{
+		"command": "-**",
+		"desc": "Removes the symbol characters from each line, leaving only whitespace, the numbers, and the alphabet characters.",
+		"also": ["-09","-az"]
+	},
+	{
+		"command": "-ws",
+		"desc": "Removes all the whitespace from each line, leaving only the numbers, symbols, and alphabet characters.",
+		"also": ["-<ws", "->ws", "-blanks"]
+	},{
+		"command": "-<ws",
+		"desc": "Removes the leading whitespace or indentation from each line.",
+		"also": ["-ws", "->ws", "-blanks"]
+	},{
+		"command": "->ws",
+		"desc": "Removes any trailing whitespace from each line.",
+		"also": ["-ws", "-<ws", "-blanks"]
+	},{
+		"command": "-blanks",
+		"desc": "Removes any empty or blank lines from the original text.",
+		"also": ["-ws", "-<ws", "->ws"]
+	},{
+		"command": "-column",
+		"params": "([number])",
+		"desc": "Removes column [number], where a column is a whitspace-separated string. [number] defaults to 1.",
+		"also": ["kcolumn"]
+	},
+	
+
+
+
+	{
+		"command": "sort",
+		"params": "([number])",
+		"desc": "Sorts the original text's lines alphabetically. [number] can be provided to sort by a column.",
+		"also": ["nsort"]
+	},{
+		"command": "nsort",
+		"params": "([number])",
+		"desc": "Sorts the original text's lines naturally (e.g. 1, 2, 10). [number] can be provided to sort by a column.",
+		"also": ["reverse"]
+	},{
+		"command": "reverse",
+		"desc": "Reverses the order of the original text.",
+		"also": ["sort"]
+	},
+
+	{
+		"command": "s",
+		"params": "[a] [b]",
+		"desc": "Replaces the first instance of [a] on each line with [b]. [a] and [b] are separated with $s_delimiter.",
+		"also": ["ss"]
+	},{
+		"command": "ss",
+		"params": "[a] [b]",
+		"desc": "Replaces every instance of [a] on each line with [b]. [a] and [b] are separated with $s_delimiter.",
+		"also": ["s"]
+	},{
+		"command": "sspace",
+		"params": "([string])",
+		"desc": "Replace the first space in the original text with a TAB, or the optional passed-in string.",
+		"also": ["sspaces","stab","stabs"]
+	},{
+		"command": "sspaces",
+		"params": "([string])",
+		"desc": "Replace each space in the original text with a TAB, or the optional passed-in string.",
+		"also": ["sspace","stab","stabs"]
+	},{
+		"command": "stab",
+		"params": "([string])",
+		"desc": "Replace the first TAB in the original text with a space, or the optional passed-in string.",
+		"also": ["sspace","sspaces","stabs"]
+	},{
+		"command": "stabs",
+		"params": "([string])",
+		"desc": "Replace each TAB in the original text with a space, or the optional passed-in string.",
+		"also": ["sspace","sspaces","stab"]
+	},
+
+	{
+		"command": "|",
+		"params": "([string])",
+		"desc": "Split the lines on occurances of [string] (or any whitespace if not provided), removing the [string] in the process.",
+		"also": ["|space","|tab"]
+	},
+	{
+		"command": "|space",
+		"desc": "Split the lines on occurances of space, removing the space in the process.",
+		"also": ["|","|tab"]
+	},
+	{
+		"command": "|tab",
+		"desc": "Split the lines on occurances of TAB, removing the TAB in the process.",
+		"also": ["|","|space"]
+	},
+
+	{
+		"command": "j",
+		"params": "([number])",
+		"desc": "Joins multiple lines together, starting a newline after number (or not at all if omitted)."
+	},{
+		"command": "jspace",
+		"params": "([number])",
+		"desc": "Joins multiple lines together with a space in between joins, starting a newline after number (or not at all if omitted)."
+	},{
+		"command": "jtab",
+		"params": "([number])",
+		"desc": "Joins multiple lines together with a TAB in between joins, starting a newline after number (or not at all if omitted)."
+	},
+
+
+
+	{
+		"command": "explode",
+		"desc": "Explode the text by inserting blank lines in between the existing ones.",
+		"also": ["|"]
+	},
+
+	{
+		"command": "cspaces",
+		"params": "(tab)",
+		"desc": "Collapses any runs of spaces in the original text's lines into one single space or TAB.",
+		"also": ["ctabs"]
+	},{
+		"command": "ctabs",
+		"params": "(space)",
+		"desc": "Collapses any runs of TABs in the original text's lines into one single TAB or space.",
+		"also": ["cspaces"]
+	},
+
+	{
+		"command": "decode",
+		"desc": "Decode each line as if it's an encoded URL e.g. %20 becomes a space, and so on.",
+		"also": ["encode"]
+	},{
+		"command": "encode",
+		"desc": "Encode each line for safe use in a URL e.g. spaces become %20, and so on.",
+		"also": ["decode"]
+	},
+
+	{
+		"command": "info",
+		"desc": "Shows some info about the output: lines, words, chars, etc.",
+	},{
+		"command": "wwwify",
+		"desc": "Pretends the original text is a list of hyperlinks and displays them as anchor tags so they can be clicked and visited.",
+	}
+]}

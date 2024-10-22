@@ -70,7 +70,7 @@ function example() {
 		'//trim\n' +
 		'//grep <li><a\n' +
 		'//rbefore #\n' +
-		'//r # https://www.google.com/search?q=\n' +
+		'//s # https://www.google.com/search?q=\n' +
 		'//rafter "\n' +
 		'//rtail 1\n' +
 		'//wwwify'

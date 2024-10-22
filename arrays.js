@@ -74,27 +74,52 @@ function doSort(arr,cmd,collator) {
 }
 
 /**
- * Takes whatever array in passed in and flattens it to a single string
+ * Joins multiple lines together, starting a newline after number (or not at all if omitted).
  */
-function _clines(arr,cmd) {
-	result = ''
+function _j(arr,cmd) {
+	return join( arr,cmd,'' )
+}
 
-	// Work out what character to put in between the lines, if any ...
-	var sep = ''
-	if ( cmd[1] === undefined || cmd[1].length === 0 ) {
-		sep = ''
-	} else if ( cmd[1] === 'tab' ) {
-		sep = '\t'
-	} else if ( cmd[1] === 'space' ) {
-		sep = ' '
-	}
+/**
+ * Joins multiple lines together with a space in between joins, starting a newline after number (or not at all if omitted).
+ */
+function _jspace(arr,cmd) {
+	return join( arr,cmd,' ' )
+}
 
+/**
+ * Joins multiple lines together with a TAB in between joins, starting a newline after number (or not at all if omitted).
+ */
+function _jtab(arr,cmd) {
+	return join( arr,cmd,'\t' )
+}
+
+/**
+ * Implements the join functions.
+ */
+function join( arr, cmd, join ) {
+	var result = ''
+	var array = []
+	var i = parseInt(cmd[1]) || 999999
+
+	var j = 0
 	for ( let ar of arr ) {
-		result = result + ar + sep
+		result = result + ar + join
+
+		// Every j tokens, start a new line
+		j++
+		if ( j === i ) {
+			array.push(result)
+			result = ''
+			j = 0
+		}
+	}
+	
+	// Join any unpushed content.
+	if ( j !== 0 ) {
+		array.push(result)
 	}
 
-	array = []
-	array.push(result.trim())
 	return array
 }
 
@@ -133,23 +158,16 @@ function _number( arr,cmd ) {
 /**
  * Matches strings against the passed-in term. Rejects lines which don't.
  */
-function _grep(arr,cmd) {
+function _equalsequals(arr,cmd) {
 	result = ''
 
-	// Build the string first.
-	var what = ''
 	if ( cmd[1] === undefined || cmd[1].length === 0 ) {
 		return new String( 'grep: grep requires something to match with' )
-	} else {
-		for ( let i=1; i < cmd.length; i++ ) {
-			what = what + cmd[i] + ' ' 
-		}
-		what = what.substring( 0, what.length-1 )
 	}
 
 	array = []
 	for ( let ar of arr ) {
-		if ( ar.indexOf(what) !== -1 ) {
+		if ( ar.indexOf( cmd[1] ) !== -1 ) {
 			array.push( ar )
 		}
 	}
@@ -159,23 +177,17 @@ function _grep(arr,cmd) {
 /**
  * Matches strings against the passed-in term. Rejects lines which don't.
  */
-function _ngrep(arr,cmd) {
+function _notequals(arr,cmd) {
 	result = ''
 
 	// Build the string first.
-	var what = ''
 	if ( cmd[1] === undefined || cmd[1].length === 0 ) {
 		return new String( 'ngrep: ngrep requires something to match with' )
-	} else {
-		for ( let i=1; i < cmd.length; i++ ) {
-			what = what + cmd[i] + ' ' 
-		}
-		what = what.substring( 0, what.length-1 )
 	}
 
 	array = []
 	for ( let ar of arr ) {
-		if ( ar.indexOf(what) === -1 ) {
+		if ( ar.indexOf( cmd[1] ) === -1 ) {
 			array.push( ar )
 		}
 	}
