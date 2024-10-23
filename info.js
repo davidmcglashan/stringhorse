@@ -1,5 +1,5 @@
 /**
- * Displays some info about the text. This is an abortive function with no return object.
+ * Shows some info about the output: lines, words, chars, etc.
  */
 function _info(arr,cmd) {
 	var info = document.getElementById('info')
