@@ -19,16 +19,17 @@
  - app history/about in help
  - double check all the help has 'see also's and working links
  - Fix the examples now the commands are redone
+ - Short descriptions for commands to appear in the list
+ - De-emphasise the params in the longer command help 
  - v1.0
  - TAB autocomplete
  - example pulling and sorting the numbers in a grid
  - dark mode (CSS to override colours, toggle in the toolbar)
 
 **** PROGRAMMING *************************
- - Show the help in error messages
  - 1.0
- - allow " " to be tokenised into a parameter for r and rall
-
+ - Show the help in error messages
+ - use a delimiter as a variable for ss etc.
 
 <a id="words"><h4>words ([number])</h4></a>
           <p>Splits the original text into words separated by whitespace and reformats the text with [number] words on each line. [number] defaults to 1 when omitted.</p>
