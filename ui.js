@@ -50,8 +50,70 @@ function wrap(ta) {
  * Swaps the output pane for the help one
  */
 function help() {
+	// Make the help pane (in)visible.
 	document.getElementById('output').classList.toggle('hidden')
 	document.getElementById('help').classList.toggle('hidden')
+
+	// Programmatically populate from the JSON file of commands imported elsewhere. Draw it into this <div>
+	var div = document.getElementById('commands')
+	var ul = document.createElement('ul')
+	div.replaceChildren(ul)
+
+	// First the command list at the top ...
+	for ( let command of commands ) {
+		var li = document.createElement('li')
+		ul.appendChild( li )
+		var a = document.createElement('a')
+		li.appendChild( a )
+		a['title'] = command['desc']
+		a['href'] = '#' + command['command']
+		a.innerHTML = command['command']
+	}
+
+	// Then each command gets a longer description
+	for ( let command of commands ) {
+		// and a separator
+		var hr = document.createElement('hr')
+		div.appendChild( hr )
+
+		var a = document.createElement('a')
+		a['id'] = command['command']
+		div.appendChild( a )
+
+		var h4 = document.createElement('h4')
+		if ( command['params'] === undefined ) {
+			h4.innerHTML = command['command']
+		} else {
+			h4.innerHTML = command['command'] + ' ' + command['params']
+		}
+		a.appendChild( h4 )
+
+		var p = document.createElement('p')
+		p.innerHTML = command['desc']
+		div.appendChild( p )
+		
+		// Also is an array of related commands.
+		if ( command['also'] !== undefined ) {
+			p = document.createElement('p')
+			p.classList.add( 'see-also' )
+			p.innerHTML = 'See also ... '
+			div.appendChild( p )
+
+			var first = true
+			for ( let also of command['also'] ) {
+				if ( !first ) {
+					p.insertAdjacentHTML( 'beforeend', ' | ' );
+				}
+				first = false
+
+				a = document.createElement( 'a' )
+				a['title'] = also
+				a['href'] = '#' + also
+				a.innerHTML = also
+				p.appendChild( a )
+			}			
+		}
+	}
 }
 
 /**

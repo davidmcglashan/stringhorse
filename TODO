@@ -25,9 +25,12 @@
  - dark mode (CSS to override colours, toggle in the toolbar)
 
 **** PROGRAMMING *************************
- - Function comments
- - Functions restructure (group in JS files by functional area)
- - Make the help file self-writing - embed a JSON with the metadata in "command, description, see also"
  - Show the help in error messages
  - 1.0
  - allow " " to be tokenised into a parameter for r and rall
+
+
+<a id="words"><h4>words ([number])</h4></a>
+          <p>Splits the original text into words separated by whitespace and reformats the text with [number] words on each line. [number] defaults to 1 when omitted.</p>
+          <p class="see-also">See also <a href="#twords">twords</a></p>
+          <hr>
