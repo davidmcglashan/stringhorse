@@ -60,4 +60,5 @@ function recipe() {
 	}
 }
 
+buildHelp()
 restoreState()

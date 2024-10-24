@@ -124,6 +124,27 @@ div#help > div.toolbar > a {
 	padding: 0.25em;
 }
 
+div#help ul {
+	list-style-type: none;
+	padding-inline-start: 1em;
+	line-height: 1.4em;
+}
+
+div#help li {
+	color: #888;
+}
+
+.help-desc {
+	position: absolute;
+	display: inline-block;
+	left: 6em;	
+}
+
+.params {
+	font-weight: 400;
+	color: #888;
+}
+
 div#help > div.text,
 div#help > div.text h4,
 div#help > div.text p {

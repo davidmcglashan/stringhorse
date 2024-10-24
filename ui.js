@@ -53,7 +53,12 @@ function help() {
 	// Make the help pane (in)visible.
 	document.getElementById('output').classList.toggle('hidden')
 	document.getElementById('help').classList.toggle('hidden')
+}
 
+/**
+ * Builds the help page programmatically.
+ */
+function buildHelp() {
 	// Programmatically populate from the JSON file of commands imported elsewhere. Draw it into this <div>
 	var div = document.getElementById('commands')
 	var ul = document.createElement('ul')
@@ -68,6 +73,7 @@ function help() {
 		a['title'] = command['desc']
 		a['href'] = '#' + command['command']
 		a.innerHTML = command['command']
+		li.insertAdjacentHTML( 'beforeend', '<div class="help-desc">' + command['short'] + '</div>\n' );
 	}
 
 	// Then each command gets a longer description
@@ -81,10 +87,9 @@ function help() {
 		div.appendChild( a )
 
 		var h4 = document.createElement('h4')
-		if ( command['params'] === undefined ) {
-			h4.innerHTML = command['command']
-		} else {
-			h4.innerHTML = command['command'] + ' ' + command['params']
+		h4.innerHTML = command['command']
+		if ( command['params'] !== undefined ) {
+			h4.insertAdjacentHTML( 'beforeend', ' <span class="params">' + command['params'] + '</span>')
 		}
 		a.appendChild( h4 )
 
@@ -129,12 +134,12 @@ function example() {
 		'\n' +
 		'// Remove the comments from the recipe lines below, one-at-a-time to see stringhorse in action. The recipe will run after a short pause and the output will appear in the right hand pane ...\n' +
 		'\n' +
-		'//trim\n' +
-		'//grep <li><a\n' +
-		'//rbefore #\n' +
+		'//-<ws\n' +
+		'//== <li><a\n' +
+		'//-<= #\n' +
 		'//s # https://www.google.com/search?q=\n' +
-		'//rafter "\n' +
-		'//rtail 1\n' +
+		'//-=> "\n' +
+		'//-> 1\n' +
 		'//wwwify'
 
 	localStorage.src = document.getElementById('src').value

@@ -292,7 +292,7 @@ function _minus(arr,cmd) {
 /**
  * Removes the text before first instance of the search string on each line, leaving the search string in place.
  */
-function _minuslt(arr,cmd) {
+function _minusltequals(arr,cmd) {
 	var result = []
 
 	for ( let ar of arr ) {
@@ -309,7 +309,7 @@ function _minuslt(arr,cmd) {
 /**
  * Removes the text after first instance of the search string on each line, leaving the search string in place.
  */
-function _minusgt(arr,cmd) {
+function _minusequalsgt(arr,cmd) {
 	var result = []
 
 	for ( let ar of arr ) {
