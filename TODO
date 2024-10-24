@@ -1,5 +1,4 @@
 **** FUNCTIONS *********************************************************
- - 1.0
  - variables and arrays!
    - tabbed UI you can manually set
    - programmatically set arrays
@@ -16,8 +15,6 @@
  - 2.0
 
 **** UI *************************
- - Fix the examples now the commands are redone
- - v1.0
  - app history/about in help
  - replace a string with a space or a tab
  - improve and expands the help long descriptions.
@@ -26,6 +23,5 @@
  - dark mode (CSS to override colours, toggle in the toolbar)
 
 **** PROGRAMMING *************************
- - 1.0
  - Show the help in error messages
  - use a delimiter as a variable for ss etc.

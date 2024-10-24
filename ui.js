@@ -137,10 +137,11 @@ function example() {
 		'//-<ws\n' +
 		'//== <li><a\n' +
 		'//-<= #\n' +
-		'//s # https://www.google.com/search?q=\n' +
+		'//-< 1\n' +
 		'//-=> "\n' +
 		'//-> 1\n' +
-		'//wwwify'
+		'//sort\n' +
+		'\n// The end result is an alphabetical list of commands, extracted from the help page.'
 
 	localStorage.src = document.getElementById('src').value
 	localStorage.recipe = document.getElementById('rec').value
