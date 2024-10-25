@@ -153,11 +153,11 @@ function _number( arr,cmd ) {
 /**
  * Retains only lines which contain [string].
  */
-function _equalsequals(arr,cmd) {
+function _kequals(arr,cmd) {
 	result = ''
 
 	if ( cmd[1] === undefined || cmd[1].length === 0 ) {
-		return new String( 'grep: grep requires something to match with' )
+		return new String( 'k=: k= requires something to match with' )
 	}
 
 	array = []
@@ -172,12 +172,12 @@ function _equalsequals(arr,cmd) {
 /**
  * Retains only lines which do not contain [string].
  */
-function _notequals(arr,cmd) {
+function _minusequals(arr,cmd) {
 	result = ''
 
 	// Build the string first.
 	if ( cmd[1] === undefined || cmd[1].length === 0 ) {
-		return new String( 'ngrep: ngrep requires something to match with' )
+		return new String( '-=: -= requires something to match with' )
 	}
 
 	array = []
