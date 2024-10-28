@@ -135,7 +135,7 @@ function example() {
 		'// Remove the comments from the recipe lines below, one-at-a-time to see stringhorse in action. The recipe will run after a short pause and the output will appear in the right hand pane ...\n' +
 		'\n' +
 		'//-<ws\n' +
-		'//== <li><a\n' +
+		'//k= <li><a\n' +
 		'//-<= #\n' +
 		'//-< 1\n' +
 		'//-=> "\n' +

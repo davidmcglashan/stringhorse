@@ -1,4 +1,5 @@
 **** FUNCTIONS *********************************************************
+ - replace a string with a space or a tab
  - variables and arrays!
    - tabbed UI you can manually set
    - programmatically set arrays
@@ -15,13 +16,14 @@
  - 2.0
 
 **** UI *************************
- - app history/about in help
- - replace a string with a space or a tab
+ - remove the white top area - make it grey, tuck the horse behind the panes.
+ - help opens a slide-in tray
+ - app philosophy/about in help
  - improve and expands the help long descriptions.
- - TAB autocomplete
  - example pulling and sorting the numbers in a grid
  - dark mode (CSS to override colours, toggle in the toolbar)
 
 **** PROGRAMMING *************************
+ - TAB autocomplete
  - Show the help in error messages
  - use a delimiter as a variable for ss etc.
