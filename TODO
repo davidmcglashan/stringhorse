@@ -1,7 +1,7 @@
 **** FUNCTIONS *********************************************************
  - replace a string with a space or a tab
  - variables and arrays!
-   - tabbed UI you can manually set
+   - tabbed UI (bottom of recipe pane) you can manually set
    - programmatically set arrays
    - programmatically set vars e.g. s delimiter
  - random numbers
@@ -16,10 +16,11 @@
  - 2.0
 
 **** UI *************************
- - remove the white top area - make it grey, tuck the horse behind the panes.
  - help opens a slide-in tray
- - app philosophy/about in help
+ - README
+ - app philosophy/about page (slide-in tray)
  - improve and expands the help long descriptions.
+1.0
  - example pulling and sorting the numbers in a grid
  - dark mode (CSS to override colours, toggle in the toolbar)
 
