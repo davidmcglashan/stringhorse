@@ -6,6 +6,7 @@ body {
 	font-style: normal;
 	margin: 0;
 	background-color: #fafafa;
+	overflow-x: hidden;
 }
 
 header {
@@ -25,7 +26,7 @@ header > img {
 }
 
 footer {
-	padding: 1em;
+	padding: 0.5em;
 }
 
 section#ui > div {
@@ -105,62 +106,121 @@ div.mono ul {
 	line-height: 1.3em
 }
 
-div#help,
-div#mono {
-	overflow: auto;
-}
-div#help > div {
-	position: absolute;
-}
-div#help > div.toolbar {
-	position: sticky;
-	top: 0;
-	right: 0;
-	left: 50%;
-	width: 50%;
-	text-align: right;
-	z-index: 1;
-}
-div#help > div.toolbar > a {
+section#tray {
 	background-color: #fff;
-	padding: 0.25em;
+	border-left: #ccc 1px solid;
+}
+	section#tray.open {
+		animation: slideIn 0.5s forwards;
+	}
+	section#tray.closed {
+		animation: slideOut 0.5s forwards;
+	}
+	section#tray > div {
+		position: relative;
+	}
+	section#tray div.toolbar {
+		position: absolute;
+		top: 1em;
+		right: 0em;
+		text-align: right;
+		z-index: 2;
+	}
+	section#tray div.toolbar a {
+		padding: 0.5em;
+	}
+	section#tray div.tabs {
+		position: sticky;
+		top: 0;
+		left: 0;
+		right: 0;
+		z-index: 1;
+		padding: 1em 1em 0em;
+		background-color: #fff;
+	}
+
+div.tabs {
+	border-bottom: 1px solid #ccc;
 }
 
-div#help ul {
-	list-style-type: none;
-	padding-inline-start: 1em;
+	div.tabs > ul {
+		margin: 0;
+		padding: 0;
+	}
+	div.tabs > ul > li {
+		display: inline-block;
+		padding: 0.5em 0;
+		margin-right: 1em;
+
+	}
+	div.tabs > ul > li.selected {
+		border-bottom: 2px solid #666;
+	}
+	div.tabs > ul > li.selected a {
+		color: #333;
+	}
+	div.tabs > ul > li > a {
+		text-decoration: none;
+		padding: 0.5em;
+	}
+	div.tabs > ul > li > a:hover {
+		background-color: #eee;
+	}
+
+div#_tray-commands {
+} 
+
+	div#_tray-commands ul {
+		list-style-type: none;
+		padding-inline-start: 2em;
+		line-height: 1.4em;
+	}
+
+	div#_tray-commands li {
+		color: #888;
+	}
+
+	div#_tray-commands .help-desc {
+		position: absolute;
+		display: inline-block;
+		left: 9em;	
+	}
+
+	div#_tray-commands .params {
+		font-weight: 400;
+		color: #888;
+	}
+
+
+	div#_tray-commands h4,
+	div#_tray-commands p {
+		margin: 0.25em;
+		line-height: 1.25em;
+		padding-left: 1em;
+	}
+
+	div#_tray-commands > div.text p {
+		margin-bottom: 1em;
+	}
+
+	div#_tray-commands p.see-also {
+		font-size: 90%;
+		color: #888;
+		margin: 0 1em;
+	}
+
+div#_tray-philosophy,
+div#_tray-about {
+	padding: 1em;
 	line-height: 1.4em;
 }
 
-div#help li {
-	color: #888;
-}
-
-.help-desc {
-	position: absolute;
-	display: inline-block;
-	left: 6em;	
-}
-
-.params {
-	font-weight: 400;
-	color: #888;
-}
-
-div#help > div.text,
-div#help > div.text h4,
-div#help > div.text p {
-	margin: 0;
-	margin-left: 0.5em;
-}
-div#help > div.text p {
-	margin-bottom: 1em;
-}
-div#help > div.text p.see-also {
-	font-size: 90%;
-	color: #888;
-	margin: -0.75em 0 1em 1em;
-}
+	div#_tray-about img {
+		width: 10em;
+	}
+	div#_tray-about h1 {
+		margin: 0;
+	}
 
 hr {
 	border: 1px solid #f0f0f0;
@@ -169,4 +229,17 @@ hr {
 header div.toolbar a.button,
 header div.toolbar a.invert {
 	margin-left: 2em;
+}
+
+section#lightbox {
+	background-color: rgba(0, 55, 0, 0.5);
+	visibility: hidden;
+	opacity: 0;
+	transition: opacity 250ms ease-in, visibility 0ms ease-in 250ms;
+}
+
+section#lightbox.show {
+	visibility: visible;
+	opacity: 1;
+	transition: opacity 250ms ease-in, visibility 0ms ease-in 0ms;
 }

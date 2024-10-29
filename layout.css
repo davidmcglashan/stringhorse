@@ -17,7 +17,7 @@ section#ui {
 	left: 0.5em;
 	right: 0.5em;
 	top: 3.25em;
-	bottom: 3em;
+	bottom: 2em;
 
 	display:flex;
 	justify-content: space-between;
@@ -77,4 +77,34 @@ header > div.toolbar {
 	bottom: 0em;
 	left: 0.5em;
 	right: 0em;
+}
+
+section#lightbox {
+	position: absolute;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
+	z-index: 1;
+}
+
+@keyframes slideIn {
+  0% { left: 100% }
+  100% { left: 40% }
+}
+
+@keyframes slideOut {
+  0% { left: 40% }
+  100% { left: 100% }
+}
+
+section#tray {
+	position: absolute;
+	top: 0;
+	bottom: 0;
+	left: 100%;
+	width: 60%;
+	overflow-x: auto;
+	overflow-y: scroll;
+	z-index: 2;
 }

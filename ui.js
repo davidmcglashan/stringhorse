@@ -47,12 +47,41 @@ function wrap(ta) {
 }
 
 /**
- * Swaps the output pane for the help one
+ * Slides in the tray with the help tab showing.
  */
 function help() {
-	// Make the help pane (in)visible.
-	document.getElementById('output').classList.toggle('hidden')
-	document.getElementById('help').classList.toggle('hidden')
+	document.getElementById('lightbox').classList.toggle('show')
+	
+	var tray = document.getElementById('tray')
+	if ( tray.classList.length === 0 ) {
+		tray.classList.add('open')
+	} else {
+		tray.classList.toggle('closed')
+		tray.classList.toggle('open')
+	}
+}
+
+function tab(tdiv,tab) {
+	// Grab all the lis and make the passed in tab the selected one.
+	var ul = document.getElementById( tdiv+'-ul' )
+	var lis = ul.children;
+	for ( var i = 0; i < lis.length; i++ ) {
+		var li = lis[i];
+		li.classList.remove('selected')
+	}
+	document.getElementById( 'tab-'+tab ).classList.add('selected')
+	
+	// Now make the tab page itself visible
+	var container = document.getElementById( tdiv )
+	var divs = container.children;
+	for ( var i = 0; i < divs.length; i++ ) {
+		var div = divs[i];
+		if ( div.classList.contains('tabs') ) {
+			continue;
+		}
+		div.classList.add('hidden')
+	}
+	document.getElementById(tdiv+'-'+tab).classList.remove('hidden')
 }
 
 /**
@@ -60,7 +89,7 @@ function help() {
  */
 function buildHelp() {
 	// Programmatically populate from the JSON file of commands imported elsewhere. Draw it into this <div>
-	var div = document.getElementById('commands')
+	var div = document.getElementById('_tray-commands')
 	var ul = document.createElement('ul')
 	div.replaceChildren(ul)
 
