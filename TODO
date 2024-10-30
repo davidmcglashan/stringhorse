@@ -16,19 +16,15 @@
  - 2.0
 
 **** UI *************************
- - close the slide-in tray nicely
- - README
- - app philosophy/about page (slide-in tray)
  - improve and expands the help long descriptions.
-1.0
  - example pulling and sorting the numbers in a grid
  - dark mode (CSS to override colours, toggle in the toolbar)
  - get some SVG icons from somewhere for close, wrap, wide, clear, copy
 
 **** PROGRAMMING *************************
- - structure css: probably ... styles (font, link, buttons) / page (three pane structure) / tray (all the tray stuff)
- - Fix any a11y issues
  - copy to clipboard
   - TAB autocomplete
  - Show the help in error messages
  - use a delimiter as a variable for ss etc.
+ - mouseclick on lightbox to close it
+ - need a better 'scroll to help' visible. It obscures the target and breaks refresh(!)

@@ -1,0 +1,114 @@
+/* Keyframes which manage the tray sliding in and out by setting its left position. */
+@keyframes slideIn {
+  0% { left: 100% }
+  100% { left: 40% }
+}
+@keyframes slideOut {
+  0% { left: 40% }
+  100% { left: 100% }
+}
+
+/* Styling and layout for the slide-in tray itself. */
+section#tray {
+	position: absolute;
+	top: 0;
+	bottom: 0;
+	left: 100%;
+	width: 60%;
+
+	overflow-x: auto;
+	overflow-y: scroll;
+	z-index: 2;
+	background-color: #fff;
+	border-left: #ccc 1px solid;
+}
+	/* These two classes are applied to the tray to trigger its animations in and out. */
+	section#tray.open {
+		animation: slideIn 0.5s forwards;
+	}
+	section#tray.closed {
+		animation: slideOut 0.5s forwards;
+	}
+
+	/* All subdivs are relative which lets us do overflow:scroll on their children so the page doesn't grow. */
+	section#tray > div {
+		position: relative;
+	}
+
+	/* Put the toolbar (close button) in the top right of the slide-in tray. */
+	section#tray div.toolbar {
+		position: absolute;
+		top: 1em;
+		right: 0em;
+		text-align: right;
+		z-index: 2;
+	}
+	section#tray div.toolbar a {
+		padding: 0.5em;
+	}
+
+	/* The tray's tabs go in the top left. */
+	section#tray div.tabs {
+		position: sticky;
+		top: 0;
+		left: 0;
+		right: 0;
+		z-index: 1;
+		padding: 1em 1em 0em;
+		background-color: #fff;
+	}
+
+div#_tray-commands {
+} 
+	/* The command list puts the commands on the left ... */
+	div#_tray-commands ul {
+		list-style-type: none;
+		padding-inline-start: 2em;
+		line-height: 1.4em;
+	}
+	div#_tray-commands li {
+		color: #595959;
+	}
+
+	/* ... and their short descriptions indented on the right. */
+	div#_tray-commands .help-desc {
+		position: absolute;
+		display: inline-block;
+		left: 9em;	
+	}
+
+	/* Command parameters get softer styling. */
+	div#_tray-commands .params {
+		font-weight: 400;
+		color: #595959;
+	}
+
+	/* Keep all the help texts nicely aligned. */
+	div#_tray-commands p {
+		margin: 0.25em;
+		line-height: 1.25em;
+		padding-left: 1em;
+	}
+	div#_tray-commands > div.text p {
+		margin-bottom: 1em;
+	}
+	div#_tray-commands p.see-also {
+		font-size: 90%;
+		color: #595959;
+		margin: 0 1em;
+	}
+
+/* Philosophy and About are slabs of text so get slabby, texty stylings. */
+div#_tray-philosophy,
+div#_tray-about {
+	padding: 1em;
+	line-height: 1.4em;
+}
+	div#_tray-about h1 {
+		margin: 0;
+	}
+
+	/* Stop that image getting too wide. */
+	div#_tray-about img {
+		width: 10em;
+	}

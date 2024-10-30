@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html id="html">
+<html id="html" lang="en">
 	<head>
 		<title>stringhorse</title>
 		<link rel="icon" type="image/png" href="/favicon-48x48.png" sizes="48x48" />
@@ -13,124 +13,127 @@
 		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 		<link href="https://fonts.googleapis.com/css2?family=Karla:ital,wght@0,200..800;1,200..800&display=swap" rel="stylesheet">
 		<link href="https://fonts.googleapis.com/css2?family=Sono:wght@200..800&display=swap" rel="stylesheet">
-		<link rel="stylesheet" href="layout.css">
-		<link rel="stylesheet" href="style.css">
+		<link rel="stylesheet" href="css/appearance.css">
+		<link rel="stylesheet" href="css/editor.css">
+		<link rel="stylesheet" href="css/tray.css">
 		<meta charset="utf-8">
 	</head>
 	<body>
 		<header>
-			<img src="horse.png">
+			<img src="horse.png" alt="stringhorse logo">
 			<h1>stringhorse</h1>
 			<div class="toolbar">
 				<a title="See an example" href="javascript:example();">Example</a>
-				<a title="Open the help" href="javascript:help();" class="invert">Help</a>
+				<a title="Open the help" href="javascript:help();" class="button">Help</a>
 			</div>
 		</header>
-		<section id="ui" class="normal">
-			<div id="original">
-				<strong>Original Text</strong>
-				<span class="hideonwide">
-					&mdash; <a title="Clear the text in the Original Text pane" href="javascript:clear('src');">Clear</a>
-				</span>
-				<div class="toolbar hideonwide">
-					<a title="Toggle text wrapping in the Original Text pane" id="src-wrap-button" href="javascript:wrap('src');" class="invert">Wrap</a>
-					<a title="Toggle a wide view of the Original Text pane" href="javascript:focus('original');" class="button">Wide</a>
+		<main>
+			<section id="ui" class="normal">
+				<div id="original">
+					<strong id="label-original">Original Text</strong>
+					<span class="hideonwide">
+						&mdash; <a title="Clear the text in the Original Text pane" href="javascript:clear('src');">Clear</a>
+					</span>
+					<div class="toolbar hideonwide">
+						<a title="Toggle text wrapping in the Original Text pane" id="src-wrap-button" href="javascript:wrap('src');" class="button">Wrap</a>
+						<a title="Toggle a wide view of the Original Text pane" href="javascript:focus('original');" class="button invert">Wide</a>
+					</div>
+					<textarea id="src" class="mono" aria-labelledby="label-original"></textarea>
 				</div>
-				<textarea id="src"></textarea>
-			</div>
-			<div id="recipe">
-				<strong>Recipe</strong>
-				<span class="hideonwide">
-					&mdash; <a title="Clear the text in the Recipe pane" href="javascript:clear('rec');">Clear</a>
-				</span>
-				<div class="toolbar hideonwide">
-					<a title="Toggle text wrapping in the Recipe pane" id="rec-wrap-button" href="javascript:wrap('rec');" class="invert">Wrap</a>
-					<a title="Toggle a wide view of the Recipe pane" href="javascript:focus('recipe');" class="button">Wide</a>
+				<div id="recipe">
+					<strong id="label-recipe">Recipe</strong>
+					<span class="hideonwide">
+						&mdash; <a title="Clear the text in the Recipe pane" href="javascript:clear('rec');">Clear</a>
+					</span>
+					<div class="toolbar hideonwide">
+						<a title="Toggle text wrapping in the Recipe pane" id="rec-wrap-button" href="javascript:wrap('rec');" class="button">Wrap</a>
+						<a title="Toggle a wide view of the Recipe pane" href="javascript:focus('recipe');" class="button invert">Wide</a>
+					</div>
+					<textarea id="rec" class="mono" aria-labelledby="label-recipe"></textarea>
 				</div>
-				<textarea id="rec"></textarea>
-			</div>
-			<div id="output">
-				<strong>Output</strong>
-				<span class="hideonwide">
-					&mdash; <a title="Copy the output text into the Original Text pane"href="javascript:copyToOriginal();">Copy to Original</a>
-				</span>
-				<div class="toolbar hideonwide">
-					<a title="Toggle text wrapping in the Output pane"id="out-wrap-button" href="javascript:wrap('out');" class="invert">Wrap</a>
-					<a title="Toggle a wide view of the Output pane"href="javascript:focus('output');" class="button">Wide</a>
+				<div id="output">
+					<strong id="label-output">Output</strong>
+					<span class="hideonwide">
+						&mdash; <a title="Copy the output text into the Original Text pane"href="javascript:copyToOriginal();">Copy to Original</a>
+					</span>
+					<div class="toolbar hideonwide">
+						<a title="Toggle text wrapping in the Output pane"id="out-wrap-button" href="javascript:wrap('out');" class="button">Wrap</a>
+						<a title="Toggle a wide view of the Output pane"href="javascript:focus('output');" class="button invert">Wide</a>
+					</div>
+					<textarea id="out" class="mono" aria-labelledby="label-output"></textarea>
+					<div class="scrollpane hidden" id="info"></div>
 				</div>
-				<textarea id="out"></textarea>
-				<div class="scrollpane hidden" id="info"></div>
-			</div>
-		</section>
-		<section id="lightbox">
-		</section>
-		<section id="tray">
-			<div id="_tray">
-				<div class="tabs">
-					<ul id="_tray-ul">
-						<li id="tab-commands" class="selected"><a href="javascript:tab('_tray','commands');">Commands</a></li>
-						<li id="tab-philosophy"><a href="javascript:tab('_tray','philosophy');">Philosophy</a></li>
-						<li id="tab-about"><a href="javascript:tab('_tray','about');">About</a></li>
-					</ul>
-					<div class="toolbar">
-						<a title="Close this tray" href="javascript:help();">&times; Close</a>
+			</section>
+			<section id="lightbox">
+			</section>
+			<section id="tray">
+				<div id="_tray">
+					<div class="tabs">
+						<ul id="_tray-ul">
+							<li id="tab-commands" class="selected"><a href="javascript:tab('_tray','commands');">Commands</a></li>
+							<li id="tab-philosophy"><a href="javascript:tab('_tray','philosophy');">Philosophy</a></li>
+							<li id="tab-about"><a href="javascript:tab('_tray','about');">About</a></li>
+						</ul>
+						<div class="toolbar">
+							<a title="Close this tray" href="javascript:help();">&times; Close</a>
+						</div>
+					</div>
+					<div id="_tray-commands"></div>
+					<div id="_tray-about" class="hidden">
+						<img src="horse.png" alt="stringhorse logo">
+						<h1>stringhorse</h1>
+						v1.0<br>
+						<p>
+							Officially on the web at <a title="Stringhorse web site" href="https://stringhorse.dvdmcglshn.com/">stringhorse.dvdmcglshn.com</a>
+						</p>
+						<p>
+							All the source code on github at 
+							<a title="Source code on github.com" href="https://github.com/davidmcglashan/stringhorse">github.com/davidmcglashan/stringhorse</a> (<a title="Creative Commons license details" href="https://creativecommons.org/publicdomain/zero/1.0/">CC0 1.0 Universal</a>)
+						</p>
+						<p>
+							<a href="https://www.flaticon.com/free-icons/horse" title="horse icons">Horse icons created by Freepik - Flaticon</a>
+						</p>
+					</div>
+					<div id="_tray-philosophy" class="hidden">
+						<p>
+							<strong>Stringhorse</strong> is a text manipulation tool that works programmatically but stops short of being a full blown scripting language or regexp handler.
+						</p>
+						<p>
+							Commands mostly don't have cutesy or UNIX-y names like sed or grep. You can work out what some commands do from the characters in their name &mldr;
+						</p>
+						<ul>
+							<li>A <strong>plus</strong> will <em>add</em> something</li>
+							<li>A <strong>minus</strong> will <em>take something away</em></li>
+							<li>An <strong>equals</strong> will <em>match</em> something</li>
+							<li>A <strong>pipe</strong> (the | symbol) will <em>split</em> the text into pieces</li>
+							<li><strong>j</strong> commands <em>join</em> things together</li>
+							<li><strong>k</strong> commands <em>keep</em> something and remove the rest</li>
+							<li><strong>s</strong> commands <em>swap</em> things</li>
+							<li>A <strong>&lt;</strong> means something will happen to the <em>left</em> of the line or the match</li>
+							<li>A <strong>&gt;</strong> means something will happen to the <em>right</em> of the line or the match</li>
+						</ul>
+						<p>
+							Characters are combined to achieve things &mldr;
+						</p>
+						<ul>
+							<li><strong>k=</strong> will <em>keep</em> all the lines that <em>match</em> the text following the command.</li>
+							<li><strong>+&gt;</strong> will <em>add</em> the text following the command to the <em>right</em> of each line.</li>
+						</ul>
+						<p>
+							You get three text panes. Paste the source text into the left and write your command recipe into the middle. The output will appear in the right.
+						</p>
 					</div>
 				</div>
-				<div id="_tray-commands"></div>
-				<div id="_tray-about" class="hidden">
-					<img src="horse.png">
-					<h1>stringhorse</h1>
-					v1.0<br>
-					<p>
-						Officially on the web at <a title="Stringhorse web site" href="https://stringhorse.dvdmcglshn.com/">stringhorse.dvdmcglshn.com</a>
-					</p>
-					<p>
-						All the source code on github at 
-						<a title="Source code on github.com" href="https://github.com/davidmcglashan/stringhorse">github.com/davidmcglashan/stringhorse</a> (<a title="Creative Commons license details" href="https://creativecommons.org/publicdomain/zero/1.0/">CC0 1.0 Universal</a>)
-					</p>
-					<p>
-						<a href="https://www.flaticon.com/free-icons/horse" title="horse icons">Horse icons created by Freepik - Flaticon</a>
-					</p>
-				</div>
-				<div id="_tray-philosophy" class="hidden">
-					<p>
-						<strong>Stringhorse</strong> is a text manipulation tool that works programmatically but stops short of being a full blown scripting language or regexp handler.
-					</p>
-					<p>
-						Commands mostly don't have cutesy or UNIX-y names like sed or grep. You can work out what some commands do from the characters in their name &mldr;
-					</p>
-					<ul>
-						<li>A <strong>plus</strong> will <em>add</em> something</li>
-						<li>A <strong>minus</strong> will <em>take something away</em></li>
-						<li>An <strong>equals</strong> will <em>match</em> something</li>
-						<li>A <strong>pipe</strong> (the | symbol) will <em>split</em> the text into pieces</li>
-						<li><strong>j</strong> commands <em>join</em> things together</li>
-						<li><strong>k</strong> commands <em>keep</em> something and remove the rest</li>
-						<li><strong>s</strong> commands <em>swap</em> things</li>
-						<li>A <strong>&lt;</strong> means something will happen to the <em>left</em> of the line or the match</li>
-						<li>A <strong>&gt;</strong> means something will happen to the <em>right</em> of the line or the match</li>
-					</ul>
-					<p>
-						Characters are combined to achieve things &mldr;
-					</p>
-					<ul>
-						<li><strong>k=</strong> will <em>keep</em> all the lines that <em>match</em> the text following the command.</li>
-						<li><strong>+&gt;</strong> will <em>add</em> the text following the command to the <em>right</em> of each line.</li>
-					</ul>
-					<p>
-						You get three text panes. Paste the source text into the left and write your command recipe into the middle. The output will appear in the right.
-					</p>
-				</div>
-			</div>
-		</section>
+			</section>
+		</main>
 		<footer>
-			v1.0 | <strong>&copy; 2024 David McGlashan</strong>
+			<strong>v1.0.1</strong> | &copy; 2024 David McGlashan
 		</footer>
 	</body>
-	<script type="text/javascript" src="ui.js"></script>
-	<script type="text/javascript" src="commands.js"></script>
-	<script type="text/javascript" src="commands.json"></script>
-	<script type="text/javascript" src="info.js"></script>
-	<script type="text/javascript" src="web.js"></script>
-	<script type="text/javascript" src="recipe.js"></script>
+	<script type="text/javascript" src="js/ui.js"></script>
+	<script type="text/javascript" src="js/commands.js"></script>
+	<script type="text/javascript" src="js/commands.json"></script>
+	<script type="text/javascript" src="js/info.js"></script>
+	<script type="text/javascript" src="js/web.js"></script>
+	<script type="text/javascript" src="js/recipe.js"></script>
 </html>

@@ -1,0 +1,187 @@
+/* Establish the font and remove the page margins. X-overflow is disabled to hide the slide-in tray. */
+body {
+	font-family: "Karla", sans-serif;
+	font-optical-sizing: auto;
+	font-weight: 400;
+	font-style: normal;
+	margin: 0;
+	background-color: #fafafa;
+	overflow-x: hidden;
+}
+
+/* The header and its elements are stickily positioned and have simple presentation. */
+header {
+	position: sticky;
+	top: 0;
+	left: 0;
+	right: 0;
+	padding: 1em;
+	padding-left: 6em;
+}
+	header > h1 {
+		margin-top: -0.25em;
+	}
+	header > img {
+		width: 4em;
+	    position: absolute;
+	    left: 1em;
+	    top: 0.1em;
+	}
+	/* The header features a simple right-aligned toobar. This spaces out its buttons. */
+	header > div.toolbar {
+		right: 1em;
+	    top: 1.25em;
+	}
+	header div.toolbar a {
+		margin-left: 2em;
+	}
+
+/* The footer is also simple. */
+footer {
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	padding: 0.5em;
+}
+
+/* Lightbox is a green non-interactive element that appears under the slide-in tray. It fades in and out. */
+section#lightbox {
+	position: absolute;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
+	z-index: 1;
+	background-color: rgba(0, 55, 0, 0.5);
+	visibility: hidden;
+	opacity: 0;
+	transition: opacity 250ms ease-in, visibility 0ms ease-in 250ms;
+}
+
+/* The show class is applied to the lightbox when it is needed which triggers its transition. */
+section#lightbox.show {
+	visibility: visible;
+	opacity: 1;
+	transition: opacity 250ms ease-in, visibility 0ms ease-in 0ms;
+}
+
+/* Textareas (very important to stringhorse!) fill their containers, have no borders, and gentle padding. */
+textarea {
+	position: absolute;
+	top: 2.5em;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	resize: none;
+	border: 0;
+	padding: 0.5em;
+}
+	/* Wrapping can be disabled for textareas with this. */
+	textarea.wrap {
+		text-wrap: nowrap;
+	}
+
+/* Horizontal rules are grey and faint. */
+hr {
+	border: 1px solid #f0f0f0;
+}
+
+/* Nice blue buttons. */
+a.button {
+	background-color: #36c;
+	border: 1px solid #36c;
+	color: #fff;
+	padding: 0.1em 0.5em;
+	border-radius: 3px;
+	text-decoration: none;
+}
+	/* Inverted buttons are white with a grey border. Some of them toggle into the blue buttons. */
+	a.button.invert {
+		background-color: #fff;
+		border: 1px solid #aaa;
+		color: #595959;
+	}
+	/* Affordance effects for buttons: dark background, white foreground. */
+	a.button:hover,a.button:focus {
+		border: 1px solid #236 !important;
+		background-color: #236 !important;
+		color: #fff !important;
+	}
+
+/* Affordance effects for buttons and links: underline off, pink highlight. */
+a:hover,a:focus {
+	text-decoration: none;
+	color: #a33;
+}
+
+/* Any element can be hidden with this class. */
+.hidden {
+	display: none;
+}
+
+/* This class can be used on all monospaced elements e.g. textboxes. */
+.mono {
+	font-size: inherit;
+	font-family: "Sono", sans-serif;
+	font-optical-sizing: auto;
+	font-weight: 400;
+	font-style: normal;
+}
+
+/* Removes the bullets from the <ul> when the wwwify command is used to render hyperlinks. */
+.webify ul {
+	list-style-type: none;
+	padding-inline-start: inherit;
+	line-height: 1.3em
+}
+
+/* Used only by the info command. */
+.scrollpane {
+	overflow: auto;
+	position: absolute;
+	top: 2em;
+	bottom: 0em;
+	left: 0.5em;
+	right: 0em;
+}
+
+/* Toolbars generally hold buttons and go top-right of their containers. */
+div.toolbar {
+	position: absolute;
+	right: 0.5em;
+	top: 0.5em;	
+}
+
+/* Tabs sit on a grey rule. */
+div.tabs {
+	border-bottom: 1px solid #ccc;
+}
+	/* Keep the <ul> tight. All the whitespace will come from the <li> and <a> elements within. */
+	div.tabs > ul {
+		margin: 0;
+		padding: 0;
+	}
+	div.tabs > ul > li {
+		display: inline-block;
+		padding: 0.5em 0;
+		margin-right: 1em;
+
+	}
+
+	/* The selected tab has grey text and a thick rule underneath. */
+	div.tabs > ul > li.selected {
+		border-bottom: 2px solid #666;
+	}
+	div.tabs > ul > li.selected a {
+		color: #333;
+	}
+	div.tabs > ul > li > a {
+		text-decoration: none;
+		padding: 0.5em;
+	}
+
+	/* Affordance effects for tabs: a simple grey background colour. */
+	div.tabs > ul > li > a:hover,div.tabs > ul > li > a:focus {
+		background-color: #eee;
+	}

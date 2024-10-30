@@ -115,14 +115,14 @@ function buildHelp() {
 		a['id'] = command['command']
 		div.appendChild( a )
 
-		var h4 = document.createElement('h4')
-		h4.innerHTML = command['command']
-		if ( command['params'] !== undefined ) {
-			h4.insertAdjacentHTML( 'beforeend', ' <span class="params">' + command['params'] + '</span>')
-		}
-		a.appendChild( h4 )
-
 		var p = document.createElement('p')
+		p.innerHTML = '<strong>' + command['command'] + '</strong>\n'
+		if ( command['params'] !== undefined ) {
+			p.insertAdjacentHTML( 'beforeend', ' <span class="params">' + command['params'] + '</span>')
+		}
+		a.appendChild( p )
+
+		p = document.createElement('p')
 		p.innerHTML = command['desc']
 		div.appendChild( p )
 		

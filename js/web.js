@@ -5,6 +5,7 @@ function _wwwify(urls) {
 	var info = document.getElementById('info')
 	var mono = document.createElement('div')
 	mono.classList.add('mono')
+	mono.classList.add('webify')
 	info.replaceChildren(mono)
 
 	// Create a <ul> to list the URLs

@@ -1,0 +1,65 @@
+/* The UI section uses flexbox to lay out its three panes. */
+section#ui {
+	position: absolute;
+	left: 0.5em;
+	right: 0.5em;
+	top: 3.25em;
+	bottom: 2em;
+	display:flex;
+	justify-content: space-between;
+	flex-direction: row;
+	align-items: stretch;
+	gap: 0.5em;
+}
+	/* The immediate <div> children are the three panes. They need to be white and have borders. flex:1; makes them all the same size. */
+	section#ui > div {
+		flex: 1; 
+		position:relative; 
+		border: 1px solid #e0e0e0;
+		background-color: #fff;
+		padding: 0.5em;
+	}
+
+	/* The output <div> is twice as big as the others when no other pane is 'wide'. */
+	section#ui.normal > div#output { 
+		flex: 2; 
+	}
+
+	/* When a pane is made 'wide' its name is used as a class on the section UI and we use this to make it 20 times bigger than the other panes. */
+	section#ui.original > div#original { flex: 20; }
+	section#ui.recipe > div#recipe { flex: 20; }
+	section#ui.output > div#output { flex: 20; }
+	section#ui.output > div#help { flex: 20; }
+
+	/* Hide the toolbars of non-wide panes */
+	section#ui.original > div#recipe .hideonwide, 
+	section#ui.original > div#output .hideonwide,
+	section#ui.recipe > div#original .hideonwide, 
+	section#ui.recipe > div#output .hideonwide, 
+	section#ui.output > div#original .hideonwide, 
+	section#ui.output > div#recipe .hideonwide
+	{ display:none; }
+
+	/* Make all the toolbar buttons a bit smaller in the UI section to save a bit of space. */
+	section#ui .toolbar .button {
+		font-size: 0.8em;
+	}
+
+	/* When a pane is 'wide' make its wide button blue. This works simply because the other wide buttons are hidden. */
+	section#ui.original div.toolbar a.button,
+	section#ui.recipe div.toolbar a.button,
+	section#ui.output div.toolbar a.button {
+		background-color: #36c;
+		border: 1px solid #36c;
+		color: #fff;
+	}
+
+	/* Make the wrap buttons behave as toggles. The wrap class is applied when the button *isn't* functioning ... :| */
+	section#ui.original div.toolbar a.button.wrap,
+	section#ui.recipe div.toolbar a.button.wrap,
+	section#ui.output div.toolbar a.button.wrap,
+	section#ui a.button.wrap {
+		background-color: #fff;
+		border: 1px solid #aaa;
+		color: #595959;
+	}
