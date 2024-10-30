@@ -1,9 +1,5 @@
 **** FUNCTIONS *********************************************************
  - replace a string with a space or a tab
- - variables and arrays!
-   - tabbed UI (bottom of recipe pane) you can manually set
-   - programmatically set arrays
-   - programmatically set vars e.g. s delimiter
  - random numbers
  - random text
    - lorem
@@ -16,14 +12,18 @@
  - 2.0
 
 **** UI *************************
- - improve and expands the help long descriptions.
+ - improve and expand the help long descriptions.
  - example pulling and sorting the numbers in a grid
  - dark mode (CSS to override colours, toggle in the toolbar)
  - get some SVG icons from somewhere for close, wrap, wide, clear, copy
 
 **** PROGRAMMING *************************
  - copy to clipboard
-  - TAB autocomplete
+ - variables and arrays!
+   - tabbed UI (bottom of recipe pane?) you can manually set
+   - programmatically set arrays
+   - programmatically set vars e.g. s delimiter
+ - TAB autocomplete
  - Show the help in error messages
  - use a delimiter as a variable for ss etc.
  - mouseclick on lightbox to close it
