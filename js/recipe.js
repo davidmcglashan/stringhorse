@@ -62,3 +62,4 @@ function recipe() {
 
 buildHelp()
 restoreState()
+fixTabIndex()

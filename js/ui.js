@@ -52,6 +52,8 @@ function wrap(ta) {
 function help() {
 	document.getElementById('lightbox').classList.toggle('show')
 	
+	// The tray starts with neither an open or closed class since this triggers an animation. First time
+	// through simply set an open class on it. Subsequent goes can then toggle open and closed classes.
 	var tray = document.getElementById('tray')
 	if ( tray.classList.length === 0 ) {
 		tray.classList.add('open')
@@ -59,8 +61,18 @@ function help() {
 		tray.classList.toggle('closed')
 		tray.classList.toggle('open')
 	}
+
+	// Finally, find every element was a tabIndex. These are either 'on' (0) or off ('-1') and we want to
+	// toggle their states.
+	var elems = document.querySelectorAll("[tabindex]");
+	for ( var i = 0; i < elems.length; i++ ) {
+		elems[i].tabIndex = -1 - elems[i].tabIndex;
+	}	
 }
 
+/**
+ * Switches the tab display between the passed-in options.
+ */
 function tab(tdiv,tab) {
 	// Grab all the lis and make the passed in tab the selected one.
 	var ul = document.getElementById( tdiv+'-ul' )
@@ -99,8 +111,9 @@ function buildHelp() {
 		ul.appendChild( li )
 		var a = document.createElement('a')
 		li.appendChild( a )
+		a['tabIndex'] = '-1'
 		a['title'] = command['desc']
-		a['href'] = '#' + command['command']
+		a['href'] = "javascript:showHelpCommand('" + command['command'] + "');"
 		a.innerHTML = command['command']
 		li.insertAdjacentHTML( 'beforeend', '<div class="help-desc">' + command['short'] + '</div>\n' );
 	}
@@ -111,16 +124,13 @@ function buildHelp() {
 		var hr = document.createElement('hr')
 		div.appendChild( hr )
 
-		var a = document.createElement('a')
-		a['id'] = command['command']
-		div.appendChild( a )
-
 		var p = document.createElement('p')
+		p['id'] = command['command']
 		p.innerHTML = '<strong>' + command['command'] + '</strong>\n'
 		if ( command['params'] !== undefined ) {
 			p.insertAdjacentHTML( 'beforeend', ' <span class="params">' + command['params'] + '</span>')
 		}
-		a.appendChild( p )
+		div.appendChild( p )
 
 		p = document.createElement('p')
 		p.innerHTML = command['desc']
@@ -143,11 +153,20 @@ function buildHelp() {
 				a = document.createElement( 'a' )
 				a['title'] = also
 				a['href'] = '#' + also
+				a['tabIndex'] = '-1'
 				a.innerHTML = also
 				p.appendChild( a )
 			}			
 		}
 	}
+}
+
+/**
+ * Scrolls the viewport to show the passed in command in the help pane of the slide-in tray.
+ */
+function showHelpCommand(cmd) {
+	var elem = document.getElementById(cmd)
+	elem.scrollIntoView({ behavior: "smooth" })
 }
 
 /**
@@ -216,4 +235,19 @@ function restoreState() {
 	if ( localStorage.hasOwnProperty( 'wrap-out' ) ) {
 		wrap( 'out' )
 	}
+}
+
+/**
+ * Applies default tabindex values to elements in the DOM.
+ */
+function fixTabIndex() {
+	var elems = document.querySelectorAll("header a, section#ui a, section#ui textarea");
+	for ( var i = 0; i < elems.length; i++ ) {
+		elems[i].tabIndex = 0;
+	}	
+
+	var elems = document.querySelectorAll("section#tray a");
+	for ( var i = 0; i < elems.length; i++ ) {
+		elems[i].tabIndex = -1;
+	}	
 }

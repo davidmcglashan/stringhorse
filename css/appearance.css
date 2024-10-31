@@ -103,14 +103,14 @@ a.button {
 		color: #595959;
 	}
 	/* Affordance effects for buttons: dark background, white foreground. */
-	a.button:hover,a.button:focus {
+	a.button:hover {
 		border: 1px solid #236 !important;
 		background-color: #236 !important;
 		color: #fff !important;
 	}
 
 /* Affordance effects for buttons and links: underline off, pink highlight. */
-a:hover,a:focus {
+a:hover {
 	text-decoration: none;
 	color: #a33;
 }
@@ -182,6 +182,6 @@ div.tabs {
 	}
 
 	/* Affordance effects for tabs: a simple grey background colour. */
-	div.tabs > ul > li > a:hover,div.tabs > ul > li > a:focus {
+	div.tabs > ul > li > a:hover {
 		background-color: #eee;
 	}

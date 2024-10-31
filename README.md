@@ -18,13 +18,18 @@ Commands mostly don't have cutesy or UNIX-y names like sed or grep. You can work
 
 Characters are combined to achieve things …
 
-**k=** will _keep_ all the lines that _match_ the text following the command.
-**+>** will _add_ the text following the command to the _right_ of each line.
+* **k=** will _keep_ all the lines that _match_ the text following the command.
+* **+>** will _add_ the text following the command to the _right_ of each line.
 
 You get three text panes. Paste the source text into the left and write your command recipe into the middle. The output will appear in the right.
 
 ## Changelog
 
+### version 1.0.2
+* Implemented a better 'scroll to visible' in the command list which doesn't obscure the target and break refresh.
+* Clicking away from the slide-in tray will now close it.
+* :focus styles no longer applied in CSS so the browser can do its thing and they're not the same as the :hover styles which was confusing.
+
 ### version 1.0.1
 * Reorganised the CSS into three better-structured files.
-* Fixed some accessibility issues
+* Fixed some accessibility issues.
