@@ -75,6 +75,17 @@ header {
 		margin-left: 2em;
 	}
 
+	/* These rules make the dark mode button's label indicate the mode a click will switch to. */
+	html.dark header a span.dark {
+		display:none;
+	}
+	html.dark header a span.light {
+		display:inline;
+	}
+	html header a span.light {
+		display:none;
+	}
+
 /* The footer is also simple. */
 footer {
 	position: absolute;
@@ -165,14 +176,9 @@ a {
 	display: none;
 }
 
-html.dark a span.dark {
-	display:none;
-}
-html.dark a span.light {
-	display:inline;
-}
-html a span.light {
-	display:none;
+/* Any element can get slightly smaller text with this class. */
+.small {
+	font-size: 90%;
 }
 
 /* This class can be used on all monospaced elements e.g. textboxes. */

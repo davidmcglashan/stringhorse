@@ -49,9 +49,9 @@ section#ui {
 	section#ui.original div.toolbar a.button,
 	section#ui.recipe div.toolbar a.button,
 	section#ui.output div.toolbar a.button {
-		background-color: #36c;
-		border: 1px solid #36c;
-		color: #fff;
+		background-color: var(--button-bg);
+		border: 1px solid var(--button-bg);
+		color: var(--button-fg);
 	}
 
 	/* Make the wrap buttons behave as toggles. The wrap class is applied when the button *isn't* functioning ... :| */
@@ -59,7 +59,7 @@ section#ui {
 	section#ui.recipe div.toolbar a.button.wrap,
 	section#ui.output div.toolbar a.button.wrap,
 	section#ui a.button.wrap {
-		background-color: #fff;
-		border: 1px solid #aaa;
-		color: #595959;
+		background-color: var(--pane-bg);
+		border: 1px solid var(--pane-border);
+		color: var(--button-alt-fg);;
 	}

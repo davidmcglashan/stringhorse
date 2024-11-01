@@ -47,7 +47,7 @@ function wrap(ta) {
 }
 
 /**
- * Slides in the tray with the help tab showing.
+ * Toggles the slide-in tray so the user can access some help.
  */
 function help() {
 	document.getElementById('lightbox').classList.toggle('show')
@@ -67,7 +67,7 @@ function help() {
 	var elems = document.querySelectorAll("[tabindex]");
 	for ( var i = 0; i < elems.length; i++ ) {
 		elems[i].tabIndex = -1 - elems[i].tabIndex;
-	}	
+	}
 }
 
 /**
@@ -241,6 +241,16 @@ function restoreState() {
 		var html = document.getElementById('html')
 		html.classList.add('dark')
 	}
+
+	// Add an escape listener for the slide-in tray.
+	document.addEventListener( 'keydown', (event) => {
+		if ( tray.classList.contains( 'closed' ) ) {
+			return
+		}
+		if ( event.key === 'Escape' ) {
+			help()
+		}
+	})
 }
 
 /**
@@ -266,4 +276,12 @@ function dark() {
 	html.classList.toggle('dark')
 
 	localStorage['dark'] = html.classList.contains('dark')
+}
+
+/**
+ * Copies the output text into the clipboard.
+ */
+function copyToClipboard() {
+	var output = document.getElementById('out')
+	navigator.clipboard.writeText( output.value );
 }
