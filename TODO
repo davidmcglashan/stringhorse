@@ -12,7 +12,6 @@
  - 2.0
 
 **** UI *************************
- - dark mode (CSS to override colours, toggle in the toolbar)
  - get some SVG icons from somewhere for close, wrap, wide, clear, copy
  - improve and expand the help long descriptions.
  - example pulling and sorting the numbers in a grid

@@ -1,3 +1,41 @@
+/* All the colours go in here */
+:root {
+	--ui-background: #fafafa;
+	--button-bg: #36c;
+	--link-fg: #36c;
+	--link-hover-fg: #25a;
+	--button-fg: #fff;
+	--button-alt-fg: #595959;
+	--button-hover-fg: #fff;
+	--button-hover-bg: #236;
+	--lightbox: rgba(0, 55, 0, 0.5);
+	--pane-border: #ddd;
+	--pane-bg: #fff;
+	--text-fg: #121;
+	--selected-tab: #444;
+	--tab-hover-bg: #eee;
+	--tab-hover-fg: #25a;
+	color-scheme: light;
+}
+
+/* To enable dark mode we put a 'dark' class on the <html> node, and these overidden colours are used. */
+:root.dark {
+	--ui-background: #232;
+	--lightbox: rgba(0, 0, 0, 0.75);
+	--link-fg: #e76;
+	--button-bg: #a43;
+	--button-fg: #fff;
+	--button-hover-bg: #632;
+	--button-alt-fg: #cdc;
+	--pane-border: #565;
+	--pane-bg: #222;
+	--text-fg: #cdc;
+	--selected-tab: #c65;
+	--tab-hover-bg: #bbb;
+	--tab-hover-fg: #25a;
+	color-scheme: dark;
+}
+
 /* Establish the font and remove the page margins. X-overflow is disabled to hide the slide-in tray. */
 body {
 	font-family: "Karla", sans-serif;
@@ -5,8 +43,9 @@ body {
 	font-weight: 400;
 	font-style: normal;
 	margin: 0;
-	background-color: #fafafa;
+	background-color: var(--ui-background);
 	overflow-x: hidden;
+	color: var(--text-fg);
 }
 
 /* The header and its elements are stickily positioned and have simple presentation. */
@@ -53,7 +92,7 @@ section#lightbox {
 	bottom: 0;
 	left: 0;
 	z-index: 1;
-	background-color: rgba(0, 55, 0, 0.5);
+	background-color: var(--lightbox);
 	visibility: hidden;
 	opacity: 0;
 	transition: opacity 250ms ease-in, visibility 0ms ease-in 250ms;
@@ -76,6 +115,8 @@ textarea {
 	resize: none;
 	border: 0;
 	padding: 0.5em;
+	background-color: var(--pane-bg);
+	color: var(--text-fg);
 }
 	/* Wrapping can be disabled for textareas with this. */
 	textarea.wrap {
@@ -84,40 +125,54 @@ textarea {
 
 /* Horizontal rules are grey and faint. */
 hr {
-	border: 1px solid #f0f0f0;
+	border: 1px solid var(--pane-border);
 }
 
-/* Nice blue buttons. */
-a.button {
-	background-color: #36c;
-	border: 1px solid #36c;
-	color: #fff;
-	padding: 0.1em 0.5em;
-	border-radius: 3px;
-	text-decoration: none;
+/* Hyperlinks are blue. */
+a {
+	color: var(--link-fg);
 }
-	/* Inverted buttons are white with a grey border. Some of them toggle into the blue buttons. */
-	a.button.invert {
-		background-color: #fff;
-		border: 1px solid #aaa;
-		color: #595959;
-	}
-	/* Affordance effects for buttons: dark background, white foreground. */
-	a.button:hover {
-		border: 1px solid #236 !important;
-		background-color: #236 !important;
-		color: #fff !important;
+	/* Affordance effects for buttons and links: underline off, pink highlight. */
+	a:hover {
+		text-decoration: none;
+		color: var(--link-hover-fg);
 	}
 
-/* Affordance effects for buttons and links: underline off, pink highlight. */
-a:hover {
-	text-decoration: none;
-	color: #a33;
-}
+	/* Nice blue buttons. */
+	a.button {
+		background-color: var(--button-bg);
+		border: 1px solid var(--button-bg);
+		color: var(--button-fg);
+		padding: 0.1em 0.5em;
+		border-radius: 3px;
+		text-decoration: none;
+	}
+		/* Inverted buttons are white with a grey border. Some of them toggle into the blue buttons. */
+		a.button.invert {
+			background-color: var(--pane-bg);
+			border: 1px solid var(--pane-border);
+			color: var(--button-alt-fg);
+		}
+		/* Affordance effects for buttons: dark background, white foreground. */
+		a.button:hover {
+			border: 1px solid var(--button-hover-bg) !important;
+			background-color: var(--button-hover-bg) !important;
+			color: var(--button-hover-fg) !important;
+		}
 
 /* Any element can be hidden with this class. */
 .hidden {
 	display: none;
+}
+
+html.dark a span.dark {
+	display:none;
+}
+html.dark a span.light {
+	display:inline;
+}
+html a span.light {
+	display:none;
 }
 
 /* This class can be used on all monospaced elements e.g. textboxes. */
@@ -155,7 +210,7 @@ div.toolbar {
 
 /* Tabs sit on a grey rule. */
 div.tabs {
-	border-bottom: 1px solid #ccc;
+	border-bottom: 1px solid var(--pane-border);
 }
 	/* Keep the <ul> tight. All the whitespace will come from the <li> and <a> elements within. */
 	div.tabs > ul {
@@ -171,10 +226,10 @@ div.tabs {
 
 	/* The selected tab has grey text and a thick rule underneath. */
 	div.tabs > ul > li.selected {
-		border-bottom: 2px solid #666;
+		border-bottom: 2px solid var(--selected-tab);
 	}
 	div.tabs > ul > li.selected a {
-		color: #333;
+		color: var(--text-fg);
 	}
 	div.tabs > ul > li > a {
 		text-decoration: none;
@@ -183,5 +238,7 @@ div.tabs {
 
 	/* Affordance effects for tabs: a simple grey background colour. */
 	div.tabs > ul > li > a:hover {
-		background-color: #eee;
+		color: var(--tab-hover-fg);
+		background-color: var(--tab-hover-bg);
+		border-bottom: 2px solid var(--pane-border);
 	}

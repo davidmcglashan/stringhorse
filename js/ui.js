@@ -235,6 +235,12 @@ function restoreState() {
 	if ( localStorage.hasOwnProperty( 'wrap-out' ) ) {
 		wrap( 'out' )
 	}
+
+	// Are we doing dark mode?
+	if ( localStorage.hasOwnProperty( 'dark' ) && localStorage['dark'] === 'true' ) {
+		var html = document.getElementById('html')
+		html.classList.add('dark')
+	}
 }
 
 /**
@@ -250,4 +256,14 @@ function fixTabIndex() {
 	for ( var i = 0; i < elems.length; i++ ) {
 		elems[i].tabIndex = -1;
 	}	
+}
+
+/**
+ * Toggles dark mode
+ */
+function dark() {
+	var html = document.getElementById('html')
+	html.classList.toggle('dark')
+
+	localStorage['dark'] = html.classList.contains('dark')
 }
