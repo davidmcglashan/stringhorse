@@ -23,6 +23,12 @@ Characters are combined to achieve things …
 
 ## Changelog
 
+### version 1.2
+ * You can now set variables in the UI and use them in some commands.
+   * Variables textpane sits underneath the recipe. You set a variable by typing _[name] = [value]_.
+   * $str and $tab are system variables for space and tab.
+   * the _|space_ and _|tab_ commands have been removed. You can use variables to better achieve the same outcomes.
+
 ### version 1.1
 * Stringhorse now has a dark mode. Toggle it from the button in the toolbar.
 * Pressing Esc will now close the slide-in tray.

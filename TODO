@@ -17,15 +17,6 @@
  - example pulling and sorting the numbers in a grid
 
 **** PROGRAMMING *************************
- - variables and arrays!
-   x UI done
-   x same keypress waits
-   x store in local
-   x restore state
-   x $spc and $tab check
-   - use in fucntions
-   x make = work in a variable value
-   x remove |space and |tab commands
  - TAB autocomplete
  - Show the help in error messages
  - use a delimiter as a variable for ss etc.
