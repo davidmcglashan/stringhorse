@@ -18,9 +18,14 @@
 
 **** PROGRAMMING *************************
  - variables and arrays!
-   - tabbed UI (bottom of recipe pane?) you can manually set
-   - programmatically set arrays
-   - programmatically set vars e.g. s delimiter
+   x UI done
+   x same keypress waits
+   x store in local
+   x restore state
+   x $spc and $tab check
+   - use in fucntions
+   x make = work in a variable value
+   x remove |space and |tab commands
  - TAB autocomplete
  - Show the help in error messages
  - use a delimiter as a variable for ss etc.

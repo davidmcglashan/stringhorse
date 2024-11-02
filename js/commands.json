@@ -97,8 +97,8 @@ let commands = [
 	},
 	{
 		"command": "kaz",
-		"params": "(tab|space)",
-		"desc": "Keeps only the alphabet characters in each line. Optional second parameter defines whether to separate these with TABs or spaces.",
+		"params": "([string])",
+		"desc": "Keeps only the alphabet characters in each line. Optional second parameter defines what to separate the new words with.",
 		"short": "Keep letters",
 		"also": [
 			"k09",
@@ -107,8 +107,8 @@ let commands = [
 	},
 	{
 		"command": "k09",
-		"params": "(tab|space)",
-		"desc": "Keeps only the numbers in each line. Optional second parameter defines whether to separate these with TABs or spaces.",
+		"params": "([string])",
+		"desc": "Keeps only the numbers in each line. Optional second parameter defines what to separate the new words with.",
 		"short": "Keep numbers",
 		"also": [
 			"kaz",
@@ -117,8 +117,8 @@ let commands = [
 	},
 	{
 		"command": "k**",
-		"params": "(tab|space)",
-		"desc": "Keeps only the symbols in each line. Optional second parameter defines whether to separate these with TABs or spaces.",
+		"params": "([string])",
+		"desc": "Keeps only the symbols in each line. Optional second parameter defines what to separate the new words with.",
 		"short": "Keep symbols",
 		"also": [
 			"kaz",
@@ -320,29 +320,7 @@ let commands = [
 		"command": "|",
 		"params": "([string])",
 		"desc": "Split the lines on occurances of [string] (or any whitespace if not provided), removing the [string] in the process.",
-		"short": "Split lines",
-		"also": [
-			"|space",
-			"|tab"
-		]
-	},
-	{
-		"command": "|space",
-		"desc": "Split the lines on occurances of space, removing the space in the process.",
-		"short": "Split lines on spaces",
-		"also": [
-			"|",
-			"|tab"
-		]
-	},
-	{
-		"command": "|tab",
-		"desc": "Split the lines on occurances of TAB, removing the TAB in the process.",
-		"short": "Split lines on TABs",
-		"also": [
-			"|",
-			"|space"
-		]
+		"short": "Split lines"
 	},
 	{
 		"command": "j",

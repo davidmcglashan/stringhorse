@@ -1,8 +1,8 @@
 /* The UI section uses flexbox to lay out its three panes. */
 section#ui {
 	position: absolute;
-	left: 0.5em;
-	right: 0.5em;
+	left: 0em;
+	right: 0em;
 	top: 3.25em;
 	bottom: 2em;
 	display:flex;
@@ -10,14 +10,13 @@ section#ui {
 	flex-direction: row;
 	align-items: stretch;
 	gap: 0.5em;
+	background-color: var(--ui-background);
 }
 	/* The immediate <div> children are the three panes. They need to be white and have borders. flex:1; makes them all the same size. */
 	section#ui > div {
 		flex: 1; 
-		position:relative; 
-		border: 1px solid var(--pane-border);
-		background-color: var(--pane-bg);
-		padding: 0.5em;
+		position: relative; 
+		padding: 1em 0.5em;
 	}
 
 	/* The output <div> is twice as big as the others when no other pane is 'wide'. */
@@ -25,19 +24,44 @@ section#ui {
 		flex: 2; 
 	}
 
+	/* The central column is sometimes split into two. */
+	section#ui > div#centre-column {
+		display: flex;
+		flex-direction: column;
+		align-items: stretch;
+		padding: 0;
+	}
+		section#ui > div#centre-column > div {
+			flex: 10;
+			position: relative;
+			padding: 1em 0.5em;
+		}
+		section#ui > div#centre-column > div#variables textarea {
+			bottom: 1.5em;
+		}
+		section#ui > div#centre-column > div#variables #checkbox-stab {
+			height: 1.25em;
+		}
+
+		section#ui > div#centre-column > div#variables div#stab {
+			position: absolute;
+			bottom: -0.25em;
+			left: 0;
+		}
+
 	/* When a pane is made 'wide' its name is used as a class on the section UI and we use this to make it 20 times bigger than the other panes. */
 	section#ui.original > div#original { flex: 20; }
-	section#ui.recipe > div#recipe { flex: 20; }
+	section#ui.centre-column > div#centre-column { flex: 20; }
 	section#ui.output > div#output { flex: 20; }
 	section#ui.output > div#help { flex: 20; }
 
 	/* Hide the toolbars of non-wide panes */
-	section#ui.original > div#recipe .hideonwide, 
+	section#ui.original > div#centre-column .hideonwide, 
 	section#ui.original > div#output .hideonwide,
-	section#ui.recipe > div#original .hideonwide, 
-	section#ui.recipe > div#output .hideonwide, 
+	section#ui.centre-column > div#original .hideonwide, 
+	section#ui.centre-column > div#output .hideonwide, 
 	section#ui.output > div#original .hideonwide, 
-	section#ui.output > div#recipe .hideonwide
+	section#ui.output > div#centre-column .hideonwide
 	{ display:none; }
 
 	/* Make all the toolbar buttons a bit smaller in the UI section to save a bit of space. */
@@ -45,21 +69,60 @@ section#ui {
 		font-size: 0.8em;
 	}
 
+	/* Prevent the toolbar buttons of the rightmost toolbar from touching the edge of the screen. */
+	section#ui > div#output .toolbar {
+		right: 0.5em;
+	}
+
 	/* When a pane is 'wide' make its wide button blue. This works simply because the other wide buttons are hidden. */
-	section#ui.original div.toolbar a.button,
-	section#ui.recipe div.toolbar a.button,
-	section#ui.output div.toolbar a.button {
+	section#ui.original div.toolbar a.wide-button,
+	section#ui.centre-column div.toolbar a.wide-button,
+	section#ui.output div.toolbar a.wide-button {
 		background-color: var(--button-bg);
 		border: 1px solid var(--button-bg);
 		color: var(--button-fg);
 	}
 
 	/* Make the wrap buttons behave as toggles. The wrap class is applied when the button *isn't* functioning ... :| */
-	section#ui.original div.toolbar a.button.wrap,
-	section#ui.recipe div.toolbar a.button.wrap,
-	section#ui.output div.toolbar a.button.wrap,
 	section#ui a.button.wrap {
 		background-color: var(--pane-bg);
 		border: 1px solid var(--pane-border);
 		color: var(--button-alt-fg);;
 	}
+
+	/* The variables window has three modes: off, small, large (which is half of the central-column). */
+	section#ui div#variables.vars-hide {
+		flex: 0;
+		padding-bottom: 0;
+	}
+	section#ui div#variables.vars-small {
+		flex: 3;
+	}
+
+	/* Hide or show the buttons to change the variables pane size depending on its mode. */
+	section#ui div#variables.vars-hide textarea,
+	section#ui div#variables.vars-hide div#stab,
+	section#ui div#variables.vars-hide a#vars-hide-button,
+	section#ui div#variables.vars-small a#vars-small-button,
+	section#ui div#variables.vars-large a#vars-large-button {
+		display:none;
+	}
+
+	/* Textareas (very important to stringhorse!) fill their containers, have no borders, and gentle padding. */
+	section#ui textarea {
+		position: absolute;
+		top: 2.5em;
+		bottom: 0;
+		left: 0;
+		right: 0;
+		resize: none;
+		padding: 0.5em;
+		background-color: var(--pane-bg);
+		color: var(--text-fg);
+		border: 1px solid var(--pane-border);
+	}
+		/* Wrapping can be disabled for textareas with this. */
+		section#ui textarea.wrap {
+			text-wrap: nowrap;
+		}
+

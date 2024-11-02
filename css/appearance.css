@@ -1,6 +1,7 @@
 /* All the colours go in here */
 :root {
 	--ui-background: #fafafa;
+	--header-bg: #eee;
 	--button-bg: #36c;
 	--link-fg: #36c;
 	--link-hover-fg: #25a;
@@ -21,6 +22,7 @@
 /* To enable dark mode we put a 'dark' class on the <html> node, and these overidden colours are used. */
 :root.dark {
 	--ui-background: #232;
+	--header-bg: #343;
 	--lightbox: rgba(0, 0, 0, 0.75);
 	--link-fg: #e76;
 	--button-bg: #a43;
@@ -46,6 +48,7 @@ body {
 	background-color: var(--ui-background);
 	overflow-x: hidden;
 	color: var(--text-fg);
+	font-size: 10pt;
 }
 
 /* The header and its elements are stickily positioned and have simple presentation. */
@@ -56,6 +59,8 @@ header {
 	right: 0;
 	padding: 1em;
 	padding-left: 6em;
+	background-color: var(--header-bg);
+	border-bottom: 1px solid var(--header-bg);
 }
 	header > h1 {
 		margin-top: -0.25em;
@@ -69,7 +74,7 @@ header {
 	/* The header features a simple right-aligned toobar. This spaces out its buttons. */
 	header > div.toolbar {
 		right: 1em;
-	    top: 1.25em;
+	    top: 1.1em;
 	}
 	header div.toolbar a {
 		margin-left: 2em;
@@ -116,24 +121,6 @@ section#lightbox.show {
 	transition: opacity 250ms ease-in, visibility 0ms ease-in 0ms;
 }
 
-/* Textareas (very important to stringhorse!) fill their containers, have no borders, and gentle padding. */
-textarea {
-	position: absolute;
-	top: 2.5em;
-	bottom: 0;
-	left: 0;
-	right: 0;
-	resize: none;
-	border: 0;
-	padding: 0.5em;
-	background-color: var(--pane-bg);
-	color: var(--text-fg);
-}
-	/* Wrapping can be disabled for textareas with this. */
-	textarea.wrap {
-		text-wrap: nowrap;
-	}
-
 /* Horizontal rules are grey and faint. */
 hr {
 	border: 1px solid var(--pane-border);
@@ -142,10 +129,11 @@ hr {
 /* Hyperlinks are blue. */
 a {
 	color: var(--link-fg);
+	text-decoration: none;
 }
 	/* Affordance effects for buttons and links: underline off, pink highlight. */
 	a:hover {
-		text-decoration: none;
+		text-decoration: underline;
 		color: var(--link-hover-fg);
 	}
 
@@ -181,6 +169,11 @@ a {
 	font-size: 90%;
 }
 
+/* Convenience class for spacing elements a little. */
+.gapAfter {
+	margin-right: 1em;
+}
+
 /* This class can be used on all monospaced elements e.g. textboxes. */
 .mono {
 	font-size: inherit;
@@ -210,8 +203,9 @@ a {
 /* Toolbars generally hold buttons and go top-right of their containers. */
 div.toolbar {
 	position: absolute;
-	right: 0.5em;
-	top: 0.5em;	
+	right: 0em;
+	top: 1em;	
+	color: var(--button-alt-fg);
 }
 
 /* Tabs sit on a grey rule. */

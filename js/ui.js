@@ -114,7 +114,7 @@ function buildHelp() {
 		a['tabIndex'] = '-1'
 		a['title'] = command['desc']
 		a['href'] = "javascript:showHelpCommand('" + command['command'] + "');"
-		a.innerHTML = command['command']
+		a.innerHTML = command['command'].replaceAll('<','&lt;')
 		li.insertAdjacentHTML( 'beforeend', '<div class="help-desc">' + command['short'] + '</div>\n' );
 	}
 
@@ -126,7 +126,7 @@ function buildHelp() {
 
 		var p = document.createElement('p')
 		p['id'] = command['command']
-		p.innerHTML = '<strong>' + command['command'] + '</strong>\n'
+		p.innerHTML = '<strong>' + command['command'].replaceAll('<','&lt;') + '</strong>\n'
 		if ( command['params'] !== undefined ) {
 			p.insertAdjacentHTML( 'beforeend', ' <span class="params">' + command['params'] + '</span>')
 		}
@@ -152,9 +152,9 @@ function buildHelp() {
 
 				a = document.createElement( 'a' )
 				a['title'] = also
-				a['href'] = '#' + also
+				a['href'] = "javascript:showHelpCommand('" + also + "');"
 				a['tabIndex'] = '-1'
-				a.innerHTML = also
+				a.innerHTML = also.replaceAll('<','&lt;')
 				p.appendChild( a )
 			}			
 		}
@@ -193,6 +193,7 @@ function example() {
 
 	localStorage.src = document.getElementById('src').value
 	localStorage.recipe = document.getElementById('rec').value
+	localStorage.variables = document.getElementById('vars').value
 	recipe()
 }
 
@@ -202,8 +203,19 @@ function example() {
 function restoreState() {
 	var srcText = document.getElementById('src')
 	var recipeText = document.getElementById('rec')
+	var varsText = document.getElementById('vars')
 
-	// Restore the original text and recipe from localStorage
+	// Restore the state of the stab checkbox before calling recipe() (which will overwrite it)
+	document.getElementById('checkbox-stab').checked = localStorage.stabs === 'true'
+	varsText.value = localStorage.variables !== undefined ? localStorage.variables : ''
+
+	// Set the size of the variables panel. 'vars-hide' is the default.
+	var size = localStorage['vars-size']
+	if ( size !== undefined ) {
+		document.getElementById( 'variables' ).classList.replace( 'vars-hide', size )
+	}
+
+	// Restore the original text and recipe from localStorage.
 	if ( localStorage.src === undefined && localStorage.recipe === undefined ) {
 		example()
 	} else {
@@ -212,7 +224,7 @@ function restoreState() {
 		recipe()
 	}
 
-	// Put listeners on the original and recipe textareas to do stuff on a time-delayed keypress
+	// Put listeners on the original and recipe textareas to do stuff on a time-delayed keypress.
 	var recipeTimerId = 0;
 	recipeText.addEventListener("keyup", function(event) {
 	    clearTimeout(recipeTimerId);
@@ -223,6 +235,12 @@ function restoreState() {
 	srcText.addEventListener("keyup", function(event) {
 	    clearTimeout(srcTimerId);
 	    srcTimerId = setTimeout( recipe, 750 );
+	});
+
+	var varsTimerId = 0;
+	varsText.addEventListener("keyup", function(event) {
+	    clearTimeout(varsTimerId);
+	    varsTimerId = setTimeout( recipe, 750 );
 	});
 
 	// Re-establish wrap on the textareas
@@ -284,4 +302,13 @@ function dark() {
 function copyToClipboard() {
 	var output = document.getElementById('out')
 	navigator.clipboard.writeText( output.value );
+}
+
+/**
+ * Switch up the size of the variables pane. 
+ */
+function vars(size) {
+	var div = document.getElementById('variables')
+	div.setAttribute('class', size)
+	localStorage['vars-size'] = size
 }
