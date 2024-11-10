@@ -13,9 +13,9 @@ function recipe() {
 	document.getElementById('out').classList.remove('hidden')
 
 	// Our working object is a copy of the source text.
-	var result = document.getElementById('src').value.split('\n')
-	var vars = parseVariables()
-	var recipe
+	let result = document.getElementById('src').value.split('\n')
+	let vars = parseVariables()
+	let recipe
 
 	// This is the main loop, then. Get the recipe text, split by newlines and parse each one ...
 	try {
@@ -53,7 +53,7 @@ function recipe() {
 	}
 
 	// Finished looping. Better print the results ...
-	var tout = document.getElementById('out')
+	let tout = document.getElementById('out')
 	if ( result instanceof String ) {
 		tout.value = result
 	} else {
@@ -68,13 +68,13 @@ function recipe() {
  * Parse the variables from the textarea, returing a dictionary of variable vrs value
  */
 function parseVariables() {
-	var dict = {}
+	let dict = {}
 
 	// Take the contents of the variables text area. If there's an equals we can use it.
-	var lines = document.getElementById('vars').value.split('\n')
+	let lines = document.getElementById('vars').value.split('\n')
 	for ( line of lines ) {
 		if ( line.length > 0 && line.indexOf( '=' ) > 0 ) {
-			var bits = line.split(/=(.*)/)
+			let bits = line.split(/=(.*)/)
 			dict[bits[0].trim()] = bits[1].trim()
 		}
 	}

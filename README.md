@@ -23,6 +23,11 @@ Characters are combined to achieve things …
 
 ## Changelog
 
+### version 1.2.1
+ * The -=> command has become ->= which is consistent with the existant -<= command. 
+ * The stab, stabs, sspace, and sspaces commands are all achievable with variables and so have been removed.
+ * Some programming, non-featue, non-bug improvements.
+
 ### version 1.2
  * You can now set variables in the UI and use them in some commands.
    * Variables textpane sits underneath the recipe. You set a variable by typing _[name] = [value]_.

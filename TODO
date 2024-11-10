@@ -1,5 +1,7 @@
 **** FUNCTIONS *********************************************************
- - replace a string with a space or a tab
+ - cspaces and ctabs should become a single collapse command taking two params
+   - one to collapse runs
+   - one to be the replacement e.g. collapse $spc $spc is cspaces but collapse _ . turns multiple _ into 1 .
  - random numbers
  - random text
    - lorem
@@ -17,6 +19,9 @@
  - example pulling and sorting the numbers in a grid
 
 **** PROGRAMMING *************************
- - TAB autocomplete
- - Show the help in error messages
- - use a delimiter as a variable for ss etc.
+ - wwwify destroys the slide in tray (can't recreate this but have seen it)
+ - old wwwifies get included in the example and can pollute it. Maybe rethink wwwify ...
+ - Error messages should ...
+   - display in a separate UI
+   - show whatever output we ended up with before aborting
+   - link to the help for the command in question (or include the help when it's a known command)

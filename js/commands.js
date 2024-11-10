@@ -4,7 +4,7 @@
 function getVariable( vars, match ) {
 	// Check all the variables
 	if ( match[0] === '$' ) {
-		var name = match.substring(1)
+		let name = match.substring(1)
 		if ( vars[name] !== undefined ) {
 			return vars[name]
 		}
@@ -25,7 +25,7 @@ function _reverse(arr) {
  * Sorts the original text's lines naturally (e.g. 1, 2, 10). [number] can be provided to sort by a column.
  */
 function _nsort(arr,cmd) {
-	var collator = new Intl.Collator(undefined, {numeric: true, sensitivity: 'base'})
+	let collator = new Intl.Collator(undefined, {numeric: true, sensitivity: 'base'})
 	return doSort( arr, cmd, collator )
 }
 
@@ -33,7 +33,7 @@ function _nsort(arr,cmd) {
  * Sorts the original text's lines alphabetically. [number] can be provided to sort by a column.
  */
 function _sort(arr,cmd) {
-	var collator = new Intl.Collator(undefined, {numeric: false, sensitivity: 'base'})
+	let collator = new Intl.Collator(undefined, {numeric: false, sensitivity: 'base'})
 	return doSort( arr, cmd, collator )
 }
 
@@ -47,14 +47,14 @@ function doSort(arr,cmd,collator) {
 	}
 
 	// Which column to sort by?
-	var col = parseInt(cmd[1]) || 1
+	let col = parseInt(cmd[1]) || 1
 
 	// Extract a little dictionary of lines by their column. Then we'll sort the keys and re-assemble the array.
-	var dict = {}
-	var unsortable = []
+	let dict = {}
+	let unsortable = []
 
 	for ( let line of arr ) {
-		var i = 0
+		let i = 0
 
 		for ( let word of line.trim().split( /\s+/ ) ) {
 			i=i+1
@@ -73,7 +73,7 @@ function doSort(arr,cmd,collator) {
 		}
 	}
 
-	var result = []
+	let result = []
 	keys = Object.keys(dict).sort( collator.compare )
 	for ( let key of keys ) {
 		for ( let line of dict[key] ) {
@@ -114,11 +114,11 @@ function _jtab(arr,cmd) {
  * Implements the join functions.
  */
 function join( arr, cmd, join ) {
-	var result = ''
-	var array = []
-	var i = parseInt(cmd[1]) || 999999
+	let result = ''
+	let array = []
+	let i = parseInt(cmd[1]) || 999999
 
-	var j = 0
+	let j = 0
 	for ( let ar of arr ) {
 		result = result + ar + join
 
@@ -156,7 +156,7 @@ function _explode( arr ) {
  * Number the lines starting at 1, or at [number] if it is provided.
  */
 function _number( arr,cmd ) {
-	var i = parseInt(cmd[1]) || 1
+	let i = parseInt(cmd[1]) || 1
 	result = []
 
 	for ( let ar of arr ) {
@@ -177,7 +177,7 @@ function _kequals(arr,cmd,vars) {
 	}
 
 	// Check the parameters for variables.
-	var match = getVariable( vars, cmd[1] )
+	let match = getVariable( vars, cmd[1] )
 
 	array = []
 	for ( let ar of arr ) {
@@ -200,7 +200,7 @@ function _minusequals( arr, cmd, vars ) {
 	}
 
 	// Check the parameters for variables.
-	var match = getVariable( vars, cmd[1] )
+	let match = getVariable( vars, cmd[1] )
 
 	array = []
 	for ( let ar of arr ) {
@@ -283,14 +283,14 @@ function _lower(arr) {
  * Removes every instance of the search string from each line.
  */
 function _minusminus( arr, cmd, vars ) {
-	var result = []
+	let result = []
 
 	if ( cmd[1] === undefined || cmd[1].length === 0 ) {
 		return new String( '--: -- requires a search string to remove.' )
 	}
 
 	// Check the parameters for variables.
-	var match = getVariable( vars, cmd[1] )
+	let match = getVariable( vars, cmd[1] )
 
 	for ( let ar of arr ) {
 		result.push( ar.replaceAll( match,'' ) )
@@ -302,14 +302,14 @@ function _minusminus( arr, cmd, vars ) {
  * Removes the first instance of the search string from each line.
  */
 function _minus( arr, cmd, vars ) {
-	var result = []
+	let result = []
 
 	if ( cmd[1] === undefined || cmd[1].length === 0 ) {
 		return new String( '-: - requires a search string to remove.' )
 	}
 
 	// Check the parameters for variables.
-	var match = getVariable( vars, cmd[1] )
+	let match = getVariable( vars, cmd[1] )
 
 	for ( let ar of arr ) {
 		result.push( ar.replace( match,'' ) )
@@ -321,10 +321,10 @@ function _minus( arr, cmd, vars ) {
  * Removes the text before first instance of the search string on each line, leaving the search string in place.
  */
 function _minusltequals( arr, cmd, vars ) {
-	var result = []
+	let result = []
 
 	// Check the parameters for variables.
-	var match = getVariable( vars, cmd[1] )
+	let match = getVariable( vars, cmd[1] )
 
 	for ( let ar of arr ) {
 		let i = ar.indexOf(match)
@@ -340,11 +340,11 @@ function _minusltequals( arr, cmd, vars ) {
 /**
  * Removes the text after first instance of the search string on each line, leaving the search string in place.
  */
-function _minusequalsgt( arr, cmd, vars ) {
-	var result = []
+function _minusgtequals( arr, cmd, vars ) {
+	let result = []
 
 	// Check the parameters for variables.
-	var match = getVariable( vars, cmd[1] )
+	let match = getVariable( vars, cmd[1] )
 
 	for ( let ar of arr ) {
 		let i = ar.indexOf(match)
@@ -364,7 +364,7 @@ function _pluslt( arr, cmd, vars ) {
 	result = []
 
 	// Check the parameters for variables.
-	var match = getVariable( vars, cmd[1] )
+	let match = getVariable( vars, cmd[1] )
 
 	// Now put that string at the start of each line in the array.
 	for ( let ar of arr ) {
@@ -380,7 +380,7 @@ function _plusgt( arr, cmd, vars ) {
 	result = []
 
 	// Check the parameters for variables.
-	var match = getVariable( vars, cmd[1] )
+	let match = getVariable( vars, cmd[1] )
 
 	// Now put that string at the end of each line in the array.
 	for ( let ar of arr ) {
@@ -401,8 +401,8 @@ function _klt( arr, cmd, vars ) {
 	}
 
 	// Check the parameters for variables.
-	var match = getVariable( vars, cmd[1] )
-	var i = parseInt(match)
+	let match = getVariable( vars, cmd[1] )
+	let i = parseInt(match)
 
 	for ( let ar of arr ) {
 		result.push( ar.substring(0,i) )
@@ -414,7 +414,7 @@ function _klt( arr, cmd, vars ) {
  * Keep only the last [number] characters on each line.
  */
 function _kgt(arr,cmd) {
-	var result = []
+	let result = []
 
 	// Check there was an input ...
 	if ( cmd[1] === undefined || cmd[1].length === 0 ) {
@@ -422,8 +422,8 @@ function _kgt(arr,cmd) {
 	}
 
 	// Check the parameters for variables.
-	var match = getVariable( vars, cmd[1] )
-	var i = parseInt(match)
+	let match = getVariable( vars, cmd[1] )
+	let i = parseInt(match)
 
 	for ( let ar of arr ) {
 		result.push( ar.substring(ar.length-i,ar.length) )
@@ -443,8 +443,8 @@ function _minuslt( arr, cmd, vars ) {
 	}
 
 	// Check the parameters for variables.
-	var match = getVariable( vars, cmd[1] )
-	var i = parseInt(match)
+	let match = getVariable( vars, cmd[1] )
+	let i = parseInt(match)
 
 	for ( let ar of arr ) {
 		result.push( ar.substring(i) )
@@ -456,7 +456,7 @@ function _minuslt( arr, cmd, vars ) {
  * Remove the last [number] characters on each line.
  */
 function _minusgt( arr, cmd, vars ) {
-	var result = []
+	let result = []
 	
 	// Check there was an input ...
 	if ( cmd[1] === undefined || cmd[1].length === 0 ) {
@@ -464,8 +464,8 @@ function _minusgt( arr, cmd, vars ) {
 	}
 
 	// Check the parameters for variables.
-	var match = getVariable( vars, cmd[1] )
-	var i = parseInt(match)
+	let match = getVariable( vars, cmd[1] )
+	let i = parseInt(match)
 
 	for ( let ar of arr ) {
 		result.push( ar.substring(0,ar.length-i) )
@@ -480,7 +480,7 @@ function _pipe( arr, cmd, vars ) {
 	result = []
 	
 	// Use the default if there's no passed in splitter.
-	var splitter = cmd[1]
+	let splitter = cmd[1]
 	if ( cmd[1] === undefined || cmd[1].length === 0 ) {
 		splitter = /\s+/
 	} else {
@@ -500,15 +500,15 @@ function _pipe( arr, cmd, vars ) {
  * Removes everything except column [number], where a column is a whitspace-separated string. [number] defaults to 1.
  */
 function _kcolumn( arr, cmd, vars ) {
-	var result = []
-	var splitter = /\s+/
+	let result = []
+	let splitter = /\s+/
 
 	// Check the parameters for variables.
-	var match = getVariable( vars, cmd[1] )
-	var col = parseInt(match) || 1
+	let match = getVariable( vars, cmd[1] )
+	let col = parseInt(match) || 1
 
 	for ( let line of arr ) {
-		var i = 0
+		let i = 0
 
 		for ( let word of line.trim().split( splitter ) ) {
 			i=i+1
@@ -531,15 +531,15 @@ function _kcolumn( arr, cmd, vars ) {
  * Removes column [number], where a column is a whitspace-separated string. [number] defaults to 1.
  */
 function _minuscolumn( arr, cmd, vars ) {
-	var result = []
-	var splitter = /\s+/
+	let result = []
+	let splitter = /\s+/
 
 	// Check the parameters for variables.
-	var match = getVariable( vars, cmd[1] )
-	var col = parseInt(match) || 1
+	let match = getVariable( vars, cmd[1] )
+	let col = parseInt(match) || 1
 
 	for ( let line of arr ) {
-		var i = 0
+		let i = 0
 		rep = ''
 		for ( let word of line.trim().split( splitter ) ) {
 			i=i+1
@@ -578,10 +578,10 @@ function _kstarstar( arr, cmd, vars ) {
  * Generic keep function supporting knumbers, kalphas, and ksymbols.
  */
 function keep( arr, cmd, vars, regexp ) {
-	var result = []
+	let result = []
 	
 	// Work out what character to put in between the numbers, if any ...
-	var sep = ''
+	let sep = ''
 	if ( cmd[1] === undefined || cmd[1].length === 0 ) {
 		sep = ''
 	} else {
@@ -601,7 +601,7 @@ function keep( arr, cmd, vars, regexp ) {
  * Removes the alphabet characters from each line, leaving only whitespace, the symbols, and the numbers.
  */
 function _minusaz( arr ) {
-	var result = []
+	let result = []
 	for ( let line of arr ) {
 		result.push( line.replace( /[A-Za-z]/g, '') )
 	}
@@ -613,7 +613,7 @@ function _minusaz( arr ) {
  * Removes the numbers from each line, leaving only whitespace, the symbols, and the alphabet characters.
  */
 function _minus09( arr ) {
-	var result = []
+	let result = []
 	for ( let line of arr ) {
 		result.push( line.replace( /[0-9]/g, '') )
 	}
@@ -625,7 +625,7 @@ function _minus09( arr ) {
  * Removes the symbol characters from each line, leaving only whitespace, the numbers, and the alphabet characters.
  */
 function _minusstarstar( arr ) {
-	var result = []
+	let result = []
 	for ( let line of arr ) {
 		result.push( line.replace( /[\W_]/g, '') )
 	}
@@ -637,10 +637,10 @@ function _minusstarstar( arr ) {
  * Collapses any runs of spaces in the original text's lines into one single space or TAB.
  */
 function _cspaces( arr, cmd, vars ) {
-	var result = []
+	let result = []
 	
 	// Work out what the replacement character should be ...
-	var rep = ' '
+	let rep = ' '
 	if ( cmd[1] === undefined || cmd[1].length === 0 ) {
 		rep = ' '
 	} else {
@@ -659,10 +659,10 @@ function _cspaces( arr, cmd, vars ) {
  * Collapses any runs of TABs in the original text's lines into one single TAB or space.
  */
 function _ctabs( arr, cmd, vars ) {
-	var result = []
+	let result = []
 	
 	// Work out what the replacement character should be ...
-	var rep = '\t'
+	let rep = '\t'
 	if ( cmd[1] === undefined || cmd[1].length === 0 ) {
 		rep = '\t'
 	} else {
@@ -678,83 +678,11 @@ function _ctabs( arr, cmd, vars ) {
 }
 
 /**
- * Replace the first TAB in the original text with a space, or the optional passed-in string.
- */
-function _stab( arr, cmd, vars ) {
-	return subtabs( arr, cmd, vars, /\t/ )
-}
-
-/**
- * Replace each TAB in the original text with a space, or the optional passed-in string.
- */
-function _stabs( arr, cmd, vars ) {
-	return subtabs( arr, cmd, vars, /\t/g )	
-}
-
-/**
- * Function supporting stab and stabs which does the substitution work.
- */
-function subtabs( arr, cmd, vars, regexp ) {
-	var result = []
-	
-	// Work out what the replacement character should be ...
-	var rep = ' '
-	if ( cmd[1] === undefined || cmd[1].length === 0 ) {
-		rep = ' '
-	} else {
-		rep = getVariable( vars, cmd[1] )
-	}
-
-	// Do the replacement on each line.
-	for ( let line of arr ) {
-		result.push( line.replace( regexp, rep ) )
-	}
-
-	return result
-}
-
-/**
- * Replace the first space in the original text with a TAB, or the optional passed-in string.
- */
-function _sspace( arr, cmd, vars ) {
-	return subspaces( arr, cmd, vars, / / )
-}
-
-/**
- * Replace each space in the original text with a TAB, or the optional passed-in string.
- */
-function _sspaces( arr, cmd, vars ) {
-	return subspaces( arr, cmd, vars, / /g )
-}
-
-/**
- * Function supporting sspace and sspaces.
- */
-function subspaces( arr, cmd, vars, regexp ) {
-	var result = []
-	
-	// Work out what the replacement character should be ...
-	var rep = '\t'
-	if ( cmd[1] === undefined || cmd[1].length === 0 ) {
-		rep = '\t'
-	} else {
-		rep = getVariable( vars, cmd[1] )
-	}
-
-	// Do the replacement on each line.
-	for ( let line of arr ) {
-		result.push( line.replace( regexp, rep ) )
-	}
-
-	return result
-}
-
-/**
  * Replaces every instance of [a] on each line with [b], separated by a space
  */
 function _ss( arr, cmd, vars ) {
-	var result = []
-	var delim = ' '
+	let result = []
+	let delim = ' '
 
 	// Check there was at least a search parameter ...
 	if ( cmd.length === 1 || cmd[1] === undefined || cmd[1].length === 0 ) {
@@ -762,13 +690,13 @@ function _ss( arr, cmd, vars ) {
 	}
 
 	// The replace parameter we might have to divine for ourselves, if it wasn't provided
-	var params = cmd[1].split(delim)
+	let params = cmd[1].split(delim)
 	if ( params.length === 1 || params[1] === undefined || params[1].length === 0 ) {
 		params[1] = ' '
 	}
 
-	var src = getVariable( vars, params[0] )
-	var dst = getVariable( vars, params[1] )
+	let src = getVariable( vars, params[0] )
+	let dst = getVariable( vars, params[1] )
 
 	for ( let ar of arr ) {
 		result.push( ar.replaceAll( src, dst ) )
@@ -777,11 +705,11 @@ function _ss( arr, cmd, vars ) {
 }
 
 /**
- * Replaces the first instance of [a] on each line with [b]. [a] and [b] are separated with $s_delimiter.
+ * Replaces the first instance of [a] on each line with [b]. [a] and [b] are separated by whitespace. They should be variables in complex whitespace cases.
  */
 function _s( arr, cmd, vars ) {
-	var result = []
-	var delim = ' '
+	let result = []
+	let delim = ' '
 
 	// Check there was at least a search parameter ...
 	if ( cmd.length === 1 || cmd[1] === undefined || cmd[1].length === 0 ) {
@@ -789,13 +717,13 @@ function _s( arr, cmd, vars ) {
 	}
 
 	// The replace parameter we might have to divine for ourselves.
-	var params = cmd[1].split(delim)
+	let params = cmd[1].split(delim)
 	if ( params.length === 1 || params[1] === undefined || params[1].length === 0 ) {
 		params[1] = ' '
 	}
 
-	var src = getVariable( vars, params[0] )
-	var dst = getVariable( vars, params[1] )
+	let src = getVariable( vars, params[0] )
+	let dst = getVariable( vars, params[1] )
 
 	for ( let ar of arr ) {
 		result.push( ar.replace( src, dst ) )

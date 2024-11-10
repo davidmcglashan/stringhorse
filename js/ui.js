@@ -2,7 +2,7 @@
  * Focuses the passed-in element (makes it big on the UI).
  */
 function focus(element) {
-	var ui = document.getElementById('ui')
+	let ui = document.getElementById('ui')
 
 	// The normal class means the UI is in 'three panes' mode and we can replace it with the element passed in.
 	if ( ui.classList.contains('normal') ) {
@@ -17,8 +17,8 @@ function focus(element) {
  * Copy the output text into the original.
  */
 function copyToOriginal() {
-	var tout = document.getElementById('out')
-	var toriginal = document.getElementById('src')
+	let tout = document.getElementById('out')
+	let toriginal = document.getElementById('src')
 	toriginal.value = tout.value
 	localStorage.src = tout.value
 }
@@ -54,7 +54,7 @@ function help() {
 	
 	// The tray starts with neither an open or closed class since this triggers an animation. First time
 	// through simply set an open class on it. Subsequent goes can then toggle open and closed classes.
-	var tray = document.getElementById('tray')
+	let tray = document.getElementById('tray')
 	if ( tray.classList.length === 0 ) {
 		tray.classList.add('open')
 	} else {
@@ -64,8 +64,8 @@ function help() {
 
 	// Finally, find every element was a tabIndex. These are either 'on' (0) or off ('-1') and we want to
 	// toggle their states.
-	var elems = document.querySelectorAll("[tabindex]");
-	for ( var i = 0; i < elems.length; i++ ) {
+	let elems = document.querySelectorAll("[tabindex]");
+	for ( let i = 0; i < elems.length; i++ ) {
 		elems[i].tabIndex = -1 - elems[i].tabIndex;
 	}
 }
@@ -75,19 +75,19 @@ function help() {
  */
 function tab(tdiv,tab) {
 	// Grab all the lis and make the passed in tab the selected one.
-	var ul = document.getElementById( tdiv+'-ul' )
-	var lis = ul.children;
-	for ( var i = 0; i < lis.length; i++ ) {
-		var li = lis[i];
+	let ul = document.getElementById( tdiv+'-ul' )
+	let lis = ul.children;
+	for ( let i = 0; i < lis.length; i++ ) {
+		let li = lis[i];
 		li.classList.remove('selected')
 	}
 	document.getElementById( 'tab-'+tab ).classList.add('selected')
 	
 	// Now make the tab page itself visible
-	var container = document.getElementById( tdiv )
-	var divs = container.children;
-	for ( var i = 0; i < divs.length; i++ ) {
-		var div = divs[i];
+	let container = document.getElementById( tdiv )
+	let divs = container.children;
+	for ( let i = 0; i < divs.length; i++ ) {
+		let div = divs[i];
 		if ( div.classList.contains('tabs') ) {
 			continue;
 		}
@@ -101,15 +101,15 @@ function tab(tdiv,tab) {
  */
 function buildHelp() {
 	// Programmatically populate from the JSON file of commands imported elsewhere. Draw it into this <div>
-	var div = document.getElementById('_tray-commands')
-	var ul = document.createElement('ul')
+	let div = document.getElementById('_tray-commands')
+	let ul = document.createElement('ul')
 	div.replaceChildren(ul)
 
 	// First the command list at the top ...
 	for ( let command of commands ) {
-		var li = document.createElement('li')
+		let li = document.createElement('li')
 		ul.appendChild( li )
-		var a = document.createElement('a')
+		let a = document.createElement('a')
 		li.appendChild( a )
 		a['tabIndex'] = '-1'
 		a['title'] = command['desc']
@@ -121,10 +121,10 @@ function buildHelp() {
 	// Then each command gets a longer description
 	for ( let command of commands ) {
 		// and a separator
-		var hr = document.createElement('hr')
+		let hr = document.createElement('hr')
 		div.appendChild( hr )
 
-		var p = document.createElement('p')
+		let p = document.createElement('p')
 		p['id'] = command['command']
 		p.innerHTML = '<strong>' + command['command'].replaceAll('<','&lt;') + '</strong>\n'
 		if ( command['params'] !== undefined ) {
@@ -143,7 +143,7 @@ function buildHelp() {
 			p.innerHTML = 'See also ... '
 			div.appendChild( p )
 
-			var first = true
+			let first = true
 			for ( let also of command['also'] ) {
 				if ( !first ) {
 					p.insertAdjacentHTML( 'beforeend', ' | ' );
@@ -165,7 +165,7 @@ function buildHelp() {
  * Scrolls the viewport to show the passed in command in the help pane of the slide-in tray.
  */
 function showHelpCommand(cmd) {
-	var elem = document.getElementById(cmd)
+	let elem = document.getElementById(cmd)
 	elem.scrollIntoView({ behavior: "smooth" })
 }
 
@@ -182,13 +182,15 @@ function example() {
 		'\n' +
 		'// Remove the comments from the recipe lines below, one-at-a-time to see stringhorse in action. The recipe will run after a short pause and the output will appear in the right hand pane ...\n' +
 		'\n' +
+
 		'//-<ws\n' +
 		'//k= <li><a\n' +
-		'//-<= #\n' +
-		'//-< 1\n' +
-		'//-=> "\n' +
+		'//-<= help-desc\n' +
+		'//-< 11\n' +
+		'//->= <\n' +
 		'//-> 1\n' +
 		'//sort\n' +
+
 		'\n// The end result is an alphabetical list of commands, extracted from the help page.'
 
 	localStorage.src = document.getElementById('src').value
@@ -201,16 +203,16 @@ function example() {
  * Restores the UI to its previous state invoking localstorage. Called once on page load.
  */
 function restoreState() {
-	var srcText = document.getElementById('src')
-	var recipeText = document.getElementById('rec')
-	var varsText = document.getElementById('vars')
+	let srcText = document.getElementById('src')
+	let recipeText = document.getElementById('rec')
+	let varsText = document.getElementById('vars')
 
 	// Restore the state of the stab checkbox before calling recipe() (which will overwrite it)
 	document.getElementById('checkbox-stab').checked = localStorage.stabs === 'true'
 	varsText.value = localStorage.variables !== undefined ? localStorage.variables : ''
 
 	// Set the size of the variables panel. 'vars-hide' is the default.
-	var size = localStorage['vars-size']
+	let size = localStorage['vars-size']
 	if ( size !== undefined ) {
 		document.getElementById( 'variables' ).classList.replace( 'vars-hide', size )
 	}
@@ -225,19 +227,19 @@ function restoreState() {
 	}
 
 	// Put listeners on the original and recipe textareas to do stuff on a time-delayed keypress.
-	var recipeTimerId = 0;
+	let recipeTimerId = 0;
 	recipeText.addEventListener("keyup", function(event) {
 	    clearTimeout(recipeTimerId);
 	    recipeTimerId = setTimeout( recipe, 750 );
 	});
 
-	var srcTimerId = 0;
+	let srcTimerId = 0;
 	srcText.addEventListener("keyup", function(event) {
 	    clearTimeout(srcTimerId);
 	    srcTimerId = setTimeout( recipe, 750 );
 	});
 
-	var varsTimerId = 0;
+	let varsTimerId = 0;
 	varsText.addEventListener("keyup", function(event) {
 	    clearTimeout(varsTimerId);
 	    varsTimerId = setTimeout( recipe, 750 );
@@ -256,7 +258,7 @@ function restoreState() {
 
 	// Are we doing dark mode?
 	if ( localStorage.hasOwnProperty( 'dark' ) && localStorage['dark'] === 'true' ) {
-		var html = document.getElementById('html')
+		let html = document.getElementById('html')
 		html.classList.add('dark')
 	}
 
@@ -275,13 +277,13 @@ function restoreState() {
  * Applies default tabindex values to elements in the DOM.
  */
 function fixTabIndex() {
-	var elems = document.querySelectorAll("header a, section#ui a, section#ui textarea");
-	for ( var i = 0; i < elems.length; i++ ) {
+	let elems = document.querySelectorAll("header a, section#ui a, section#ui textarea");
+	for ( let i = 0; i < elems.length; i++ ) {
 		elems[i].tabIndex = 0;
 	}	
 
-	var elems = document.querySelectorAll("section#tray a");
-	for ( var i = 0; i < elems.length; i++ ) {
+	elems = document.querySelectorAll("section#tray a");
+	for ( let i = 0; i < elems.length; i++ ) {
 		elems[i].tabIndex = -1;
 	}	
 }
@@ -290,7 +292,7 @@ function fixTabIndex() {
  * Toggles dark mode
  */
 function dark() {
-	var html = document.getElementById('html')
+	let html = document.getElementById('html')
 	html.classList.toggle('dark')
 
 	localStorage['dark'] = html.classList.contains('dark')
@@ -300,7 +302,7 @@ function dark() {
  * Copies the output text into the clipboard.
  */
 function copyToClipboard() {
-	var output = document.getElementById('out')
+	let output = document.getElementById('out')
 	navigator.clipboard.writeText( output.value );
 }
 
@@ -308,7 +310,7 @@ function copyToClipboard() {
  * Switch up the size of the variables pane. 
  */
 function vars(size) {
-	var div = document.getElementById('variables')
+	let div = document.getElementById('variables')
 	div.setAttribute('class', size)
 	localStorage['vars-size'] = size
 }

@@ -146,17 +146,6 @@ let commands = [
 		]
 	},
 	{
-		"command": "-=>",
-		"params": "[string]",
-		"desc": "Removes the text after first instance of [string] on each line, leaving [string] in place.",
-		"short": "Remove after a string",
-		"also": [
-			"-<",
-			"-",
-			"--"
-		]
-	},
-	{
 		"command": "--",
 		"params": "[a]",
 		"desc": "Removes every instance of [a] on each line.",
@@ -174,17 +163,6 @@ let commands = [
 		"also": [
 			"-09",
 			"-**"
-		]
-	},
-	{
-		"command": "-<=",
-		"params": "[string]",
-		"desc": "Removes the text before first instance of [string] on each line, leaving [string] in place.",
-		"short": "Remove before a string",
-		"also": [
-			"-",
-			"--",
-			"->"
 		]
 	},
 	{
@@ -213,6 +191,28 @@ let commands = [
 			"-<ws",
 			"->ws",
 			"-blanks"
+		]
+	},
+	{
+		"command": "->=",
+		"params": "[string]",
+		"desc": "Removes the text after first instance of [string] on each line, leaving [string] in place.",
+		"short": "Remove after a string",
+		"also": [
+			"-<=",
+			"-",
+			"--"
+		]
+	},
+	{
+		"command": "-<=",
+		"params": "[string]",
+		"desc": "Removes the text before first instance of [string] on each line, leaving [string] in place.",
+		"short": "Remove before a string",
+		"also": [
+			"-",
+			"--",
+			"->="
 		]
 	},
 	{
@@ -257,7 +257,7 @@ let commands = [
 	{
 		"command": "s",
 		"params": "[a] [b]",
-		"desc": "Replaces the first instance of [a] on each line with [b]. [a] and [b] are separated with $s_delimiter.",
+		"desc": "Replaces the first instance of [a] on each line with [b]. [a] and [b] are separated by whitespace. They should be variables in complex whitespace cases.",
 		"short": "Swap once",
 		"also": [
 			"ss"
@@ -266,54 +266,10 @@ let commands = [
 	{
 		"command": "ss",
 		"params": "[a] [b]",
-		"desc": "Replaces every instance of [a] on each line with [b]. [a] and [b] are separated with $s_delimiter.",
+		"desc": "Replaces every instance of [a] on each line with [b]. [a] and [b] are separated by whitespace. They should be variables in complex whitespace cases.",
 		"short": "Swap all",
 		"also": [
 			"s"
-		]
-	},
-	{
-		"command": "sspace",
-		"params": "([string])",
-		"desc": "Replace the first space in the original text with a TAB, or the optional passed-in string.",
-		"short": "Swap first space for a TAB",
-		"also": [
-			"sspaces",
-			"stab",
-			"stabs"
-		]
-	},
-	{
-		"command": "sspaces",
-		"params": "([string])",
-		"desc": "Replace each space in the original text with a TAB, or the optional passed-in string.",
-		"short": "Swap all spaces for TABs",
-		"also": [
-			"sspace",
-			"stab",
-			"stabs"
-		]
-	},
-	{
-		"command": "stab",
-		"params": "([string])",
-		"desc": "Replace the first TAB in the original text with a space, or the optional passed-in string.",
-		"short": "Swap first TAB for a space",
-		"also": [
-			"sspace",
-			"sspaces",
-			"stabs"
-		]
-	},
-	{
-		"command": "stabs",
-		"params": "([string])",
-		"desc": "Replace each TAB in the original text with a space, or the optional passed-in string.",
-		"short": "Swap all TABs for spaces",
-		"also": [
-			"sspace",
-			"sspaces",
-			"stab"
 		]
 	},
 	{

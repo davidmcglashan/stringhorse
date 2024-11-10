@@ -2,21 +2,21 @@
  * Pretend that everyline in the output is a URL and render a list of <a> tags.
  */
 function _wwwify(urls) {
-	var info = document.getElementById('info')
-	var mono = document.createElement('div')
+	let info = document.getElementById('info')
+	let mono = document.createElement('div')
 	mono.classList.add('mono')
 	mono.classList.add('webify')
 	info.replaceChildren(mono)
 
 	// Create a <ul> to list the URLs
-	var ul = document.createElement('ul')
+	let ul = document.createElement('ul')
 	mono.appendChild(ul)
 
 	for ( let url of urls ) {
 		if ( url.length > 0 ) {
-			var li = document.createElement('li')
+			let li = document.createElement('li')
 			ul.appendChild(li)
-			var a = document.createElement('a')
+			let a = document.createElement('a')
 			li.appendChild(a)
 
 			a.title = url
