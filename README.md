@@ -26,7 +26,7 @@ Characters are combined to achieve things …
 ### version 1.2.1
  * The -=> command has become ->= which is consistent with the existant -<= command. 
  * The stab, stabs, sspace, and sspaces commands are all achievable with variables and so have been removed.
- * Some programming, non-featue, non-bug improvements.
+ * Some programming, non-feature, non-bug improvements.
 
 ### version 1.2
  * You can now set variables in the UI and use them in some commands.
