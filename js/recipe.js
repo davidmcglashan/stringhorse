@@ -18,39 +18,35 @@ function recipe() {
 	let recipe
 
 	// This is the main loop, then. Get the recipe text, split by newlines and parse each one ...
-	try {
+//	try {
 		for ( recipe of document.getElementById('rec').value.split('\n') ) {
 			if ( recipe.length > 0 && !recipe.startsWith('//') ) {
 				// Split the recipe line at its first spaces. The first entry is our command, the rest are its parameters.
-				cmd = recipe.split(/ (.*)/)
+				let input = recipe.split(/ (.*)/)
 
-				// Do the replacements for chars not allowed in Javascript function names
-				cmd[0] = cmd[0].replaceAll('+','plus')
-				cmd[0] = cmd[0].replaceAll('<','lt')
-				cmd[0] = cmd[0].replaceAll('>','gt')
-				cmd[0] = cmd[0].replaceAll('-','minus')
-				cmd[0] = cmd[0].replaceAll('*','star')
-				cmd[0] = cmd[0].replaceAll('!','not')
-				cmd[0] = cmd[0].replaceAll('=','equals')
-				cmd[0] = cmd[0].replaceAll('|','pipe')
-
-				// Execute. If a command returns NULL then we abort the whole recipe.
-				result = window['_'+cmd[0]](result,cmd,vars);
-				if ( result === undefined ) {
-					return
-				} else if ( result instanceof String ) {
-					break
+				for ( let cmd of command.commands ) {
+					if ( cmd.command === input[0] ) {
+						// Execute. If a command returns NULL then we abort the whole recipe.
+						result = cmd.func(result,input,vars);
+						if ( result === undefined ) {
+							return
+						} else if ( result instanceof String ) {
+							break
+						}
+						break
+					} 
 				}
 			}
 		}
-	} catch( err ) {
-		result = []
-		if ( err instanceof TypeError ) {
-			result.push( recipe + ': unknown or badly configured command' )
-		} else {
-			result.push(err)
-		}
-	}
+//	} catch( err ) {
+//		throw err
+//		result = []
+//		if ( err instanceof TypeError ) {
+//			result.push( recipe + ': unknown or badly configured command' )
+//		} else {
+//			result.push(err)
+//		}
+//	}
 
 	// Finished looping. Better print the results ...
 	let tout = document.getElementById('out')
@@ -86,6 +82,22 @@ function parseVariables() {
 	}
 
 	return dict
+}
+
+/**
+ * Returns the variable value of the match variable, or match back again if no variable is found.
+ */
+function getVariable( vars, match ) {
+	// Check all the variables
+	if ( match[0] === '$' ) {
+		let name = match.substring(1)
+		if ( vars[name] !== undefined ) {
+			return vars[name]
+		}
+	}
+
+	// Return the original parameter
+	return match
 }
 
 buildHelp()

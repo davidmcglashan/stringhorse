@@ -1,17 +1,16 @@
 **** FUNCTIONS *********************************************************
+ - capitalisation
  - cspaces and ctabs should become a single collapse command taking two params
    - one to collapse runs
    - one to be the replacement e.g. collapse $spc $spc is cspaces but collapse _ . turns multiple _ into 1 .
+- join with a variable or string (lose jtab and jspace)
  - random numbers
  - random text
    - lorem
    - magic words
- - 1.1
+ - commands to manage CSV files
  - base64
- - 1.2
- - CSV
  - JSON
- - 2.0
 
 **** UI *************************
  - get some SVG icons from somewhere for close, wrap, wide, clear, copy

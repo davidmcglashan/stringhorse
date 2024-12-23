@@ -106,29 +106,29 @@ function buildHelp() {
 	div.replaceChildren(ul)
 
 	// First the command list at the top ...
-	for ( let command of commands ) {
+	for ( let cmd of command.commands ) {
 		let li = document.createElement('li')
 		ul.appendChild( li )
 		let a = document.createElement('a')
 		li.appendChild( a )
 		a['tabIndex'] = '-1'
-		a['title'] = command['desc']
-		a['href'] = "javascript:showHelpCommand('" + command['command'] + "');"
-		a.innerHTML = command['command'].replaceAll('<','&lt;')
-		li.insertAdjacentHTML( 'beforeend', '<div class="help-desc">' + command['short'] + '</div>\n' );
+		a['title'] = cmd['desc']
+		a['href'] = "javascript:showHelpCommand('" + cmd['command'] + "');"
+		a.innerHTML = cmd['command'].replaceAll('<','&lt;')
+		li.insertAdjacentHTML( 'beforeend', '<div class="help-desc">' + cmd['short'] + '</div>\n' );
 	}
 
 	// Then each command gets a longer description
-	for ( let command of commands ) {
+	for ( let cmd of command.commands ) {
 		// and a separator
 		let hr = document.createElement('hr')
 		div.appendChild( hr )
 
 		let p = document.createElement('p')
-		p['id'] = command['command']
-		p.innerHTML = '<strong>' + command['command'].replaceAll('<','&lt;') + '</strong>\n'
-		if ( command['params'] !== undefined ) {
-			p.insertAdjacentHTML( 'beforeend', ' <span class="params">' + command['params'] + '</span>')
+		p['id'] = cmd['command']
+		p.innerHTML = '<strong>' + cmd['command'].replaceAll('<','&lt;') + '</strong>\n'
+		if ( cmd['params'] !== undefined ) {
+			p.insertAdjacentHTML( 'beforeend', ' <span class="params">' + cmd['params'] + '</span>')
 		}
 		div.appendChild( p )
 
@@ -137,14 +137,14 @@ function buildHelp() {
 		div.appendChild( p )
 		
 		// Also is an array of related commands.
-		if ( command['also'] !== undefined ) {
+		if ( cmd['also'] !== undefined ) {
 			p = document.createElement('p')
 			p.classList.add( 'see-also' )
 			p.innerHTML = 'See also ... '
 			div.appendChild( p )
 
 			let first = true
-			for ( let also of command['also'] ) {
+			for ( let also of cmd['also'] ) {
 				if ( !first ) {
 					p.insertAdjacentHTML( 'beforeend', ' | ' );
 				}
@@ -313,4 +313,16 @@ function vars(size) {
 	let div = document.getElementById('variables')
 	div.setAttribute('class', size)
 	localStorage['vars-size'] = size
+}
+
+/**
+ * Inserts a <dt><dd> tuple for the _info command.
+ */
+function datum( dl, label, value ) {
+	let dt = document.createElement('dt')
+	dt.innerHTML = label
+	dl.appendChild(dt)
+	let dd = document.createElement('dd')
+	dd.innerHTML = value
+	dl.appendChild(dd)	
 }
