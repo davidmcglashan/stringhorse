@@ -16,7 +16,7 @@ const command = {
 				}
 			
 				// Check the parameters for variables.
-				let match = getVariable( vars, cmd[1] )
+				let match = recipe.getVariable( vars, cmd[1] )
 				let	array = []
 				for ( let ar of arr ) {
 					if ( ar.indexOf( match ) !== -1 ) {
@@ -42,7 +42,7 @@ const command = {
 				}
 			
 				// Check the parameters for variables.
-				let match = getVariable( vars, cmd[1] )
+				let match = recipe.getVariable( vars, cmd[1] )
 				let array = []
 
 				for ( let ar of arr ) {
@@ -64,7 +64,7 @@ const command = {
 				let result = []
 
 				// Check the parameters for variables.
-				let match = getVariable( vars, cmd[1] )
+				let match = recipe.getVariable( vars, cmd[1] )
 			
 				// Now put that string at the start of each line in the array.
 				for ( let ar of arr ) {
@@ -89,7 +89,7 @@ const command = {
 				}
 			
 				// Check the parameters for variables.
-				let match = getVariable( vars, cmd[1] )
+				let match = recipe.getVariable( vars, cmd[1] )
 				let i = parseInt(match)
 			
 				for ( let ar of arr ) {
@@ -114,7 +114,7 @@ const command = {
 				}
 			
 				// Check the parameters for variables.
-				let match = getVariable( vars, cmd[1] )
+				let match = recipe.getVariable( vars, cmd[1] )
 				let i = parseInt(match)
 			
 				for ( let ar of arr ) {
@@ -134,7 +134,7 @@ const command = {
 				result = []
 
 				// Check the parameters for variables.
-				let match = getVariable( vars, cmd[1] )
+				let match = recipe.getVariable( vars, cmd[1] )
 			
 				// Now put that string at the end of each line in the array.
 				for ( let ar of arr ) {
@@ -159,7 +159,7 @@ const command = {
 				}
 			
 				// Check the parameters for variables.
-				let match = getVariable( vars, cmd[1] )
+				let match = recipe.getVariable( vars, cmd[1] )
 				let i = parseInt(match)
 			
 				for ( let ar of arr ) {
@@ -184,7 +184,7 @@ const command = {
 				}
 			
 				// Check the parameters for variables.
-				let match = getVariable( vars, cmd[1] )
+				let match = recipe.getVariable( vars, cmd[1] )
 				let i = parseInt(match)
 			
 				for ( let ar of arr ) {
@@ -238,7 +238,7 @@ const command = {
 				let splitter = /\s+/
 			
 				// Check the parameters for variables.
-				let match = getVariable( vars, cmd[1] )
+				let match = recipe.getVariable( vars, cmd[1] )
 				let col = parseInt(match) || 1
 			
 				for ( let line of arr ) {
@@ -276,7 +276,7 @@ const command = {
 				}
 			
 				// Check the parameters for variables.
-				let match = getVariable( vars, cmd[1] )
+				let match = recipe.getVariable( vars, cmd[1] )
 			
 				for ( let ar of arr ) {
 					result.push( ar.replace( match,'' ) )
@@ -299,7 +299,7 @@ const command = {
 				}
 			
 				// Check the parameters for variables.
-				let match = getVariable( vars, cmd[1] )
+				let match = recipe.getVariable( vars, cmd[1] )
 			
 				for ( let ar of arr ) {
 					result.push( ar.replaceAll( match,'' ) )
@@ -377,7 +377,7 @@ const command = {
 				let result = []
 
 				// Check the parameters for variables.
-				let match = getVariable( vars, cmd[1] )
+				let match = recipe.getVariable( vars, cmd[1] )
 			
 				for ( let ar of arr ) {
 					let i = ar.indexOf(match)
@@ -401,7 +401,7 @@ const command = {
 				let result = []
 
 				// Check the parameters for variables.
-				let match = getVariable( vars, cmd[1] )
+				let match = recipe.getVariable( vars, cmd[1] )
 			
 				for ( let ar of arr ) {
 					let i = ar.indexOf(match)
@@ -489,7 +489,7 @@ const command = {
 				let splitter = /\s+/
 			
 				// Check the parameters for variables.
-				let match = getVariable( vars, cmd[1] )
+				let match = recipe.getVariable( vars, cmd[1] )
 				let col = parseInt(match) || 1
 			
 				for ( let line of arr ) {
@@ -529,8 +529,8 @@ const command = {
 					params[1] = ' '
 				}
 			
-				let src = getVariable( vars, params[0] )
-				let dst = getVariable( vars, params[1] )
+				let src = recipe.getVariable( vars, params[0] )
+				let dst = recipe.getVariable( vars, params[1] )
 			
 				for ( let ar of arr ) {
 					result.push( ar.replace( src, dst ) )
@@ -560,8 +560,8 @@ const command = {
 					params[1] = ' '
 				}
 			
-				let src = getVariable( vars, params[0] )
-				let dst = getVariable( vars, params[1] )
+				let src = recipe.getVariable( vars, params[0] )
+				let dst = recipe.getVariable( vars, params[1] )
 			
 				for ( let ar of arr ) {
 					result.push( ar.replaceAll( src, dst ) )
@@ -584,7 +584,7 @@ const command = {
 					splitter = /\s+/
 				} else {
 					// Check the parameters for variables.
-					splitter = getVariable( vars, cmd[1] )
+					splitter = recipe.getVariable( vars, cmd[1] )
 				}
 			
 				for ( let ar of arr ) {
@@ -644,7 +644,7 @@ const command = {
 				if ( cmd[1] === undefined || cmd[1].length === 0 ) {
 					rep = ' '
 				} else {
-					rep = getVariable( vars, cmd[1] )
+					rep = recipe.getVariable( vars, cmd[1] )
 				}
 			
 				// Do the replacement on each line.
@@ -670,7 +670,7 @@ const command = {
 				if ( cmd[1] === undefined || cmd[1].length === 0 ) {
 					rep = '\t'
 				} else {
-					rep = getVariable( vars, cmd[1] )
+					rep = recipe.getVariable( vars, cmd[1] )
 				}
 			
 				// Do the replacement on each line.
@@ -887,7 +887,7 @@ const command = {
 			sep = ''
 		} else {
 			// Check the parameters for variables.
-			sep = getVariable( vars, cmd[1] )
+			sep = recipe.getVariable( vars, cmd[1] )
 		}
 
 		// Do the replacement on each line.

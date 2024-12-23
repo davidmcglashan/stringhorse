@@ -30,7 +30,7 @@ function clear(ta) {
 	document.getElementById(ta).value = ''
 	localStorage.src = document.getElementById('src').value
 	localStorage.recipe = document.getElementById('rec').value
-	recipe()
+	recipe.execute()
 }
 
 /**
@@ -196,7 +196,7 @@ function example() {
 	localStorage.src = document.getElementById('src').value
 	localStorage.recipe = document.getElementById('rec').value
 	localStorage.variables = document.getElementById('vars').value
-	recipe()
+	recipe.execute()
 }
 
 /**
@@ -223,26 +223,26 @@ function restoreState() {
 	} else {
 		srcText.value = localStorage.src !== undefined ? localStorage.src : ''
 		recipeText.value = localStorage.recipe !== undefined ? localStorage.recipe : ''
-		recipe()
+		recipe.execute()
 	}
 
 	// Put listeners on the original and recipe textareas to do stuff on a time-delayed keypress.
 	let recipeTimerId = 0;
 	recipeText.addEventListener("keyup", function(event) {
 	    clearTimeout(recipeTimerId);
-	    recipeTimerId = setTimeout( recipe, 750 );
+	    recipeTimerId = setTimeout( recipe.execute, 750 );
 	});
 
 	let srcTimerId = 0;
 	srcText.addEventListener("keyup", function(event) {
 	    clearTimeout(srcTimerId);
-	    srcTimerId = setTimeout( recipe, 750 );
+	    srcTimerId = setTimeout( recipe.execute, 750 );
 	});
 
 	let varsTimerId = 0;
 	varsText.addEventListener("keyup", function(event) {
 	    clearTimeout(varsTimerId);
-	    varsTimerId = setTimeout( recipe, 750 );
+	    varsTimerId = setTimeout( recipe.execute, 750 );
 	});
 
 	// Re-establish wrap on the textareas
