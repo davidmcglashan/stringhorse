@@ -136,7 +136,7 @@ const ui = {
 			div.appendChild( p )
 
 			p = document.createElement('p')
-			p.innerHTML = command['desc']
+			p.innerHTML = cmd['desc']
 			div.appendChild( p )
 			
 			// Also is an array of related commands.
@@ -337,6 +337,18 @@ const ui = {
 	init: () => {
 		ui.buildHelp()
 		ui.restoreState()
-		ui.fixTabIndex()		
+		ui.fixTabIndex()
+
+		// Put the version string into any elements with a version class.
+		let versions = document.getElementsByClassName( 'version' )
+		for ( let version of versions ) {
+			version.innerHTML = command.version
+		}
+
+		// Put the current year into any elements with a year class (copyright notices and stuff)
+		let years = document.getElementsByClassName( 'year' )
+		for ( let year of years ) {
+			year.innerHTML = new Date().getFullYear()
+		}
 	}
 }

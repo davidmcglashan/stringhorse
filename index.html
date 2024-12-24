@@ -76,7 +76,7 @@
 					<div class="scrollpane hidden" id="info"></div>
 				</div>
 			</section>
-			<section id="lightbox" onclick="help();">
+			<section id="lightbox" onclick="ui.help()">
 			</section>
 			<section id="tray">
 				<div class="tabs">
@@ -94,7 +94,7 @@
 						<div id="_tray-about" class="hidden">
 							<img src="horse.png" alt="stringhorse logo">
 							<h1>stringhorse</h1>
-							v1.3.1<br>
+							<span class="version"></span><br>
 							<p>
 								Officially on the web at <a title="Stringhorse web site" href="https://stringhorse.dvdmcglshn.com/">stringhorse.dvdmcglshn.com</a>
 							</p>
@@ -139,7 +139,7 @@
 			</section>
 		</main>
 		<footer>
-			<strong>v1.3.1</strong> | &copy; 2024 David McGlashan
+			<strong class="version"></strong> | &copy; <span class="year"></span> David McGlashan
 		</footer>
 	</body>
 	<script type="text/javascript" src="js/ui.js"></script>

@@ -1,4 +1,6 @@
 const command = {
+	version: "v1.3.1",
+
 	commands: [
 		{
 			// ==================================================================================
@@ -685,7 +687,7 @@ const command = {
 			command: 	"lower",
 			desc: 		"Converts the original text into lower case.",
 			short: 		"To lower case",
-			also: 		[ "upper" ],
+			also: 		[ "upper", "cap" ],
 
 			func: ( arr, cmd, vars ) => {
 				result = []
@@ -699,12 +701,31 @@ const command = {
 			command: 	"upper",
 			desc: 		"Converts the original text into upper case.",
 			short: 		"To upper case",
-			also: 		[ "lower" ],
+			also: 		[ "lower", "cap" ],
 
 			func: ( arr, cmd, vars ) => {
 				result = []
 				for ( let ar of arr ) {
 					result.push( ar.toUpperCase() )
+				}
+				return result
+			}
+		}, {
+			// ==================================================================================
+			command: 	"cap",
+			desc: 		"Capitalises each line of the original text",
+			short: 		"Capitalise",
+			also: 		[ "lower", "upper" ],
+
+			func: ( arr, cmd, vars ) => {
+				result = []
+				for ( let ar of arr ) {
+					let line = ar.toLowerCase()
+					if ( line.length > 0 ) {
+						result.push( line[0].toUpperCase() + line.substr(1) )
+					} else {
+						result.push( '' )
+					}
 				}
 				return result
 			}
