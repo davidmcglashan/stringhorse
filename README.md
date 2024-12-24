@@ -23,6 +23,10 @@ Characters are combined to achieve things …
 
 ## Changelog
 
+### version 1.3
+ * New command -dupes will remove any duplicate lines in the original text.
+ * Javascript refactored into something more modern (ongoing).
+
 ### version 1.2.1
  * The -=> command has become ->= which is consistent with the existant -<= command. 
  * The stab, stabs, sspace, and sspaces commands are all achievable with variables and so have been removed.

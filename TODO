@@ -3,7 +3,8 @@
  - cspaces and ctabs should become a single collapse command taking two params
    - one to collapse runs
    - one to be the replacement e.g. collapse $spc $spc is cspaces but collapse _ . turns multiple _ into 1 .
-- join with a variable or string (lose jtab and jspace)
+ - join with a variable or string (lose jtab and jspace)
+ - encode version as a string and inject it into the HTML 
  - random numbers
  - random text
    - lorem

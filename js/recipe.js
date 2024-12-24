@@ -100,7 +100,3 @@ const recipe = {
 		return match
 	}
 }
-
-buildHelp()
-restoreState()
-fixTabIndex()

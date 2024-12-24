@@ -23,9 +23,9 @@
 			<img src="horse.png" alt="stringhorse logo">
 			<h1>stringhorse</h1>
 			<div class="toolbar">
-				<a title="See an example" href="javascript:example();">Example</a>
-				<a title="Toggle dark mode" class="button invert" href="javascript:dark();"><span class="dark">Dark</span><span class="light">Light</span> Mode</a>
-				<a title="Open the help" href="javascript:help();" class="button">Help</a>
+				<a title="See an example" href="#" onclick="ui.example()">Example</a>
+				<a title="Toggle dark mode" class="button invert" href="#" onclick="ui.dark()"><span class="dark">Dark</span><span class="light">Light</span> Mode</a>
+				<a title="Open the help" href="#" onclick="ui.help()" class="button">Help</a>
 			</div>
 		</header>
 		<main>
@@ -33,9 +33,9 @@
 				<div id="original">
 					<strong id="label-original">Original Text</strong>
 					<div class="toolbar hideonwide">
-						<a class="small gapAfter" title="Clear the text in the Original Text pane" href="javascript:clear('src');">Clear</a>
-						<a title="Toggle text wrapping in the Original Text pane" id="src-wrap-button" href="javascript:wrap('src');" class="button">Wrap</a>
-						<a title="Toggle a wide view of the Original Text pane" href="javascript:focus('original');" class="button invert wide-button">Wide</a>
+						<a class="small gapAfter" title="Clear the text in the Original Text pane" href="#" onclick="ui.clear('src')">Clear</a>
+						<a title="Toggle text wrapping in the Original Text pane" id="src-wrap-button" href="#" onclick="ui.wrap('src')" class="button">Wrap</a>
+						<a title="Toggle a wide view of the Original Text pane" href="#" onclick="ui.focus('original')" class="button invert wide-button">Wide</a>
 					</div>
 					<textarea id="src" class="mono" aria-labelledby="label-original"></textarea>
 				</div>
@@ -43,18 +43,18 @@
 					<div id="recipe">
 						<strong id="label-recipe">Recipe</strong>
 						<div class="toolbar hideonwide">
-							<a class="small gapAfter" title="Clear the text in the Recipe pane" href="javascript:clear('rec');">Clear</a>
-							<a title="Toggle text wrapping in the Recipe pane" id="rec-wrap-button" href="javascript:wrap('rec');" class="button">Wrap</a>
-							<a title="Toggle a wide view of the Recipe pane" href="javascript:focus('centre-column');" class="button invert wide-button">Wide</a>
+							<a class="small gapAfter" title="Clear the text in the Recipe pane" href="#" onclick="ui.clear('rec')">Clear</a>
+							<a title="Toggle text wrapping in the Recipe pane" id="rec-wrap-button" href="#" onclick="ui.wrap('rec')" class="button">Wrap</a>
+							<a title="Toggle a wide view of the Recipe pane" href="#" onclick="ui.focus('centre-column')" class="button invert wide-button">Wide</a>
 						</div>
 						<textarea id="rec" class="mono" aria-labelledby="label-recipe"></textarea>
 					</div>
 					<div id="variables" class="vars-hide">
 						<strong id="label-variables">Variables</strong>
 						<div class="toolbar hideonwide">
-							<a id="vars-large-button" title="Make the variables panel large" class="button invert" href="javascript:vars('vars-large');">Large</a>
-							<a id="vars-small-button" title="Make the variables small" class="button invert" href="javascript:vars('vars-small');">Small</a>
-							<a id="vars-hide-button" title="Hide the variables" class="button invert" href="javascript:vars('vars-hide');">Hide</a>
+							<a id="vars-large-button" title="Make the variables panel large" class="button invert" href="#" onclick="ui.vars('vars-large')">Large</a>
+							<a id="vars-small-button" title="Make the variables small" class="button invert" href="#" onclick="ui.vars('vars-small')">Small</a>
+							<a id="vars-hide-button" title="Hide the variables" class="button invert" href="#" onclick="ui.vars('vars-hide')">Hide</a>
 						</div>
 						<div id="stab">
 							<input type="checkbox" id="checkbox-stab" onclick="recipe.execute()">
@@ -67,10 +67,10 @@
 					<strong id="label-output">Output</strong>
 					<div class="toolbar hideonwide">
 						<span class="small gapAfter">
-							Copy to <a title="Copy the output text into the Original Text pane" href="javascript:copyToOriginal();">Original</a> | <a title="Copy the output text to the clipboard" href="javascript:copyToClipboard();">Clipboard</a>
+							Copy to <a title="Copy the output text into the Original Text pane" href="#" onclick="ui.copyToOriginal()">Original</a> | <a title="Copy the output text to the clipboard" href="#" onclick="ui.copyToClipboard()">Clipboard</a>
 						</span>
-						<a title="Toggle text wrapping in the Output pane"id="out-wrap-button" href="javascript:wrap('out');" class="button">Wrap</a>
-						<a title="Toggle a wide view of the Output pane"href="javascript:focus('output');" class="button invert wide-button">Wide</a>
+						<a title="Toggle text wrapping in the Output pane"id="out-wrap-button" href="#" onclick="ui.wrap('out')" class="button">Wrap</a>
+						<a title="Toggle a wide view of the Output pane"href="#" onclick="ui.focus('output')" class="button invert wide-button">Wide</a>
 					</div>
 					<textarea id="out" class="mono" aria-labelledby="label-output"></textarea>
 					<div class="scrollpane hidden" id="info"></div>
@@ -81,12 +81,12 @@
 			<section id="tray">
 				<div class="tabs">
 					<ul id="_tray-ul">
-						<li id="tab-commands" class="selected"><a href="javascript:tab('_tray','commands');">Commands</a></li>
-						<li id="tab-philosophy"><a href="javascript:tab('_tray','philosophy');">Philosophy</a></li>
-						<li id="tab-about"><a href="javascript:tab('_tray','about');">About</a></li>
+						<li id="tab-commands" class="selected"><a href="#" onclick="ui.tab('_tray','commands')">Commands</a></li>
+						<li id="tab-philosophy"><a href="#" onclick="ui.tab('_tray','philosophy')">Philosophy</a></li>
+						<li id="tab-about"><a href="#" onclick="ui.tab('_tray','about')">About</a></li>
 					</ul>
 					<div class="toolbar">
-						<a title="Close this tray" href="javascript:help();">&times; Close</a>
+						<a title="Close this tray" href="#" onclick="ui.help()">&times; Close</a>
 					</div>
 				</div>
 					<div id="_tray">
@@ -145,4 +145,7 @@
 	<script type="text/javascript" src="js/ui.js"></script>
 	<script type="text/javascript" src="js/commands.js"></script>
 	<script type="text/javascript" src="js/recipe.js"></script>
+	<script type="text/javascript">
+		ui.init()
+	</script>
 </html>
