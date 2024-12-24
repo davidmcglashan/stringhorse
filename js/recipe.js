@@ -39,7 +39,6 @@ const recipe = {
 				}
 			}
 		} catch( err ) {
-			throw err
 			result = []
 			if ( err instanceof TypeError ) {
 				result.push( recipe + ': unknown or badly configured command' )

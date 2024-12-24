@@ -632,52 +632,36 @@ const command = {
 			}
 		}, {
 			// ==================================================================================
-			command: 	"cspaces",
-			params: 	"(tab)",
-			desc: 		"Collapses any runs of spaces in the original text's lines into one single space or TAB.",
-			short: 		"Collapse spaces",
-			also: 		[ "ctabs" ],
+			command: 	"_",
+			params: 	"[a] ([b])",
+			desc: 		"Collapses any runs of [a] in the original text's lines into one single instance of [a] or [b].",
+			short: 		"Collapse characters together",
 
 			func: ( arr, cmd, vars ) => {
 				let result = []
-		
-				// Work out what the replacement character should be ...
+				let delim = ' '
+
+				// We need a search string.
+				if ( cmd[1] === undefined || cmd[1].length === 0 ) {
+					return new String( '_: _ requires a search string to collapse.' )
+				} 
+
+				// The various parameters we need to divine for ourselves ...
+				let params = cmd[1].split(delim)
+				let src = recipe.getVariable( vars, params[0] ).replace(/[-\/\\^$*+?.()|[\]{}]/g, '\\$&');
+				let regex = new RegExp( src + "+", "g" );
+
+				// If there isn't a destination string we use the search string again.
 				let rep = ' '
-				if ( cmd[1] === undefined || cmd[1].length === 0 ) {
-					rep = ' '
+				if ( params.length === 1 || params[1] === undefined || params[1].length === 0 ) {
+					rep = recipe.getVariable( vars, params[0] )
 				} else {
-					rep = recipe.getVariable( vars, cmd[1] )
+					rep = recipe.getVariable( vars, params[1] )
 				}
-			
-				// Do the replacement on each line.
-				for ( let line of arr ) {
-					result.push( line.replace( / +/g, rep ) )
-				}
-			
-				return result
-			}
-		}, {
-			// ==================================================================================
-			command: 	"ctabs",
-			params: 	"(space)",
-			desc: 		"Collapses any runs of TABs in the original text's lines into one single TAB or space.",
-			short: 		"Collapse TABs",
-			also: 		[ "cspaces" ],
 
-			func: ( arr, cmd, vars ) => {
-				let result = []
-		
-				// Work out what the replacement character should be ...
-				let rep = '\t'
-				if ( cmd[1] === undefined || cmd[1].length === 0 ) {
-					rep = '\t'
-				} else {
-					rep = recipe.getVariable( vars, cmd[1] )
-				}
-			
 				// Do the replacement on each line.
 				for ( let line of arr ) {
-					result.push( line.replace( /\t+/g, rep ) )
+					result.push( line.replace( regex, rep ) )
 				}
 			
 				return result
