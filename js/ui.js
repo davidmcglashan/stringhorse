@@ -118,7 +118,11 @@ const ui = {
 			a['href'] = "#"
 			a.setAttribute( 'onclick', "ui.showHelpCommand('" + cmd['command'] + "');" )
 			a.innerHTML = cmd['command'].replaceAll('<','&lt;')
-			li.insertAdjacentHTML( 'beforeend', '<div class="help-desc">' + cmd['short'] + '</div>\n' );
+
+			let short = a.cloneNode(false)
+			short.innerHTML = cmd['short']
+
+			li.insertAdjacentHTML( 'beforeend', '<div class="help-desc">' + short.outerHTML + '</a></div>\n' );
 		}
 
 		// Then each command gets a longer description

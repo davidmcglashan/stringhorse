@@ -1,22 +1,30 @@
 **** FUNCTIONS *********************************************************
- - join with a variable or string (lose jtab and jspace)
- - random numbers
- - random text
-   - lorem
-   - magic words
- - commands to manage CSV files
- - base64
- - JSON
+- saved recipes - it's just a JSON file into localstorage
+  - import/export state - keeps recipes and variables
+- join with a variable or string (lose jtab and jspace)
+- random numbers
+- random text
+  - lorem
+  - magic words
+- commands to manage CSV files
+- base64
+- JSON
+-<=- to also remove the search term
 
 **** UI *************************
- - get some SVG icons from somewhere for close, wrap, wide, clear, copy
- - improve and expand the help long descriptions.
- - example pulling and sorting the numbers in a grid
+- three draggable columns - really wanted this recently
+- help for variables (short on the UI, long in the drawer)
+  - Variables (e.g. "foo = bar" below, "ss $foo stringhorse" in the recipe)
+- get some SVG icons from somewhere for close, wrap, wide, clear, copy
+- improve and expand the help long descriptions.
+- example pulling and sorting the numbers in a grid
+- “See an example” hyperlink in philosophy
+- Comments above each example command
 
 **** PROGRAMMING *************************
- - wwwify destroys the slide in tray (can't recreate this but have seen it)
- - old wwwifies get included in the example and can pollute it. Maybe rethink wwwify ...
- - Error messages should ...
-   - display in a separate UI
-   - show whatever output we ended up with before aborting
-   - link to the help for the command in question (or include the help when it's a known command)
+- wwwify destroys the slide in tray (can't recreate this but have seen it)
+- old wwwifies get included in the example and can pollute it. Maybe rethink wwwify ...
+- Error messages should ...
+  - display in a separate UI
+  - show whatever output we ended up with before aborting
+  - link to the help for the command in question (or include the help when it's a known command)

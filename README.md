@@ -23,6 +23,14 @@ Characters are combined to achieve things …
 
 ## Changelog
 
+### version 1.3.2
+ * Base64 encoding and decoding with the new 'b64' and 'unb64' commands.
+ * Hyperlinks in the help tray on the short command descriptions.
+
+### version 1.3.1
+ * New command '_' collapses runs of characters together.
+ * Minor cosmetic improvements.
+
 ### version 1.3
  * New command -dupes will remove any duplicate lines in the original text.
  * Javascript refactored into something more modern (ongoing).

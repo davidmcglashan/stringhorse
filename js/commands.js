@@ -1,5 +1,5 @@
 const command = {
-	version: "v1.3.1",
+	version: "v1.3.2",
 
 	commands: [
 		{
@@ -805,6 +805,34 @@ const command = {
 				result = []
 				for ( let ar of arr ) {
 					result.push( encodeURI(ar) )
+				}
+				return result
+			}
+		}, {
+			// ==================================================================================
+			command: 	"b64",
+			desc: 		"Encode each line to Base64. Lines are kept separated. Each line is encoded independently.",
+			short: 		"Base 64 encode each line",
+			also: 		[ "unb64" ],
+
+			func: ( arr, cmd, vars ) => {
+				result = []
+				for ( let ar of arr ) {
+					result.push( btoa(ar) )
+				}
+				return result
+			}
+		}, {
+			// ==================================================================================
+			command: 	"unb64",
+			desc: 		"Decode each line from Base64. Lines are kept separated. Each line is decoded independently.",
+			short: 		"Base 64 decode each line",
+			also: 		[ "b64" ],
+
+			func: ( arr, cmd, vars ) => {
+				result = []
+				for ( let ar of arr ) {
+					result.push( atob(ar) )
 				}
 				return result
 			}
