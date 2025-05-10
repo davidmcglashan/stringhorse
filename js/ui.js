@@ -1,20 +1,5 @@
 const ui = {
 	/**
-	 * Focuses the passed-in element (makes it big on the UI).
-	 */
-	focus: (element) => {
-		let elem = document.getElementById('ui')
-
-		// The normal class means the UI is in 'three panes' mode and we can replace it with the element passed in.
-		if ( elem.classList.contains('normal') ) {
-			elem.className = element;		
-		} else {
-			// if UI doesn't have a 'normal' class then we're reverting to it.
-			elem.className = 'normal';		
-		}
-	},
-
-	/**
 	 * Copy the output text into the original.
 	 */
 	copyToOriginal: () => {
@@ -25,10 +10,12 @@ const ui = {
 	},
 
 	/**
-	 * Clears a textarea
+	 * Clears all textareas
 	 */
-	clear: ( ta ) => {
-		document.getElementById(ta).value = ''
+	clearAll: () => {
+		console.log('clearall')
+		document.getElementById('src').value = ''
+		document.getElementById('rec').value = ''
 		localStorage.src = document.getElementById('src').value
 		localStorage.recipe = document.getElementById('rec').value
 		recipe.execute()
@@ -219,10 +206,10 @@ const ui = {
 		document.getElementById('checkbox-stab').checked = localStorage.stabs === 'true'
 		varsText.value = localStorage.variables !== undefined ? localStorage.variables : ''
 
-		// Set the size of the variables panel. 'vars-hide' is the default.
+		// Set the size of the variables panel. 'vars-small' is the default.
 		let size = localStorage['vars-size']
 		if ( size !== undefined ) {
-			document.getElementById( 'variables' ).classList.replace( 'vars-hide', size )
+			document.getElementById( 'variables' ).classList.replace( 'vars-small', size )
 		}
 
 		// Restore the original text and recipe from localStorage.
@@ -253,15 +240,18 @@ const ui = {
 			varsTimerId = setTimeout( recipe.execute, 750 );
 		});
 
-		// Re-establish wrap on the textareas
-		if ( localStorage.hasOwnProperty( 'wrap-src' ) ) {
-			ui.wrap( 'src' )
-		}
-		if ( localStorage.hasOwnProperty( 'wrap-rec' ) ) {
-			ui.wrap( 'rec' )
-		}
-		if ( localStorage.hasOwnProperty( 'wrap-out' ) ) {
-			ui.wrap( 'out' )
+		// Re-establish the left and right for each pane
+		let ids = [ 'original','centre-column','output','grip-left','grip-right' ]
+		for ( let id of ids ) {
+			let elem = document.getElementById( id )
+			let left = localStorage[id+'_left']
+			if ( left ) {
+				elem.style.left = left
+			}
+			let right = localStorage[id+'_right']
+			if ( right ) {
+				elem.style.right = right
+			}
 		}
 
 		// Are we doing dark mode?
@@ -307,14 +297,6 @@ const ui = {
 	},
 
 	/**
-	 * Copies the output text into the clipboard.
-	 */
-	copyToClipboard: () => {
-		let output = document.getElementById('out')
-		navigator.clipboard.writeText( output.value );
-	},
-
-	/**
 	 * Switch up the size of the variables pane. 
 	 */
 	vars: ( size ) => {
@@ -353,6 +335,99 @@ const ui = {
 		let years = document.getElementsByClassName( 'year' )
 		for ( let year of years ) {
 			year.innerHTML = new Date().getFullYear()
+		}
+
+		addEventListener("resize", (event) => { ui.windowResized( event )})
+	},
+
+	/**
+	 * Starts a drag on the left gripper between the original and centre column panes.
+	 */
+	dragStartLeft: ( ev ) => {
+		ev.preventDefault()
+		
+		ui.dragLeftElem = document.getElementById('original')
+		ui.dragRightElem = document.getElementById('centre-column')
+		ui.dragGripElem = document.getElementById('grip-left')
+		ui.limit = ui.dragRightElem.getBoundingClientRect().right
+
+		document.onmousemove = ui.dragLeft
+		document.onmouseup = ui.endDrag
+	},
+
+	/**
+	 * Called during a drag on the left gripper. Maintains the pane sizes.
+	 */
+	dragLeft: ( ev ) => {
+		// Get the new width of the left pane from the mouse position in the window.
+		let width = ev.clientX-16
+		
+		// Constrain the new width to prevent any pane getting too small.
+		width = Math.max( 160, width )
+		width = Math.min( width, ui.limit - 192 )
+
+		ui.dragLeftElem.style.right = (window.innerWidth-width-13) + 'px'
+		ui.dragRightElem.style.left = 'calc(' + width + 'px + 1.5em)'
+		ui.dragGripElem.style.left = 'calc(' + width + 'px + 1em + 1.25px)'
+	},
+
+	/**
+	 * Starts a drag on the right gripper between the centre column and output panes.
+	 */
+	dragStartRight: ( ev ) => {
+		ev.preventDefault()
+		
+		ui.dragLeftElem = document.getElementById('centre-column')
+		ui.dragRightElem = document.getElementById('output')
+		ui.dragGripElem = document.getElementById('grip-right')
+		ui.limit = window.innerWidth - ui.dragLeftElem.getBoundingClientRect().left
+
+		document.onmousemove = ui.dragRight
+		document.onmouseup = ui.endDrag
+	},
+
+	/**
+	 * Called during a drag on the left gripper. Maintains the pane sizes.
+	 */
+	dragRight: ( ev ) => {
+		let width = window.innerWidth - ev.clientX
+		
+		// Constrain the new width to prevent any pane getting too small.
+		width = Math.max( 320, width )
+		width = Math.min( width, ui.limit - 176 )
+
+		ui.dragLeftElem.style.right = (width+4) + 'px'
+		ui.dragRightElem.style.left = (window.innerWidth-width+4) + 'px'
+		ui.dragGripElem.style.right = (width-2) + 'px'
+	},
+
+	/**
+	 * Called when any drag ends. Resets the state of everything.
+	 */
+	endDrag: ( ev ) => {
+		document.onmouseup = null
+		document.onmousemove = null
+
+		let ids = [ 'original','centre-column','output','grip-left','grip-right' ]
+		for ( let id of ids ) {
+			let elem = document.getElementById( id )
+			localStorage[id+'_left'] = elem.style.left
+			localStorage[id+'_right'] = elem.style.right
+		}
+	},
+
+	/**
+	 * Called when the window is resized. Obliterates all the manual sizing styles so
+	 * the layout falls back to the CSS which is width %ages.
+	 */
+	windowResized: ( ev ) => {
+		let ids = [ 'original','centre-column','output','grip-left','grip-right' ]
+		for ( let id of ids ) {
+			let elem = document.getElementById( id )
+			elem.style.left = ''
+			elem.style.right = ''
+			localStorage[id+'_left'] = elem.style.left
+			localStorage[id+'_right'] = elem.style.right
 		}
 	}
 }

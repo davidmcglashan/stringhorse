@@ -7,12 +7,10 @@
   - lorem
   - magic words
 - commands to manage CSV files
-- base64
 - JSON
 -<=- to also remove the search term
 
 **** UI *************************
-- three draggable columns - really wanted this recently
 - help for variables (short on the UI, long in the drawer)
   - Variables (e.g. "foo = bar" below, "ss $foo stringhorse" in the recipe)
 - get some SVG icons from somewhere for close, wrap, wide, clear, copy
@@ -20,6 +18,7 @@
 - example pulling and sorting the numbers in a grid
 - “See an example” hyperlink in philosophy
 - Comments above each example command
+- Helpful placeholders in each pane when empty
 
 **** PROGRAMMING *************************
 - wwwify destroys the slide in tray (can't recreate this but have seen it)

@@ -1,5 +1,5 @@
 const command = {
-	version: "v1.3.2",
+	version: "v1.3.3",
 
 	commands: [
 		{
@@ -854,7 +854,7 @@ const command = {
 				info.appendChild( dl )
 			
 				// Count the lines
-				datum( dl, 'Lines', arr.length )
+				ui.datum( dl, 'Lines', arr.length )
 			
 				cc = 0
 				wc = 0
@@ -863,8 +863,8 @@ const command = {
 					wc = wc + ar.split( ' ' ).length
 				}
 			
-				datum( dl, 'Words', wc )
-				datum( dl, 'Characters', cc )
+				ui.datum( dl, 'Words', wc )
+				ui.datum( dl, 'Characters', cc )
 			
 				// Make the UI visible
 				info.classList.remove('hidden')
@@ -887,7 +887,7 @@ const command = {
 				let ul = document.createElement('ul')
 				mono.appendChild(ul)
 			
-				for ( let url of urls ) {
+				for ( let url of document.getElementById('src').value.split('\n') ) {
 					if ( url.length > 0 ) {
 						let li = document.createElement('li')
 						ul.appendChild(li)

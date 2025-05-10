@@ -23,6 +23,14 @@ Characters are combined to achieve things …
 
 ## Changelog
 
+### version 1.3.3
+ * The major editor panes can now be resized by dragging their separators.
+ * Wide function has been removed.
+ * Clear has been removed from each text pane and a new global clear function added to the toolbar.
+ * The ability to hide the variables pane has been removed.
+ * Copy to clipboard has been removed
+ * Fixed info and wwwify commands
+
 ### version 1.3.2
  * Base64 encoding and decoding with the new 'b64' and 'unb64' commands.
  * Hyperlinks in the help tray on the short command descriptions.
