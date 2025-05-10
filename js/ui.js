@@ -168,25 +168,19 @@ const ui = {
 	 * Shows an example based on the page source.
 	 */
 	example: () => {
-		document.getElementById('src').value = '<!DOCTYPE html>\n' + document.getElementById('html').outerHTML
-		document.getElementById('rec').value = '// The Original Text pane on the left now shows the HTML source of this page, dynamically inserted.\n' +
-			'\n' +
-			'// This central pane holds the recipe. The commands in here are executed to provide the output.\n' +
+		document.getElementById('src').value = 'The quick brown fox jumps over the lazy dog'
+		document.getElementById('rec').value = '// The Original Text pane on the left now shows a simple sentence. This central pane holds the recipe. The commands in here are executed to provide the output.\n' +
 			'\n' +
 			'// <-- Two slashes like this is a comment. Lines beginning with these (like this one) are ignored.\n' +
 			'\n' +
-			'// Remove the comments from the recipe lines below, one-at-a-time to see stringhorse in action. The recipe will run after a short pause and the output will appear in the right hand pane ...\n' +
+			'|\nsort\ncap\nk< 1\n' +
 			'\n' +
-
-			'//-<ws\n' +
-			'//k= <li><a\n' +
-			'//-<= help-desc\n' +
-			'//-< 11\n' +
-			'//->= <\n' +
-			'//-> 1\n' +
-			'//sort\n' +
-
-			'\n// The end result is an alphabetical list of commands, extracted from the help page.'
+			'// Above are the commands that make up the recipe. What does each command do ... ?\n' +
+			'// | broke the text into words and put each word on a new line ...\n' +
+			'// sort put the lines in alphabetical order ...\n' +
+			'// cap capitalised the first letter of each line ...\n' +
+			'// k< 1 kept the first character in each line: k for keep, < for the beginning ...\n\n' +
+			'// The end result was an alphabetical list of the initial letters from the original sentence. You can change the recipe to see stringhorse in action. The recipe will run after a short pause and the output will appear in the right hand pane ...\n'
 
 		localStorage.src = document.getElementById('src').value
 		localStorage.recipe = document.getElementById('rec').value

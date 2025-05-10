@@ -98,8 +98,8 @@ div#_tray-commands {
 		margin: 0 1em;
 	}
 
-/* Philosophy and About are slabs of text so get slabby, texty stylings. */
-div#_tray-philosophy,
+/* Variables and About are slabs of text so get slabby, texty stylings. */
+div#_tray-variables,
 div#_tray-about {
 	padding: 1em;
 	line-height: 1.4em;

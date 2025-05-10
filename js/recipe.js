@@ -53,6 +53,13 @@ const recipe = {
 			output.value = result
 		} else {
 			output.value = ''
+
+			// If we only got a blank string array then don't embellish with line returns
+			if ( result.length === 1 && result[0] === '' ) {
+				return
+			}
+
+			// Otherwise show each line in the result array with a line return
 			for ( let line of result ) {
 				output.value = output.value + line + '\n'
 			}

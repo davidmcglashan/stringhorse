@@ -159,6 +159,14 @@ a {
 			color: var(--button-hover-fg) !important;
 		}
 
+/* Pre tags get grey colouring and nice spacing. */
+pre {
+	background-color: #f0f0f0;
+	border: 1px solid #e0e0e0;
+	padding: 1em;
+	margin: 0;
+}
+
 /* Any element can be hidden with this class. */
 .hidden {
 	display: none;

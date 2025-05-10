@@ -36,7 +36,7 @@
 					<div class="toolbar hideonwide">
 						<a title="Toggle text wrapping in the Original Text pane" id="src-wrap-button" href="#" onclick="ui.wrap('src')" class="button">Wrap</a>
 					</div>
-					<textarea id="src" class="mono" aria-labelledby="label-original"></textarea>
+					<textarea id="src" class="mono" aria-labelledby="label-original" placeholder="Type or paste the text to be transformed"></textarea>
 				</div>
 				<div class="gripper" id="grip-left" onmousedown="ui.dragStartLeft(event);"></div>
 				<div class="pane" id="centre-column">
@@ -45,7 +45,7 @@
 						<div class="toolbar hideonwide">
 							<a title="Toggle text wrapping in the Recipe pane" id="rec-wrap-button" href="#" onclick="ui.wrap('rec')" class="button">Wrap</a>
 						</div>
-						<textarea id="rec" class="mono" aria-labelledby="label-recipe"></textarea>
+						<textarea id="rec" class="mono" aria-labelledby="label-recipe" placeholder="Type the recipe here using a command on each line"></textarea>
 					</div>
 					<div id="variables" class="vars-small">
 						<strong id="label-variables">Variables</strong>
@@ -57,7 +57,7 @@
 							<input type="checkbox" id="checkbox-stab" onclick="recipe.execute()">
 							<label title="Use $spc and $tab for space and TAB" for="checkbox-stab">Use $spc and $tab for space and TAB</label>
 						</div>
-						<textarea id="vars" class="mono" aria-labelledby="label-variables"></textarea>
+						<textarea id="vars" class="mono" aria-labelledby="label-variables" placeholder="Variables in the form 'key=value'"></textarea>
 					</div>
 				</div>
 				<div class="gripper" id="grip-right" onmousedown="ui.dragStartRight(event);"></div>
@@ -69,7 +69,7 @@
 						</span>
 						<a title="Toggle text wrapping in the Output pane"id="out-wrap-button" href="#" onclick="ui.wrap('out')" class="button">Wrap</a>
 					</div>
-					<textarea id="out" class="mono" aria-labelledby="label-output"></textarea>
+					<textarea id="out" class="mono" aria-labelledby="label-output" placeholder="Transformed text will appear here"></textarea>
 					<div class="scrollpane hidden" id="info"></div>
 				</div>
 			</section>
@@ -79,7 +79,7 @@
 				<div class="tabs">
 					<ul id="_tray-ul">
 						<li id="tab-commands" class="selected"><a href="#" onclick="ui.tab('_tray','commands')">Commands</a></li>
-						<li id="tab-philosophy"><a href="#" onclick="ui.tab('_tray','philosophy')">Philosophy</a></li>
+						<li id="tab-variables"><a href="#" onclick="ui.tab('_tray','variables')">Variables</a></li>
 						<li id="tab-about"><a href="#" onclick="ui.tab('_tray','about')">About</a></li>
 					</ul>
 					<div class="toolbar">
@@ -93,20 +93,8 @@
 							<h1>stringhorse</h1>
 							<span class="version"></span><br>
 							<p>
-								Officially on the web at <a title="Stringhorse web site" href="https://stringhorse.dvdmcglshn.com/">stringhorse.dvdmcglshn.com</a>
-							</p>
-							<p>
-								All the source code on github at 
-								<a title="Source code on github.com" href="https://github.com/davidmcglashan/stringhorse">github.com/davidmcglashan/stringhorse</a> (<a title="Creative Commons license details" href="https://creativecommons.org/publicdomain/zero/1.0/">CC0 1.0 Universal</a>)
-							</p>
-							<p>
-								<a href="https://www.flaticon.com/free-icons/horse" title="horse icons">Horse icons created by Freepik - Flaticon</a>
-							</p>
-						</div>
-						<div id="_tray-philosophy" class="hidden">
-							<p>
-								<strong>Stringhorse</strong> is a text manipulation tool that works programmatically but stops short of being a full blown scripting language or regexp handler.
-							</p>
+								<strong>Stringhorse</strong> is a text manipulation tool that works programmatically but stops short of being a full blown scripting language or regexp handler. You get three text panes. Paste the source text into the left and write your command recipe into the middle. The output will appear on the right.
+							</p>							
 							<p>
 								Commands mostly don't have cutesy or UNIX-y names like sed or grep. You can work out what some commands do from the characters in their name &mldr;
 							</p>
@@ -129,8 +117,29 @@
 								<li><strong>+&gt;</strong> will <em>add</em> the text following the command to the <em>right</em> of each line.</li>
 							</ul>
 							<p>
-								You get three text panes. Paste the source text into the left and write your command recipe into the middle. The output will appear in the right.
+								<a title="See an example" href="#" onclick="ui.help();ui.example()">See an example</a>
 							</p>
+							<hr>
+							<p>
+								Officially on the web at <a title="Stringhorse web site" href="https://stringhorse.dvdmcglshn.com/">stringhorse.dvdmcglshn.com</a>
+							</p>
+							<p>
+								All the source code on github at 
+								<a title="Source code on github.com" href="https://github.com/davidmcglashan/stringhorse">github.com/davidmcglashan/stringhorse</a> (<a title="Creative Commons license details" href="https://creativecommons.org/publicdomain/zero/1.0/">CC0 1.0 Universal</a>)
+							</p>
+							<p>
+								<a href="https://www.flaticon.com/free-icons/horse" title="horse icons">Horse icons created by Freepik - Flaticon</a>
+							</p>
+						</div>
+						<div id="_tray-variables" class="hidden">
+							<p>Commands dealing with string manipulation can support variables: reusable strings that are defined once and used often.</p>
+							<p>Variables are entered in the variables pane in the form <em>key = value</em>. Keys must not contain spaces or the variable will not work. Values can be any entered text. Definitions must include an equals sign. Everything before the equals sign is the key, and everything after is the value. Both the key and value have any leading and trailing whitespace removed.</p>
+							<p>To use a variable with a command simply type its name as a parameter, preceded with a $.</p>
+							<p><strong>Example</strong><br>If the variables pane contains the following &hellip;</p>
+							<pre>find = red
+replace = green</pre>
+							<p>&hellip; then the following command in the recipe pane will replace all instances of <b>red</b> in the original text with <b>green</b> in the output &hellip;</p>
+							<pre>ss $find $replace</pre>
 						</div>
 				</div>
 			</section>

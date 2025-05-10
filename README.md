@@ -23,6 +23,12 @@ Characters are combined to achieve things …
 
 ## Changelog
 
+### version 1.3.4
+* There are now helpful placeholders in each pane when they are empty.
+* There is now help for variables in the Help drawer.
+* The Philosophy and About tabs in the Help drawer have been merged.
+* The example has been changed to something simpler and more robust.
+
 ### version 1.3.3
  * The major editor panes can now be resized by dragging their separators.
  * Wide function has been removed.
