@@ -1,16 +1,11 @@
 **** FUNCTIONS *********************************************************
-- New command structure
-- Make 's' reject without second param
-- 'j+' join with a variable or string (lose jtab and jspace)
-- Have the + commands use comppound variables e.g. +> $spc$find $replace
 --- this is 2.0
 
 **** UI *************************
-- get some SVG icons from somewhere for close, wrap, wide, clear, copy
 - improve and expand the help long descriptions.
-- Comments above each example command
 
 **** PROGRAMMING *************************
+- 'Unknown command' error message - is this too much?
 - Error messages should ...
   - display in a separate UI
   - show whatever output we ended up with before aborting

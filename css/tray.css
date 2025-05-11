@@ -36,8 +36,8 @@ section#tray {
 
 	/* Tray content invokes flex and re-instates the Y scrollbar which was suppressed on the tray itself. */
 	section#tray #_tray {
-		flex: 1;
 		overflow-y: auto;
+		display: flex;
 	}
 
 	/* The tray's tabs go in the top portion of the tray. */

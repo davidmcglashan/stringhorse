@@ -13,39 +13,38 @@ const recipe = {
 		document.getElementById('info').classList.add('hidden')
 		document.getElementById('out').classList.remove('hidden')
 
-		// Our working object is a copy of the source text.
+		// Result starts off as the source text. It is transformed by each command in the recipe.
 		let result = document.getElementById('src').value.split('\n')
+
+		// Get the recipe text, split by newlines so we can parse each one in turn. Get the variables too ...
+		let recipeLines = document.getElementById('rec').value.split('\n')
 		let vars = recipe.parseVariables()
+		
+			for ( let line of recipeLines ) {
+				// Ignore comments and blank lines
+				if ( line.length === 0 || line.startsWith('//') ) {
+					continue
+				}
 
-		// This is the main loop, then. Get the recipe text, split by newlines and parse each one ...
-		try {
-			for ( let line of document.getElementById('rec').value.split('\n') ) {
-				if ( line.length > 0 && !line.startsWith('//') ) {
-					// Split the line at its first space. The first entry is our command, the rest are its parameters.
-					let input = line.split(/ (.*)/)
+				// Split the line at its first space. The first entry is our command, the rest are its parameters.
+				let input = line.split(/ (.*)/)
 
-					for ( let cmd of command.commands ) {
-						if ( cmd.command === input[0] ) {
-							// Execute. If a command returns NULL then we abort the whole recipe.
-							result = cmd.func( result, input, vars );
-							if ( result === undefined ) {
-								return
-							} else if ( result instanceof String ) {
-								break
-							}
+				for ( let cmd of command.commands ) {
+					if ( cmd.command === input[0] ) {
+						// Execute the command, storing the new version of the source text in
+						// result, ready for the next command to process it
+						result = cmd.func( result, input, vars );
+
+						// If a command returned NULL then we abort the whole recipe.
+						if ( result === undefined ) {
+							return
+						} else if ( result instanceof String ) {
 							break
-						} 
-					}
+						}
+						break
+					} 
 				}
 			}
-		} catch( err ) {
-			result = []
-			if ( err instanceof TypeError ) {
-				result.push( recipe + ': unknown or badly configured command' )
-			} else {
-				result.push(err)
-			}
-		}
 
 		// Finished looping. Better print the results ...
 		let output = document.getElementById('out')
@@ -90,10 +89,18 @@ const recipe = {
 		return dict
 	},
 
+	getVariable: ( vars, ins ) => {
+		for ( const [ key, value ] of Object.entries( vars ) ) {
+			ins = ins.replaceAll( '$'+key, value )
+		}
+
+		return ins
+	},
+
 	/**
 	 * Returns the variable value of the match variable, or match back again if no variable is found.
 	 */
-	getVariable: ( vars, match ) => {
+	getVariableX: ( vars, match ) => {
 		// Check all the variables
 		if ( match[0] === '$' ) {
 			let name = match.substring(1)

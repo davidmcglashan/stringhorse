@@ -71,8 +71,8 @@ const ui = {
 			li.classList.remove('selected')
 		}
 		document.getElementById( 'tab-'+tab ).classList.add('selected')
-		
-		// Now make the tab page itself visible
+
+		// Hide all the tabs in the container
 		let container = document.getElementById( tdiv )
 		let divs = container.children;
 		for ( let i = 0; i < divs.length; i++ ) {
@@ -82,7 +82,11 @@ const ui = {
 			}
 			div.classList.add('hidden')
 		}
-		document.getElementById(tdiv+'-'+tab).classList.remove('hidden')
+		
+		// Now make the tab page itself visible
+		let selected = document.getElementById(tdiv+'-'+tab)
+		selected.classList.remove('hidden')
+		selected.scrollIntoView({ behavior: "smooth" })
 	},
 
 	/**
