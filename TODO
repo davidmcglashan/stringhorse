@@ -1,14 +1,9 @@
 **** FUNCTIONS *********************************************************
-- saved recipes - it's just a JSON file into localstorage
-  - import/export state - keeps recipes and variables
-- join with a variable or string (lose jtab and jspace)
-- random numbers
-- random text
-  - lorem
-  - magic words
-- commands to manage CSV files
-- JSON
--<=- to also remove the search term
+- New command structure
+- Make 's' reject without second param
+- 'j+' join with a variable or string (lose jtab and jspace)
+- Have the + commands use comppound variables e.g. +> $spc$find $replace
+--- this is 2.0
 
 **** UI *************************
 - get some SVG icons from somewhere for close, wrap, wide, clear, copy
@@ -16,8 +11,18 @@
 - Comments above each example command
 
 **** PROGRAMMING *************************
-- wwwify destroys the slide in tray (can't recreate this but have seen it)
 - Error messages should ...
   - display in a separate UI
   - show whatever output we ended up with before aborting
   - link to the help for the command in question (or include the help when it's a known command)
+- wwwify destroys the slide in tray (can't recreate this but have seen it)
+
+**** IDEAS *************************************************************
+- saved recipes - it's just a JSON file into localstorage
+  - import/export state - keeps recipes and variables
+- random numbers
+- random text
+  - lorem
+  - magic words
+- commands to manage CSV files - probably CSVhorse: an app to deal only with CSV
+- JSONhorse
