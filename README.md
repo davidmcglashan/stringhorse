@@ -23,8 +23,11 @@ Characters are combined to achieve things …
 
 ## Changelog
 
+### version 2.0.1
+* Fixed a bug in the example.
+
 ### version 2.0.0
-* Major restructuring of the keep and remove commands to make them logical and powerful
+* Major restructuring of the keep and remove commands to make them logical and powerful.
 * New join command variants: j, jn, j+, jn+
 * Variables can be used in string parameters to commands, e.g. +> $foo$bar $pip
 
