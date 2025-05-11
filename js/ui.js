@@ -177,13 +177,13 @@ const ui = {
 			'\n' +
 			'// <-- Two slashes like this is a comment. Lines beginning with these (like this one) are ignored.\n' +
 			'\n' +
-			'|\nsort\ncap\nk< 1\n' +
+			'|\nsort\ncap\nk<n 1\n' +
 			'\n' +
 			'// Above are the commands that make up the recipe. What does each command do ... ?\n' +
 			'// | broke the text into words and put each word on a new line ...\n' +
 			'// sort put the lines in alphabetical order ...\n' +
 			'// cap capitalised the first letter of each line ...\n' +
-			'// k< 1 kept the first character in each line: k for keep, < for the beginning ...\n\n' +
+			'// k<n 1 kept the first character in each line: k for keep, < for the beginning, n for number of characters ...\n\n' +
 			'// The end result was an alphabetical list of the initial letters from the original sentence. You can change the recipe to see stringhorse in action. The recipe will run after a short pause and the output will appear in the right hand pane ...\n'
 
 		localStorage.src = document.getElementById('src').value

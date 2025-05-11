@@ -3,7 +3,7 @@ const command = {
 	// - Major releases see significant change to the feature set e.g. multiple minors.
 	// - Minor changes when at least one command is added, removed or changed, or a UI feature is added.
 	// - Point releases for bug fixes, UI modifications, meta and build changes.
-	version: "v2.0.0",
+	version: "v2.0.1",
 
 	commands: [
 		{
