@@ -1,11 +1,11 @@
 const ui = {
 	/**
-	 * Copy the output text into the original.
+	 * Copy the output text into the input.
 	 */
-	copyToOriginal: () => {
+	copyToInput: () => {
 		let tout = document.getElementById('out')
-		let toriginal = document.getElementById('src')
-		toriginal.value = tout.value
+		let tin = document.getElementById('src')
+		tin.value = tout.value
 		localStorage.src = tout.value
 	},
 
@@ -13,7 +13,6 @@ const ui = {
 	 * Clears all textareas
 	 */
 	clearAll: () => {
-		console.log('clearall')
 		document.getElementById('src').value = ''
 		document.getElementById('rec').value = ''
 		localStorage.src = document.getElementById('src').value
@@ -108,7 +107,7 @@ const ui = {
 			a['title'] = cmd['desc']
 			a['href'] = "#"
 			a.setAttribute( 'onclick', "ui.showHelpCommand('" + cmd['command'] + "');" )
-			a.innerHTML = cmd['command'].replaceAll('<','&lt;')
+			a.innerHTML = '<strong>' + cmd['command'].replaceAll('<','&lt;') + '</strong>'
 
 			let short = a.cloneNode(false)
 			short.innerHTML = cmd['short']
@@ -118,11 +117,13 @@ const ui = {
 
 		// Then each command gets a longer description
 		for ( let cmd of command.commands ) {
-			// and a separator
+			// first a separator
 			let hr = document.createElement('hr')
 			div.appendChild( hr )
 
+			// Command and parameters
 			let p = document.createElement('p')
+			p.classList.add( 'command' )
 			p['id'] = cmd['command']
 			p.innerHTML = '<strong>' + cmd['command'].replaceAll('<','&lt;') + '</strong>\n'
 			if ( cmd['params'] !== undefined ) {
@@ -130,10 +131,32 @@ const ui = {
 			}
 			div.appendChild( p )
 
+			// Description.
 			p = document.createElement('p')
 			p.innerHTML = cmd['desc']
 			div.appendChild( p )
 			
+			// Example is three panels in a <div>
+			if ( cmd['input'] ) {
+				let example = document.createElement('div')
+				div.appendChild( example )
+				example.classList.add( 'example' )
+
+				for ( id of ['input','recipe','output'] ) {
+					let subdiv = document.createElement('div')
+					example.appendChild( subdiv )
+					subdiv.innerHTML = id + '<pre>' + cmd[id].join('<br>') + '</pre>'
+				}
+
+				let a = document.createElement( 'a' )
+				example.appendChild( a )
+				a['title'] = 'Use example'
+				a['href'] = "#"
+				a.setAttribute( 'onclick', "ui.useExample('" + cmd.command + "');" )
+				a['tabIndex'] = '-1'
+				a.innerHTML = 'Use example'
+			}
+
 			// Also is an array of related commands.
 			if ( cmd['also'] !== undefined ) {
 				p = document.createElement('p')
@@ -141,20 +164,34 @@ const ui = {
 				p.innerHTML = 'See also ... '
 				div.appendChild( p )
 
-				let first = true
-				for ( let also of cmd['also'] ) {
-					if ( !first ) {
-						p.insertAdjacentHTML( 'beforeend', ' | ' );
-					}
-					first = false
+				let ul = document.createElement('ul')
+				ul.classList.add( 'see-also' )
+				div.appendChild( ul )
 
-					a = document.createElement( 'a' )
-					a['title'] = also
-					a['href'] = "#"
-					a.setAttribute( 'onclick', "ui.showHelpCommand('" + also + "');" )
-					a['tabIndex'] = '-1'
-					a.innerHTML = also.replaceAll('<','&lt;')
-					p.appendChild( a )
+				for ( let also of cmd['also'] ) {
+					let linkedCommand = command.find(also)
+					if ( linkedCommand ) {
+						let li = document.createElement( 'li' )
+						ul.appendChild( li )
+
+						let a = document.createElement( 'a' )
+						li.appendChild( a )
+						a['title'] = also
+						a['href'] = "#"
+						a.setAttribute( 'onclick', "ui.showHelpCommand('" + linkedCommand.command + "');" )
+						a['tabIndex'] = '-1'
+						a.innerHTML = also.replaceAll('<','&lt;')
+
+						a = document.createElement( 'a' )
+						li.appendChild( a )
+						a['title'] = also
+						a['href'] = "#"
+						a.setAttribute( 'onclick', "ui.showHelpCommand('" + linkedCommand.command + "');" )
+						a['tabIndex'] = '-1'
+						a.innerHTML = linkedCommand.short
+					} else {
+						ul.insertAdjacentHTML( 'beforeend', '<li>NOT FOUND:' + also + '</li>' )
+					}
 				}			
 			}
 		}
@@ -173,7 +210,7 @@ const ui = {
 	 */
 	example: () => {
 		document.getElementById('src').value = 'The quick brown fox jumps over the lazy dog'
-		document.getElementById('rec').value = '// The Original Text pane on the left now shows a simple sentence. This central pane holds the recipe. The commands in here are executed to provide the output.\n' +
+		document.getElementById('rec').value = '// The input pane on the left now shows a simple sentence. This central pane holds the recipe. The commands in here are executed to provide the output.\n' +
 			'\n' +
 			'// <-- Two slashes like this is a comment. Lines beginning with these (like this one) are ignored.\n' +
 			'\n' +
@@ -184,11 +221,26 @@ const ui = {
 			'// sort put the lines in alphabetical order ...\n' +
 			'// cap capitalised the first letter of each line ...\n' +
 			'// k<n 1 kept the first character in each line: k for keep, < for the beginning, n for number of characters ...\n\n' +
-			'// The end result was an alphabetical list of the initial letters from the original sentence. You can change the recipe to see stringhorse in action. The recipe will run after a short pause and the output will appear in the right hand pane ...\n'
+			'// The end result was an alphabetical list of the initial letters from the input sentence. You can change the recipe to see stringhorse in action. The recipe will run after a short pause and the output will appear in the right hand pane ...\n'
 
 		localStorage.src = document.getElementById('src').value
 		localStorage.recipe = document.getElementById('rec').value
-		localStorage.variables = document.getElementById('vars').value
+		recipe.execute()
+	},
+
+	/**
+	 * Resets the stringhorse UI with the passed in example from the help.
+	 */
+	useExample: ( name ) => {
+		let cmd = command.find( name )
+
+		document.getElementById('src').value = cmd['input'].join('\n')
+		document.getElementById('rec').value = cmd['recipe'].join('\n').replaceAll('&lt;','<')
+		localStorage.src = document.getElementById('src').value
+		localStorage.recipe = document.getElementById('rec').value
+
+		// Calling help() closes the tray
+		ui.help()
 		recipe.execute()
 	},
 
@@ -210,7 +262,7 @@ const ui = {
 			document.getElementById( 'variables' ).classList.replace( 'vars-small', size )
 		}
 
-		// Restore the original text and recipe from localStorage.
+		// Restore the input text and recipe from localStorage.
 		if ( localStorage.src === undefined && localStorage.recipe === undefined ) {
 			ui.example()
 		} else {
@@ -239,7 +291,7 @@ const ui = {
 		});
 
 		// Re-establish the left and right for each pane
-		let ids = [ 'original','centre-column','output','grip-left','grip-right' ]
+		let ids = [ 'input','centre-column','output','grip-left','grip-right' ]
 		for ( let id of ids ) {
 			let elem = document.getElementById( id )
 			let left = localStorage[id+'_left']
@@ -339,12 +391,12 @@ const ui = {
 	},
 
 	/**
-	 * Starts a drag on the left gripper between the original and centre column panes.
+	 * Starts a drag on the left gripper between the input and centre column panes.
 	 */
 	dragStartLeft: ( ev ) => {
 		ev.preventDefault()
 		
-		ui.dragLeftElem = document.getElementById('original')
+		ui.dragLeftElem = document.getElementById('input')
 		ui.dragRightElem = document.getElementById('centre-column')
 		ui.dragGripElem = document.getElementById('grip-left')
 		ui.limit = ui.dragRightElem.getBoundingClientRect().right
@@ -406,7 +458,7 @@ const ui = {
 		document.onmouseup = null
 		document.onmousemove = null
 
-		let ids = [ 'original','centre-column','output','grip-left','grip-right' ]
+		let ids = [ 'input','centre-column','output','grip-left','grip-right' ]
 		for ( let id of ids ) {
 			let elem = document.getElementById( id )
 			localStorage[id+'_left'] = elem.style.left
@@ -419,7 +471,7 @@ const ui = {
 	 * the layout falls back to the CSS which is width %ages.
 	 */
 	windowResized: ( ev ) => {
-		let ids = [ 'original','centre-column','output','grip-left','grip-right' ]
+		let ids = [ 'input','centre-column','output','grip-left','grip-right' ]
 		for ( let id of ids ) {
 			let elem = document.getElementById( id )
 			elem.style.left = ''

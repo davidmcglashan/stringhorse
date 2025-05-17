@@ -60,11 +60,18 @@ section#tray {
 /* Restore relative position to the commands tray so its absolutely positioned content will scroll. */
 div#_tray-commands {
 	position: relative;
+	padding: 0 2em 2em;
 } 
+	/* Rules are thin and spaced out. */
+	div#_tray-commands hr {
+		margin: 1.5em 0;
+		border-bottom: none;
+	}
+
 	/* The command list puts the commands on the left ... */
 	div#_tray-commands ul {
 		list-style-type: none;
-		padding-inline-start: 2em;
+		padding-inline-start: 0em;
 		line-height: 1.4em;
 	}
 	div#_tray-commands li {
@@ -85,18 +92,59 @@ div#_tray-commands {
 
 	/* Keep all the help texts nicely aligned. */
 	div#_tray-commands p {
-		margin: 0.25em;
+		margin: 0.5em 0;
 		line-height: 1.25em;
-		padding-left: 1em;
+	}
+	div#_tray-commands p.command {
+		font-size: 150%;
+		margin: 0;
+		padding-left: unset;
 	}
 	div#_tray-commands > div.text p {
 		margin-bottom: 1em;
 	}
 	div#_tray-commands p.see-also {
-		font-size: 90%;
 		color: var(--button-alt-fg);
-		margin: 0 1em;
+		margin: 1em 0.0 0.25em;
 	}
+	div#_tray-commands ul.see-also {
+		margin-block-start: 0;
+	}
+	div#_tray-commands ul.see-also li {
+		position: relative;
+	}
+	div#_tray-commands ul.see-also li a:first-child {
+		font-weight: bold;
+	}
+	div#_tray-commands ul.see-also li a:nth-child(2) {
+		position: absolute;
+		display: block;
+		margin-left: 6em;
+		top: 0;
+	}
+
+	div#_tray-commands div.example {
+		display: flex;
+		gap: 3em;
+		margin: 0.75em 1em 0.5em 0;
+		padding: 0.5em 1em 1em;
+		background-color: #f0f0f0;
+		border: 1px solid #e0e0e0;
+		border-radius: 3px;
+		width: fit-content;
+	}
+		div#_tray-commands div.example>div{
+			font-weight: bold;
+		}
+		div#_tray-commands div.example>div>pre {
+			font-weight: initial;
+			font-family: monospace;
+			border-top: 1px solid #aaa;
+			border-width: 1px 0 0;
+			margin-top: 0.25em;
+			margin-left: -0.5em;
+			padding: 0.25em 2em 0 0.5em;
+		}
 
 /* Variables and About are slabs of text so get slabby, texty stylings. */
 div#_tray-variables,

@@ -23,6 +23,11 @@ Characters are combined to achieve things …
 
 ## Changelog
 
+### version 2.0.2
+* "Original Text" is now "Input".
+* Overhaul of the command tray help texts which examples and typography improvements.
+* Pane drag grippers are now defined and visible.
+
 ### version 2.0.1
 * Fixed a bug in the example.
 

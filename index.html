@@ -31,14 +31,14 @@
 		</header>
 		<main>
 			<section id="ui" class="normal">
-				<div class="pane" id="original">
-					<strong id="label-original">Original Text</strong>
+				<div class="pane" id="input">
+					<strong id="label-input">Input</strong>
 					<div class="toolbar hideonwide">
-						<a title="Toggle text wrapping in the Original Text pane" id="src-wrap-button" href="#" onclick="ui.wrap('src')" class="button">Wrap</a>
+						<a title="Toggle text wrapping in the Input pane" id="src-wrap-button" href="#" onclick="ui.wrap('src')" class="button">Wrap</a>
 					</div>
-					<textarea id="src" class="mono" aria-labelledby="label-original" placeholder="Type or paste the text to be transformed"></textarea>
+					<textarea id="src" class="mono" aria-labelledby="label-input" placeholder="Type or paste the text to be transformed"></textarea>
 				</div>
-				<div class="gripper" id="grip-left" onmousedown="ui.dragStartLeft(event);"></div>
+				<div class="gripper" id="grip-left" onmousedown="ui.dragStartLeft(event);"><span>&vellip;</span></div>
 				<div class="pane" id="centre-column">
 					<div id="recipe">
 						<strong id="label-recipe">Recipe</strong>
@@ -60,12 +60,12 @@
 						<textarea id="vars" class="mono" aria-labelledby="label-variables" placeholder="Variables in the form 'key=value'"></textarea>
 					</div>
 				</div>
-				<div class="gripper" id="grip-right" onmousedown="ui.dragStartRight(event);"></div>
+				<div class="gripper" id="grip-right" onmousedown="ui.dragStartRight(event);"><span>&vellip;</span></div>
 				<div class="pane" id="output">
 					<strong id="label-output">Output</strong>
 					<div class="toolbar hideonwide">
 						<span class="small gapAfter">
-							<a title="Copy the output text into the Original Text pane" href="#" onclick="ui.copyToOriginal()">Copy to Original</a>
+							<a title="Copy the output text into the Input pane" href="#" onclick="ui.copyToInput()">Copy to Input</a>
 						</span>
 						<a title="Toggle text wrapping in the Output pane"id="out-wrap-button" href="#" onclick="ui.wrap('out')" class="button">Wrap</a>
 					</div>
@@ -137,7 +137,7 @@
 							<p><strong>Example</strong><br>If the variables pane contains the following &hellip;</p>
 							<pre>find = red
 replace = green</pre>
-							<p>&hellip; then the following command in the recipe pane will replace all instances of <b>red</b> in the original text with <b>green</b> in the output &hellip;</p>
+							<p>&hellip; then the following command in the recipe pane will replace all instances of <b>red</b> in the input text with <b>green</b> in the output &hellip;</p>
 							<pre>ss $find $replace</pre>
 						</div>
 				</div>

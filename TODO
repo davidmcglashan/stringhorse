@@ -2,7 +2,7 @@
 --- this is 2.0
 
 **** UI *************************
-- improve and expand the help long descriptions.
+- hyperlink:hovers are blue in dark mode
 
 **** PROGRAMMING *************************
 - 'Unknown command' error message - is this too much?

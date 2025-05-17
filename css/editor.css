@@ -16,7 +16,7 @@ section#ui {
 		width: auto;
 	}
 
-	section#ui > div#original {
+	section#ui > div#input {
 		left: 0;
 		right: calc(70vw - 1em);
 	}
@@ -35,6 +35,8 @@ section#ui {
 		top: 0;
 		bottom: 0;
 		cursor: ew-resize;
+		display: flex;
+		align-items: center;
 	}
 	section#ui > div#grip-left {
 		left: calc(30vw + 1em + 1.25px);
@@ -44,6 +46,7 @@ section#ui {
 	}
 	section#ui > div.gripper:hover {
 		background-color: var(--button-bg);
+		color: var(--button-fg)
 	}
 
 	/* The central column is sometimes split into two. */
