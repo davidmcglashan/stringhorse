@@ -40,7 +40,7 @@ Characters are combined to achieve things …
 * New join command variants: j, jn, j+, jn+
 * Variables can be used in string parameters to commands, e.g. +> $foo$bar $pip
 
-### version 1.3.4
+### version 1.3.4
 * There are now helpful placeholders in each pane when they are empty.
 * There is now help for variables in the Help drawer.
 * The Philosophy and About tabs in the Help drawer have been merged.
