@@ -16,6 +16,8 @@
 	--selected-tab: #444;
 	--tab-hover-bg: #eee;
 	--tab-hover-fg: #25a;
+	--example-bg: #f0f0f0;
+	--example-border: #e0e0e0;
 	color-scheme: light;
 }
 
@@ -25,6 +27,7 @@
 	--header-bg: #343;
 	--lightbox: rgba(0, 0, 0, 0.75);
 	--link-fg: #e76;
+	--link-hover-fg: #ff0;
 	--button-bg: #a43;
 	--button-fg: #fff;
 	--button-hover-bg: #632;
@@ -33,8 +36,10 @@
 	--pane-bg: #222;
 	--text-fg: #cdc;
 	--selected-tab: #c65;
-	--tab-hover-bg: #bbb;
-	--tab-hover-fg: #25a;
+	--tab-hover-bg: #000;
+	--tab-hover-fg: #ff0;
+	--example-bg: #000;
+	--example-border: #111;
 	color-scheme: dark;
 }
 
@@ -161,8 +166,8 @@ a {
 
 /* Pre tags get grey colouring and nice spacing. */
 pre {
-	background-color: #f0f0f0;
-	border: 1px solid #e0e0e0;
+	background-color: var(--example-bg);
+	border: 1px solid var(--example-border);
 	padding: 1em;
 	margin: 0;
 }

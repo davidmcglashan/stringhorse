@@ -149,12 +149,12 @@ const ui = {
 				}
 
 				let a = document.createElement( 'a' )
-				example.appendChild( a )
+				div.appendChild( a )
 				a['title'] = 'Use example'
 				a['href'] = "#"
 				a.setAttribute( 'onclick', "ui.useExample('" + cmd.command + "');" )
 				a['tabIndex'] = '-1'
-				a.innerHTML = 'Use example'
+				a.innerHTML = 'Run this example'
 			}
 
 			// Also is an array of related commands.

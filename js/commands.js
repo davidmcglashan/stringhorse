@@ -271,7 +271,7 @@ const command = {
 			params: 	"[search]",
 			desc: 		"Removes the text before first instance of [search] on each line, leaving [search] in place.",
 			short: 		"Remove up to the search term",
-			input:		["melting the cheese","making many difficult choices","eating chocolate"],
+			input:		["melting the cheese","making difficult choices","eating chocolate"],
 			recipe:		["-[ ch"],
 			output:		["cheese","choices","chocolate"],
 			also: 		[ "-", "--", "-[[", "-]", "-]]" ],
@@ -298,7 +298,7 @@ const command = {
 			params: 	"[search]",
 			desc: 		"Removes the text up to and including the first instance of [search] on each line.",
 			short: 		"Remove up to and including the search term",
-			input:		["melting the cheese","making many difficult choices","eating chocolate"],
+			input:		["melting the cheese","making difficult choices","eating chocolate"],
 			recipe:		["-[[ ch"],
 			output:		["eese","oices","ocolate"],
 			also: 		[ "-", "--", "-[", "-]", "-]]" ],
@@ -557,9 +557,9 @@ const command = {
 			command: 	"-=1",
 			desc: 		"Removes any lines which contain a number character.",
 			short: 		"Remove lines containing numbers",
-			input:		["123abc","will be kept","will not be removed!","keep-this-one"],
+			input:		["123abc","will be kept","not removed!","keep-this-one"],
 			recipe:		["-=1"],
-			output:		["will be kept","will not be removed!","keep-this-one"],
+			output:		["will be kept","not removed!","keep-this-one"],
 			also: 		[ "-=.", "-=A" ],
 
 			func: ( arr, cmd, vars ) => {
@@ -951,9 +951,9 @@ const command = {
 			params: 	"[search] [replace]",
 			desc: 		"Replaces the first instance of [search] on each line with [replace]. [search] and [replace] are separated by whitespace. Variables can be used where [search] or [replace] need to contain whitespace.",
 			short: 		"Substitute first instance of search term on each line",
-			input:		["food, glorious food"],
-			recipe:		["s food dirt"],
-			output:		["dirt, glorious food"],
+			input:		["tick tick tick"],
+			recipe:		["s tick TOCK"],
+			output:		["TOCK tick tick"],
 			also: 		[ "ss" ],
 
 			func: ( arr, cmd, vars ) => {
@@ -985,9 +985,9 @@ const command = {
 			params: 	"[search] [replace]",
 			desc: 		"Replaces all instances of [search] on each line with [replace]. [search] and [replace] are separated by whitespace. Variables can be used where [search] or [replace] need to contain whitespace.",
 			short: 		"Substitute all instances of search term on each line",
-			input:		["food, glorious food"],
-			recipe:		["ss food dirt"],
-			output:		["dirt, glorious dirt"],
+			input:		["tick tick tick"],
+			recipe:		["s tick TOCK"],
+			output:		["TOCK TOCK TOCK"],
 			also: 		[ "s" ],
 
 			func: ( arr, cmd, vars ) => {
@@ -1197,9 +1197,9 @@ const command = {
 			command: 	"upper",
 			desc: 		"Converts the input text into upper case.",
 			short: 		"To upper case",
-			input:		["it's whisper quiet!","AaBcCcDdEe"],
+			input:		["whisper quiet!","AaBcCcDdEe"],
 			recipe:		["upper"],
-			output:		["IT'S WHISPER QUIET!","AABBCCDDEE"],
+			output:		["WHISPER QUIET!","AABBCCDDEE"],
 			also: 		[ "lower", "cap" ],
 
 			func: ( arr, cmd, vars ) => {
@@ -1352,9 +1352,9 @@ const command = {
 			command: 	"b64",
 			desc: 		"Encode each line to Base64. Lines are kept separated. Each line is encoded independently.",
 			short: 		"Base 64 encode each line",
-			input:		["super secret code"],
+			input:		["SecReT c0De!"],
 			recipe:		["b64"],
-			output:		["c3VwZXIgc2VjcmV0IGNvZGU="],
+			output:		["U2VjUmVUIGMwRGUh"],
 			also: 		[ "unb64" ],
 
 			func: ( arr, cmd, vars ) => {
@@ -1369,9 +1369,9 @@ const command = {
 			command: 	"unb64",
 			desc: 		"Decode each line from Base64. Lines are kept separated. Each line is decoded independently.",
 			short: 		"Base 64 decode each line",
-			input:		["TXlzdGVyaWVzIFJldmVhbGVkISEhMQ=="],
+			input:		["UmV2ZWFsZWQh"],
 			recipe:		["unb64"],
-			output:		["Mysteries Revealed!!!1"],
+			output:		["Revealed!"],
 			also: 		[ "b64" ],
 
 			func: ( arr, cmd, vars ) => {

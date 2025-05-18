@@ -23,6 +23,10 @@ Characters are combined to achieve things …
 
 ## Changelog
 
+### version 2.0.3
+* Dark mode appearance fixes to instances of bad contrast and bright elements.
+* Some cosmetic and line-length tweaks to the help tray examples.
+
 ### version 2.0.2
 * "Original Text" is now "Input".
 * Overhaul of the command tray help texts which examples and typography improvements.

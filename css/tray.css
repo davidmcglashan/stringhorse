@@ -128,8 +128,8 @@ div#_tray-commands {
 		gap: 3em;
 		margin: 0.75em 1em 0.5em 0;
 		padding: 0.5em 1em 1em;
-		background-color: #f0f0f0;
-		border: 1px solid #e0e0e0;
+		background-color: var(--example-bg);
+		border: 1px solid var(--example-border);
 		border-radius: 3px;
 		width: fit-content;
 	}
