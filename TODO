@@ -3,11 +3,6 @@
 **** UI *************************
 
 **** PROGRAMMING *************************
-- 'Unknown command' error message - is this too much?
-- Error messages should ...
-  - display in a separate UI
-  - show whatever output we ended up with before aborting
-  - link to the help for the command in question (or include the help when it's a known command)
 - wwwify destroys the slide in tray (can't recreate this but have seen it)
 
 **** IDEAS *************************************************************

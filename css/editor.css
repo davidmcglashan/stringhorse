@@ -132,3 +132,10 @@ section#ui {
 			text-wrap: nowrap;
 		}
 
+	section#ui div#output ul#log {
+		position: absolute;
+		color: var(--log-fg);
+		bottom: 0;
+		left: 0;
+		padding-inline-start: 2em;
+	}

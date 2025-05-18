@@ -2,7 +2,7 @@ const recipe = {
 	/*
 	* Executes the currently entered recipe.
 	*/
-	execute: () => {
+	execute: () => {		
 		// Store things in localstorage for future us.
 		localStorage.recipe = document.getElementById('rec').value
 		localStorage.src = document.getElementById('src').value
@@ -12,57 +12,64 @@ const recipe = {
 		// Tidy up the UI if wwwify or info was used previously.
 		document.getElementById('info').classList.add('hidden')
 		document.getElementById('out').classList.remove('hidden')
+		recipe.clearLog()
 
-		// Result starts off as the source text. It is transformed by each command in the recipe.
-		let result = document.getElementById('src').value.split('\n')
+		// Output starts off as the source text. It is transformed by each command in the recipe.
+		let output = document.getElementById('src').value.split('\n')
 
 		// Get the recipe text, split by newlines so we can parse each one in turn. Get the variables too ...
 		let recipeLines = document.getElementById('rec').value.split('\n')
 		let vars = recipe.parseVariables()
-		
-			for ( let line of recipeLines ) {
-				// Ignore comments and blank lines
-				if ( line.length === 0 || line.startsWith('//') ) {
-					continue
-				}
+		let error = null
 
-				// Split the line at its first space. The first entry is our command, the rest are its parameters.
-				let input = line.split(/ (.*)/)
-
-				for ( let cmd of command.commands ) {
-					if ( cmd.command === input[0] ) {
-						// Execute the command, storing the new version of the source text in
-						// result, ready for the next command to process it
-						result = cmd.func( result, input, vars );
-
-						// If a command returned NULL then we abort the whole recipe.
-						if ( result === undefined ) {
-							return
-						} else if ( result instanceof String ) {
-							break
-						}
-						break
-					} 
-				}
+		for ( let line of recipeLines ) {
+			// Ignore comments and blank lines
+			if ( line.length === 0 || line.startsWith('//') ) {
+				continue
 			}
 
-		// Finished looping. Better print the results ...
-		let output = document.getElementById('out')
-		if ( result instanceof String ) {
-			output.value = result
-		} else {
-			output.value = ''
+			// Split the line at its first space. The first entry is our command, the rest are its parameters.
+			let input = line.split(/ (.*)/)
+			let cmd = command.find( input[0] )
 
-			// If we only got a blank string array then don't embellish with line returns
-			if ( result.length === 1 && result[0] === '' ) {
-				return
-			}
+			if ( cmd ) {
+				// Execute the command, storing the new version of the source text in
+				// result, ready for the next command to process it
+				try {
+					let result = cmd.func( output, input, vars );
 
-			// Otherwise show each line in the result array with a line return
-			for ( let line of result ) {
-				output.value = output.value + line + '\n'
+					// If a command returned NULL then we abort the whole recipe.
+					if ( result === undefined ) {
+						return
+					} else if ( result instanceof String ) {
+						recipe.addToLog( result, input[0] )
+					} else {
+						output = result
+					}
+				} catch ( e ) {
+					recipe.addToLog( 'Something went wrong with this command. Check the console.', input[0] )
+					error = e
+				}
+			} else {
+				recipe.addToLog( 'Unknown command: <strong>' + input[0] + '</strong' )
 			}
 		}
+
+		// Finished looping. Better print the results ...
+		let textarea = document.getElementById('out')
+		textarea.value = ''
+
+		// If we only got a blank string array then don't embellish with line returns
+		if ( output.length === 1 && output[0] === '' ) {
+			return
+		}
+
+		// Otherwise show each line in the result array with a line return
+		for ( let line of output ) {
+			textarea.value = textarea.value + line + '\n'
+		}
+
+		if ( error ) { throw error }
 	},
 
 	/**
@@ -111,5 +118,29 @@ const recipe = {
 
 		// Return the original parameter
 		return match
+	},
+
+	/**
+	 * Clear the log down, usually in readiness for a new recipe execution!
+	 */
+	clearLog: () => {
+		let log = document.getElementById( 'log' )
+		log.innerHTML = ''
+	},
+
+	/**
+	 * Writes a new message to the error log
+	 */
+	addToLog: ( msg, cmd ) => {
+		// If a command was included, safely format and add it to the message
+		if ( cmd ) {
+			msg = '<strong>' + cmd.replaceAll( '<','&lt;' ) + '</strong> &mdash; ' + msg
+		}
+
+		// Build the error UI
+		let entry = document.createElement( 'li' )
+		entry.innerHTML = msg
+		let log = document.getElementById( 'log' )
+		log.appendChild( entry )
 	}
 }

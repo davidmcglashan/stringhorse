@@ -3,7 +3,7 @@ const command = {
 	// - Major releases see significant change to the feature set e.g. multiple minors.
 	// - Minor changes when at least one command is added, removed or changed, or a UI feature is added.
 	// - Point releases for bug fixes, UI modifications, meta and build changes.
-	version: "v2.0.3",
+	version: "v2.0.4",
 
 	commands: [
 		{
@@ -21,7 +21,7 @@ const command = {
 				let result = []
 
 				if ( cmd[1] === undefined || cmd[1].length === 0 ) {
-					return new String( '+<: +< requires a [string] parameter to add to the line.' )
+					return new String( 'requires a [string] parameter to add to the line.' )
 				}
 				// Check the parameters for variables.
 				let match = recipe.getVariable( vars, cmd[1] )
@@ -47,7 +47,7 @@ const command = {
 				result = []
 
 				if ( cmd[1] === undefined || cmd[1].length === 0 ) {
-					return new String( '+>: +> requires a [string] parameter to add to the line.' )
+					return new String( 'requires a [string] parameter to add to the line.' )
 				}
 			
 				// Check the parameters for variables.
@@ -74,7 +74,7 @@ const command = {
 				let result = []
 
 				if ( cmd[1] === undefined || cmd[1].length === 0 ) {
-					return new String( '-: - requires a search string to remove.' )
+					return new String( 'requires a search string to remove.' )
 				}
 			
 				// Check the parameters for variables.
@@ -100,7 +100,7 @@ const command = {
 				let result = []
 
 				if ( cmd[1] === undefined || cmd[1].length === 0 ) {
-					return new String( '--: -- requires a search string to remove.' )
+					return new String( 'requires a search string to remove.' )
 				}
 			
 				// Check the parameters for variables.
@@ -123,11 +123,9 @@ const command = {
 			also: 		[ "k=","-=<","-=>","-<","->" ],
 
 			func: ( arr, cmd, vars ) => {
-				let result = ''
-
 				// Build the string first.
 				if ( cmd[1] === undefined || cmd[1].length === 0 ) {
-					return new String( '-=: -= requires something to match with' )
+					return new String( 'requires something to match with' )
 				}
 			
 				// Check the parameters for variables.
@@ -153,11 +151,9 @@ const command = {
 			also: 		[ "k=","-=","-=>","-<","->" ],
 
 			func: ( arr, cmd, vars ) => {
-				let result = ''
-
 				// Build the string first.
 				if ( cmd[1] === undefined || cmd[1].length === 0 ) {
-					return new String( '-=<: -=< requires something to match with' )
+					return new String( 'requires something to match with' )
 				}
 			
 				// Check the parameters for variables.
@@ -183,11 +179,9 @@ const command = {
 			also: 		[ "k=","-=","-=<","-<","->" ],
 
 			func: ( arr, cmd, vars ) => {
-				let result = ''
-
 				// Build the string first.
 				if ( cmd[1] === undefined || cmd[1].length === 0 ) {
-					return new String( '-=>: -=> requires something to match with' )
+					return new String( 'requires something to match with' )
 				}
 			
 				// Check the parameters for variables.
@@ -213,11 +207,9 @@ const command = {
 			also: 		[ "k=","-=","-=>","-=<","->" ],
 
 			func: ( arr, cmd, vars ) => {
-				let result = ''
-
 				// Build the string first.
 				if ( cmd[1] === undefined || cmd[1].length === 0 ) {
-					return new String( '-<: -< requires something to match with' )
+					return new String( 'requires something to match with' )
 				}
 			
 				// Check the parameters for variables.
@@ -245,11 +237,9 @@ const command = {
 			also: 		[ "k=","-=","-=>","-=<","-<" ],
 
 			func: ( arr, cmd, vars ) => {
-				let result = ''
-
 				// Build the string first.
 				if ( cmd[1] === undefined || cmd[1].length === 0 ) {
-					return new String( '-<: -< requires something to match with' )
+					return new String( 'requires something to match with' )
 				}
 			
 				// Check the parameters for variables.
@@ -389,7 +379,7 @@ const command = {
 
 				// Check there was an input ...
 				if ( cmd[1] === undefined || cmd[1].length === 0 ) {
-					return new String( '-<: -< requires a numeric parameter for the length of its removal.' )
+					return new String( 'requires a numeric parameter for the length of its removal.' )
 				}
 			
 				// Check the parameters for variables.
@@ -417,7 +407,7 @@ const command = {
 		
 				// Check there was an input ...
 				if ( cmd[1] === undefined || cmd[1].length === 0 ) {
-					return new String( '->: -> requires a numeric parameter for the length of its removal.' )
+					return new String( 'requires a numeric parameter for the length of its removal.' )
 				}
 			
 				// Check the parameters for variables.
@@ -609,7 +599,7 @@ const command = {
 				result = ''
 			
 				if ( cmd[1] === undefined || cmd[1].length === 0 ) {
-					return new String( 'k=: k= requires something to match with' )
+					return new String( 'requires something to match with' )
 				}
 			
 				// Check the parameters for variables.
@@ -637,7 +627,7 @@ const command = {
 				result = ''
 			
 				if ( cmd[1] === undefined || cmd[1].length === 0 ) {
-					return new String( 'k=<: k=< requires something to match with' )
+					return new String( 'requires something to match with' )
 				}
 				
 				// Check the parameters for variables.
@@ -665,7 +655,7 @@ const command = {
 				result = ''
 			
 				if ( cmd[1] === undefined || cmd[1].length === 0 ) {
-					return new String( 'k=>: k=> requires something to match with' )
+					return new String( 'requires something to match with' )
 				}
 			
 				// Check the parameters for variables.
@@ -694,7 +684,7 @@ const command = {
 
 				// Check there was an input ...
 				if ( cmd[1] === undefined || cmd[1].length === 0 ) {
-					return new String( 'k<n: k<n requires a numeric parameter for the length of its string.' )
+					return new String( 'requires a numeric parameter for the length of its string.' )
 				}
 			
 				// Check the parameters for variables.
@@ -722,7 +712,7 @@ const command = {
 
 				// Check there was an input ...
 				if ( cmd[1] === undefined || cmd[1].length === 0 ) {
-					return new String( 'k>n: k>n requires a numeric parameter for the length of its string.' )
+					return new String( 'requires a numeric parameter for the length of its string.' )
 				}
 			
 				// Check the parameters for variables.
@@ -962,13 +952,13 @@ const command = {
 
 				// Check there was at least a search parameter ...
 				if ( cmd.length === 1 || cmd[1] === undefined || cmd[1].length === 0 ) {
-					return new String( 's: s requires a [search] and a [replace] parameter.' )
+					return new String( 'requires a [search] and a [replace] parameter.' )
 				}
 
 				// The replace parameter we might have to divine for ourselves.
 				let params = cmd[1].split(delim)
 				if ( params.length === 1 || params[1] === undefined || params[1].length === 0 ) {
-					return new String( 's: s requires a [replace] parameter.' )
+					return new String( 'requires a [replace] parameter.' )
 				}
 			
 				let src = recipe.getVariable( vars, params[0] )
@@ -996,13 +986,13 @@ const command = {
 
 				// Check there was at least a search parameter ...
 				if ( cmd.length === 1 || cmd[1] === undefined || cmd[1].length === 0 ) {
-					return new String( 's: s requires a [search] and a [replace] parameter.' )
+					return new String( 'requires a [search] and a [replace] parameter.' )
 				}
 
 				// The replace parameter we might have to divine for ourselves.
 				let params = cmd[1].split(delim)
 				if ( params.length === 1 || params[1] === undefined || params[1].length === 0 ) {
-					return new String( 's: s requires a [replace] parameter.' )
+					return new String( 'requires a [replace] parameter.' )
 				}
 			
 				let src = recipe.getVariable( vars, params[0] )
@@ -1056,7 +1046,7 @@ const command = {
 			func: ( arr, cmd, vars ) => {
 				// j takes no params!
 				if ( cmd.length > 1 && cmd[1].length > 0 ) {
-					return new String( 'j: j does not require parameters' )
+					return new String( 'does not require parameters' )
 				}
 				return command.doJoin( arr, 0, '' )
 			}	
@@ -1074,7 +1064,7 @@ const command = {
 			func: ( arr, cmd, vars ) => {
 				// Check there was a separator ...
 				if ( cmd.length === 1 || cmd.length > 1 && cmd[1].length === 0 ) {
-					return new String( 'j+: j+ requires a [separator] to put between joins' )
+					return new String( 'requires a [separator] to put between joins' )
 				}
 
 				let separator = recipe.getVariable( vars, cmd[1] )
@@ -1095,11 +1085,12 @@ const command = {
 			func: ( arr, cmd, vars ) => {
 				// Check there was a join count size ...
 				if ( cmd.length === 1 || cmd.length > 1 && cmd[1].length === 0 ) {
-					return new String( 'jn: jn requires a [number] for the join count' )
+					return new String( 'requires a [number] for the join count' )
 				}
 				let number = parseInt(recipe.getVariable( vars, cmd[1] ))
+
 				if ( isNaN( number ) ) {
-					return new String( 'jn: ' + recipe.getVariable( vars, cmd[1] ) + ' is not a number' )
+					return new String( recipe.getVariable( vars, cmd[1] ) + ' is not a number' )
 				} else {
 					return command.doJoin( arr, number, '' )
 				}
@@ -1118,19 +1109,19 @@ const command = {
 			func: ( arr, cmd, vars ) => {
 				// Check there was at least a join count size parameter ...
 				if ( cmd.length === 1 || cmd[1] === undefined || cmd[1].length === 0 ) {
-					return new String( 'jn+: jn+ requires a [number] for the join count' )
+					return new String( 'requires a [number] for the join count' )
 				}
 
 				// The two parameter values we will have to divine for ourselves.
 				let delim = ' '
 				let params = cmd[1].split(delim)
 				if ( params.length === 1 || params[1] === undefined || params[1].length === 0 ) {
-					return new String( 'jn+: jn+ requires a [separator] to put between the joins' )
+					return new String( 'requires a [separator] to put between the joins' )
 				}
 			
 				let number = parseInt(recipe.getVariable( vars, params[0] ))
 				if ( isNaN( number ) ) {
-					return new String( 'jn: ' + recipe.getVariable( vars, cmd[1] ) + ' is not a number' )
+					return new String( recipe.getVariable( vars, cmd[1] ) + ' is not a number' )
 				}
 				
 				let separator = recipe.getVariable( vars, params[1] )
@@ -1152,7 +1143,7 @@ const command = {
 
 				// We need a search string.
 				if ( cmd[1] === undefined || cmd[1].length === 0 ) {
-					return new String( '_: _ requires a search string to collapse.' )
+					return new String( 'requires a search string to collapse.' )
 				} 
 
 				// The various parameters we need to divine for ourselves ...
@@ -1388,6 +1379,16 @@ const command = {
 			short: 		"Text information",
 			
 			func: ( arr, cmd, vars ) => {
+				// Little inner function to inserts a <dt><dd> tuple ...
+				let datum = function( dl, label, value ) {
+					let dt = document.createElement('dt')
+					dt.innerHTML = label
+					dl.appendChild(dt)
+					let dd = document.createElement('dd')
+					dd.innerHTML = value
+					dl.appendChild(dd)	
+				};
+
 				let info = document.getElementById('info')
 
 				// Create a <ul> to list the URLs
@@ -1399,7 +1400,7 @@ const command = {
 				info.appendChild( dl )
 			
 				// Count the lines
-				ui.datum( dl, 'Lines', arr.length )
+				datum( dl, 'Lines', arr.length )
 			
 				cc = 0
 				wc = 0
@@ -1408,8 +1409,8 @@ const command = {
 					wc = wc + ar.split( ' ' ).length
 				}
 			
-				ui.datum( dl, 'Words', wc )
-				ui.datum( dl, 'Characters', cc )
+				datum( dl, 'Words', wc )
+				datum( dl, 'Characters', cc )
 			
 				// Make the UI visible
 				info.classList.remove('hidden')

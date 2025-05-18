@@ -356,18 +356,6 @@ const ui = {
 	},
 
 	/**
-	 * Inserts a <dt><dd> tuple for the _info command.
-	 */
-	datum: ( dl, label, value ) => {
-		let dt = document.createElement('dt')
-		dt.innerHTML = label
-		dl.appendChild(dt)
-		let dd = document.createElement('dd')
-		dd.innerHTML = value
-		dl.appendChild(dd)	
-	},
-
-	/**
 	 * Initialise the UI. To be called once at point of page load.
 	 */
 	init: () => {

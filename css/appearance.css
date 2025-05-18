@@ -18,6 +18,7 @@
 	--tab-hover-fg: #25a;
 	--example-bg: #f0f0f0;
 	--example-border: #e0e0e0;
+	--log-fg: #f00;
 	color-scheme: light;
 }
 
@@ -40,6 +41,7 @@
 	--tab-hover-fg: #ff0;
 	--example-bg: #000;
 	--example-border: #111;
+	--log-fg: #f00;
 	color-scheme: dark;
 }
 
