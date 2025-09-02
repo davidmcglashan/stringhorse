@@ -23,6 +23,9 @@ Characters are combined to achieve things …
 
 ## Changelog
 
+### version 2.0.5
+* Change to mcglashan.net domain.
+
 ### version 2.0.4
 * Error reporting is now inline and doesn't interrupt recipe execution.
 
