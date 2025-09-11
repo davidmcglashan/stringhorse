@@ -3,7 +3,7 @@ const command = {
 	// - Major releases see significant change to the feature set e.g. multiple minors.
 	// - Minor changes when at least one command is added, removed or changed, or a UI feature is added.
 	// - Point releases for bug fixes, UI modifications, meta and build changes.
-	version: "v2.0.5",
+	version: "v2.0.6",
 
 	commands: [
 		{
@@ -1287,8 +1287,66 @@ const command = {
 			}
 		}, {
 			// ==================================================================================
+			command: 	"thread",
+			params: 	"[str] ([number])",
+			desc: 		"For an (e.g.) 10 line input, threads line 1 and 6 together with [str] onto one line, then 2 and 7, 3 and 8, and so on. [number] is the number of columns, the default of which is 2.",
+			short: 		"Thread lines into columns",
+			input:		["abc","def","123","456"],
+			recipe:		["thread ,"],
+			output:		["abc,123","def,456"],
+
+			func: ( arr, cmd, vars ) => {
+				let result = []
+				let delim = ' '
+
+				// We need a search string.
+				if ( cmd[1] === undefined || cmd[1].length === 0 ) {
+					return new String( 'requires a [separator] to put between the joins' )
+				} 
+
+				// The two parameter values we will have to divine for ourselves.
+				let params = cmd[1].split(delim)
+				if ( params.length === 0 || params[0] === undefined || params[0].length === 0 ) {
+					return new String( 'requires a [separator] to put between the joins' )
+				}
+				let jstr = recipe.getVariable( vars, params[0] )
+
+				// How many columns are we threading together?
+				let cols = 2
+				if ( params.length === 1 || params[1] === undefined || params[1].length === 0 ) {
+					cols = 2
+				} else {
+					cols = Math.max( 2, parseInt( params[1] ) )
+				}
+
+				let offset = Math.floor( arr.length / cols )
+
+				// Do the replacement on each line.
+				for ( let l=0; l < offset; l++ ) {
+					let line = ''
+					let i = l
+					for ( let k=0; k < cols; k++ ) {
+						line += arr[i]
+						if ( k < cols-1 ) {
+							line += jstr
+						}
+						i += offset
+					}
+					result.push( line )
+				}
+			
+				// There may be one or two unconcatenated input lines so stick those on the end.
+				for ( let l=offset*cols; l < arr.length; l++ ) {
+					result.push( arr[l] )
+				}
+
+				return result
+			}
+		}, {
+			// ==================================================================================
 			command: 	"explode",
-			desc: 		"Explode the text by inserting blank lines in between the existing ones.",
+			params:		"([str])",
+			desc: 		"Explode the text by inserting blank lines, or lines of [str], in between the existing ones.",
 			short: 		"Insert blank lines",
 			input:		["galaxy","star","planet"],
 			recipe:		["explode"],
@@ -1296,12 +1354,25 @@ const command = {
 			also: 		[ "|" ],
 
 			func: ( arr, cmd, vars ) => {
-				result = []
+				let result = []
+				let joinstr = cmd[1]
+
+				// Get the optional joinstr, or use an empty string without one.
+				if ( cmd[1] === undefined || cmd[1].length === 0 ) {
+					joinstr = ''
+				} else {
+					// Check the parameters for variables.
+					joinstr = recipe.getVariable( vars, cmd[1] )
+				}
+
 				for ( let ar of arr ) {
 					result.push( ar )
-					result.push( '' )
+					result.push( joinstr )
 				}
+
+				// Pop that last joinstr back off
 				result.pop()
+				
 				return result
 			}
 		}, {

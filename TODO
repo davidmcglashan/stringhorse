@@ -12,5 +12,11 @@
 - random text
   - lorem
   - magic words
+  - patterns: eg. tickets: [AZ]{2}[09]{6}"A", VRMs: [AZ]{2}[09]{3}[AZ]{3}
 - commands to manage CSV files - probably CSVhorse: an app to deal only with CSV
-- JSONhorse
+  - move a column
+  - extract a column
+  - sort by a column
+  - transform a column a la stringhorse
+  
+- JSONhorse: same idea but for JSON

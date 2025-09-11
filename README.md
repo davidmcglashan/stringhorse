@@ -23,6 +23,10 @@ Characters are combined to achieve things …
 
 ## Changelog
 
+### version 2.0.6
+* New command: thread - combines lines into columns. Given an input of 99 lines, thread will join it into 33 lines combining rows 1,34,67 on one line, then 2,35,68 on the next ... and so on.
+* explode now takes an optional parameter to use instead of blank lines.
+
 ### version 2.0.5
 * Change to mcglashan.net domain.
 
